@@ -583,7 +583,7 @@ const NeuroscienceBrain = () => {
 
       {/* CTA */}
       <div className="text-center">
-        <Button 
+        <Button
           onClick={scrollToTechniques}
           className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3"
         >
@@ -591,6 +591,25 @@ const NeuroscienceBrain = () => {
           Voir les techniques associées
         </Button>
       </div>
+
+      <style jsx>{`
+        @keyframes pulse {
+          0%, 100% { opacity: 0.6; transform: scale(1); }
+          50% { opacity: 1; transform: scale(1.05); }
+        }
+        @keyframes bounce {
+          0%, 20%, 53%, 80%, 100% { transform: translateY(0); }
+          40%, 43% { transform: translateY(-8px); }
+          70% { transform: translateY(-4px); }
+          90% { transform: translateY(-2px); }
+        }
+        .animate-pulse {
+          animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        .animate-bounce {
+          animation: bounce 3s infinite;
+        }
+      `}</style>
     </div>
   );
 };
