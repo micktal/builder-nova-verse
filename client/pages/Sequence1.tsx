@@ -146,12 +146,55 @@ const Sequence1 = () => {
         <CardContent className="p-6">
           <div className="relative bg-gradient-to-br from-blue-50 via-green-50 to-yellow-50 rounded-lg p-8 min-h-[500px] overflow-hidden">
             {/* Office scene background */}
-            <div className="absolute inset-0 opacity-20">
-              <div className="absolute top-20 left-12 w-24 h-16 bg-gray-400 rounded shadow-lg"></div> {/* Desk */}
-              <div className="absolute top-15 left-14 w-20 h-3 bg-gray-600 rounded"></div> {/* Computer */}
-              <div className="absolute top-32 right-20 w-20 h-32 bg-gray-300 rounded"></div> {/* Person */}
-              <div className="absolute bottom-20 left-1/2 w-32 h-20 bg-gray-400 rounded"></div> {/* Table */}
-              <div className="absolute top-10 right-10 w-16 h-8 bg-yellow-300 rounded"></div> {/* Light */}
+            <div className="absolute inset-0 opacity-30">
+              <svg viewBox="0 0 800 400" className="w-full h-full">
+                {/* Office floor */}
+                <rect x="0" y="350" width="800" height="50" fill="#e5e7eb" />
+
+                {/* Desks */}
+                <rect x="80" y="280" width="120" height="60" fill="#9ca3af" rx="4" />
+                <rect x="450" y="280" width="120" height="60" fill="#9ca3af" rx="4" />
+
+                {/* Computers */}
+                <rect x="90" y="260" width="40" height="25" fill="#374151" rx="2" />
+                <rect x="460" y="260" width="40" height="25" fill="#374151" rx="2" />
+
+                {/* Chairs */}
+                <circle cx="170" cy="320" r="15" fill="#6b7280" />
+                <circle cx="540" cy="320" r="15" fill="#6b7280" />
+
+                {/* Person silhouettes */}
+                <circle cx="320" cy="250" r="20" fill="#9ca3af" />
+                <rect x="310" y="270" width="20" height="50" fill="#9ca3af" rx="10" />
+
+                <circle cx="650" cy="200" r="15" fill="#9ca3af" />
+                <rect x="642" y="215" width="16" height="40" fill="#9ca3af" rx="8" />
+
+                {/* Meeting table */}
+                <ellipse cx="400" cy="350" rx="80" ry="30" fill="#9ca3af" />
+
+                {/* Office plants */}
+                <circle cx="700" cy="300" r="8" fill="#10b981" />
+                <rect x="698" y="305" width="4" height="15" fill="#065f46" />
+
+                {/* Windows */}
+                <rect x="0" y="50" width="800" height="4" fill="#60a5fa" />
+                <rect x="100" y="50" width="80" height="120" fill="#bfdbfe" opacity="0.5" />
+                <rect x="300" y="50" width="80" height="120" fill="#bfdbfe" opacity="0.5" />
+                <rect x="500" y="50" width="80" height="120" fill="#bfdbfe" opacity="0.5" />
+
+                {/* Ceiling lights */}
+                <ellipse cx="200" cy="30" rx="25" ry="8" fill="#fbbf24" opacity="0.7" />
+                <ellipse cx="400" cy="30" rx="25" ry="8" fill="#fbbf24" opacity="0.7" />
+                <ellipse cx="600" cy="30" rx="25" ry="8" fill="#fbbf24" opacity="0.7" />
+
+                {/* Filing cabinets */}
+                <rect x="650" y="250" width="30" height="80" fill="#6b7280" rx="2" />
+                <rect x="50" y="250" width="25" height="70" fill="#6b7280" rx="2" />
+
+                {/* Whiteboards */}
+                <rect x="750" y="150" width="40" height="60" fill="#f3f4f6" stroke="#9ca3af" strokeWidth="2" />
+              </svg>
             </div>
             
             {/* Interactive hotspots */}
