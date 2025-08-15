@@ -134,80 +134,6 @@ const InteractiveConclusion = () => {
     }
   }, [currentView]);
 
-  const generateCertificate = () => {
-    const canvas = document.createElement('canvas');
-    canvas.width = 800;
-    canvas.height = 600;
-    const ctx = canvas.getContext('2d');
-    
-    if (ctx) {
-      // Background gradient
-      const gradient = ctx.createLinearGradient(0, 0, 800, 600);
-      gradient.addColorStop(0, '#f0f9ff');
-      gradient.addColorStop(1, '#dbeafe');
-      ctx.fillStyle = gradient;
-      ctx.fillRect(0, 0, 800, 600);
-      
-      // Border
-      ctx.strokeStyle = '#3b82f6';
-      ctx.lineWidth = 8;
-      ctx.strokeRect(20, 20, 760, 560);
-      
-      // Title
-      ctx.fillStyle = '#1e40af';
-      ctx.font = 'bold 32px Arial';
-      ctx.textAlign = 'center';
-      ctx.fillText('CERTIFICAT DE RÉUSSITE', 400, 100);
-      
-      // Module title
-      ctx.font = '24px Arial';
-      ctx.fillText('Module "Réguler le stress"', 400, 150);
-      
-      // Name
-      ctx.font = 'bold 28px Arial';
-      ctx.fillStyle = '#059669';
-      ctx.fillText(`Félicitations ${userStats.name} !`, 400, 250);
-      
-      // Content
-      ctx.font = '18px Arial';
-      ctx.fillStyle = '#374151';
-      ctx.fillText('Vous avez terminé avec succès ce module de formation', 400, 300);
-      ctx.fillText(`${userStats.sequencesCompleted} séquences complétées • ${userStats.skillsAcquired} compétences acquises`, 400, 330);
-      ctx.fillText(`Réduction du stress de ${userStats.stressReduction}%`, 400, 360);
-      
-      // Date
-      ctx.font = '16px Arial';
-      ctx.fillStyle = '#6b7280';
-      ctx.fillText(`Délivré le ${userStats.completionDate}`, 400, 450);
-      
-      // Signature line
-      ctx.strokeStyle = '#374151';
-      ctx.lineWidth = 1;
-      ctx.beginPath();
-      ctx.moveTo(300, 500);
-      ctx.lineTo(500, 500);
-      ctx.stroke();
-      ctx.fillText('Builder.io Learning', 400, 520);
-    }
-    
-    // Download
-    const link = document.createElement('a');
-    link.download = `certificat-stress-${new Date().toISOString().split('T')[0]}.png`;
-    link.href = canvas.toDataURL();
-    link.click();
-  };
-
-  const shareResults = () => {
-    if (navigator.share) {
-      navigator.share({
-        title: 'J\'ai terminé le module "Réguler le stress" !',
-        text: `J'ai acquis ${userStats.skillsAcquired} nouvelles compétences et réduit mon stress de ${userStats.stressReduction}% grâce à ce module e-learning interactif.`,
-        url: window.location.href
-      });
-    } else {
-      navigator.clipboard.writeText(`J'ai terminé le module "Réguler le stress" ! ${userStats.skillsAcquired} compétences acquises, ${userStats.stressReduction}% de stress en moins. ${window.location.href}`);
-    }
-  };
 
   const CelebrationView = () => (
     <div className="text-center space-y-8">
@@ -281,7 +207,7 @@ const InteractiveConclusion = () => {
         </Button>
         <Button onClick={() => setCurrentView('conclusion')} className="bg-blue-600 hover:bg-blue-700 text-white">
           <FileText className="w-4 h-4 mr-2" />
-          Synthèse du module
+          Synth��se du module
         </Button>
       </div>
     </div>
