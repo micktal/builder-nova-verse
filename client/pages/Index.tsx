@@ -155,6 +155,15 @@ const StressRegulationModule = () => {
                 Commencer
               </Button>
             </Link>
+          ) : sequence.id === 3 ? (
+            <Link to="/sequence/3" className="block w-full">
+              <Button
+                className={`w-full bg-${sequence.color}-500 hover:bg-${sequence.color}-600 text-white transition-colors`}
+              >
+                <Play className="w-4 h-4 mr-2" />
+                Commencer
+              </Button>
+            </Link>
           ) : (
             <Button
               onClick={() => {
