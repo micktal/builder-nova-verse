@@ -28,6 +28,8 @@ const App = () => (
             <Route path="/sequence/1" element={<Sequence1 />} />
             <Route path="/sequence/2" element={<Sequence2 />} />
             <Route path="/sequence/3" element={<Sequence3 />} />
+            <Route path="/sequence/4" element={<Sequence4 />} />
+            <Route path="/sequence/5" element={<Sequence5 />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
