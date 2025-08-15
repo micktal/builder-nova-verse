@@ -281,7 +281,9 @@ const StressRegulationModule = () => {
 
       <ObjectivesSection />
 
-      <div className="max-w-6xl mx-auto px-6 py-12">
+      <NeuroscienceBrain />
+
+      <div className="max-w-6xl mx-auto px-6 py-12" data-scroll-target="techniques">
         <div className="grid lg:grid-cols-3 gap-8 mb-12">
           {sequences.map((sequence, index) => (
             <SequenceCard key={sequence.id} sequence={sequence} index={index} />
