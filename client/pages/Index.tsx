@@ -1,13 +1,23 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { Play, Clock, Target, CheckCircle, Brain, Heart, Users, Lightbulb, FileText } from 'lucide-react';
-import NeuroscienceBrain from '@/components/NeuroscienceBrain';
-import TransformationTimeline from '@/components/TransformationTimeline';
-import InteractiveConclusion from '@/components/InteractiveConclusion';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Progress } from '@/components/ui/progress';
+import React, { useState, useRef, useEffect } from "react";
+import { Link } from "react-router-dom";
+import {
+  Play,
+  Clock,
+  Target,
+  CheckCircle,
+  Brain,
+  Heart,
+  Users,
+  Lightbulb,
+  FileText,
+} from "lucide-react";
+import NeuroscienceBrain from "@/components/NeuroscienceBrain";
+import TransformationTimeline from "@/components/TransformationTimeline";
+import InteractiveConclusion from "@/components/InteractiveConclusion";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Progress } from "@/components/ui/progress";
 
 const StressRegulationModule = () => {
   const [currentSequence, setCurrentSequence] = useState(0);
@@ -23,15 +33,15 @@ const StressRegulationModule = () => {
       duration: "5 min",
       icon: Brain,
       description: "Identification des 4 catégories de déclencheurs de stress",
-      color: "calm"
+      color: "calm",
     },
     {
       id: 2,
       title: "Techniques physiologiques",
-      duration: "7 min", 
+      duration: "7 min",
       icon: Heart,
       description: "Respiration et relaxation musculaire progressive",
-      color: "nature"
+      color: "nature",
     },
     {
       id: 3,
@@ -39,7 +49,7 @@ const StressRegulationModule = () => {
       duration: "8 min",
       icon: Lightbulb,
       description: "Matrice d'Eisenhower et reframing cognitif",
-      color: "serenity"
+      color: "serenity",
     },
     {
       id: 4,
@@ -47,7 +57,7 @@ const StressRegulationModule = () => {
       duration: "5 min",
       icon: Users,
       description: "Modèle DESC et gestion relationnelle",
-      color: "calm"
+      color: "calm",
     },
     {
       id: 5,
@@ -55,8 +65,8 @@ const StressRegulationModule = () => {
       duration: "5 min",
       icon: FileText,
       description: "Routine anti-stress et tableau personnalisé",
-      color: "nature"
-    }
+      color: "nature",
+    },
   ];
 
   const startBreathingAnimation = () => {
@@ -65,7 +75,7 @@ const StressRegulationModule = () => {
   };
 
   const completeSequence = (sequenceId: number) => {
-    setCompletedSequences(prev => [...prev, sequenceId]);
+    setCompletedSequences((prev) => [...prev, sequenceId]);
     setProgress((completedSequences.length + 1) * 20);
   };
 
@@ -80,7 +90,7 @@ const StressRegulationModule = () => {
           Réguler le stress
         </h1>
         <p className="text-xl md:text-2xl text-gray-700 mb-8 max-w-3xl mx-auto leading-relaxed">
-          Apprenez des techniques concrètes pour identifier vos déclencheurs, 
+          Apprenez des techniques concrètes pour identifier vos déclencheurs,
           maîtriser votre physiologie et développer votre assertivité.
         </p>
         <div className="flex flex-wrap justify-center gap-6 mb-8">
@@ -108,19 +118,33 @@ const StressRegulationModule = () => {
     </div>
   );
 
-  const SequenceCard = ({ sequence, index }: { sequence: typeof sequences[0], index: number }) => {
+  const SequenceCard = ({
+    sequence,
+    index,
+  }: {
+    sequence: (typeof sequences)[0];
+    index: number;
+  }) => {
     const Icon = sequence.icon;
     const isCompleted = completedSequences.includes(sequence.id);
     const isCurrent = currentSequence === index;
-    
+
     return (
-      <Card className={`group transition-all duration-500 hover:shadow-xl hover:-translate-y-2 border-2 animate-fadeInUp ${
-        isCurrent ? `border-${sequence.color}-300 shadow-lg scale-105` :
-        isCompleted ? `border-${sequence.color}-200 bg-${sequence.color}-25` : 'border-gray-200'
-      }`} style={{ animationDelay: `${index * 0.1}s` }}>
+      <Card
+        className={`group transition-all duration-500 hover:shadow-xl hover:-translate-y-2 border-2 animate-fadeInUp ${
+          isCurrent
+            ? `border-${sequence.color}-300 shadow-lg scale-105`
+            : isCompleted
+              ? `border-${sequence.color}-200 bg-${sequence.color}-25`
+              : "border-gray-200"
+        }`}
+        style={{ animationDelay: `${index * 0.1}s` }}
+      >
         <CardHeader className="pb-3">
           <div className="flex items-start justify-between">
-            <div className={`p-3 rounded-lg bg-${sequence.color}-100 text-${sequence.color}-600`}>
+            <div
+              className={`p-3 rounded-lg bg-${sequence.color}-100 text-${sequence.color}-600`}
+            >
               <Icon className="w-6 h-6" />
             </div>
             <div className="text-right">
@@ -204,7 +228,7 @@ const StressRegulationModule = () => {
               ) : (
                 <>
                   <Play className="w-4 h-4 mr-2" />
-                  {isCurrent ? 'Continuer' : 'Commencer'}
+                  {isCurrent ? "Continuer" : "Commencer"}
                 </>
               )}
             </Button>
@@ -227,21 +251,25 @@ const StressRegulationModule = () => {
           <div
             ref={breathingRef}
             className={`w-full h-full rounded-full bg-gradient-to-br from-calm-400 to-calm-600 shadow-lg transition-all duration-1000 ${
-              isBreathingActive ? 'animate-pulse-gentle shadow-calm-300/50' : 'scale-100 hover:scale-105'
+              isBreathingActive
+                ? "animate-pulse-gentle shadow-calm-300/50"
+                : "scale-100 hover:scale-105"
             }`}
             style={{
-              animation: isBreathingActive ? 'breathe 10s infinite' : 'none',
-              boxShadow: isBreathingActive ? '0 0 30px rgba(59, 130, 246, 0.5)' : '0 10px 25px rgba(0,0,0,0.1)'
+              animation: isBreathingActive ? "breathe 10s infinite" : "none",
+              boxShadow: isBreathingActive
+                ? "0 0 30px rgba(59, 130, 246, 0.5)"
+                : "0 10px 25px rgba(0,0,0,0.1)",
             }}
           />
         </div>
       </div>
-      <Button 
+      <Button
         onClick={startBreathingAnimation}
         className="bg-calm-500 hover:bg-calm-600 text-white"
         disabled={isBreathingActive}
       >
-        {isBreathingActive ? 'En cours...' : 'Démarrer l\'exercice'}
+        {isBreathingActive ? "En cours..." : "Démarrer l'exercice"}
       </Button>
     </div>
   );
@@ -253,10 +281,30 @@ const StressRegulationModule = () => {
       </h2>
       <div className="grid md:grid-cols-2 gap-6">
         {[
-          { icon: Target, color: 'nature', title: 'Identifier', desc: 'Reconnaître vos déclencheurs personnels de stress dans différents contextes' },
-          { icon: Heart, color: 'calm', title: 'Appliquer', desc: 'Utiliser des techniques physiologiques et cognitives de régulation' },
-          { icon: Lightbulb, color: 'serenity', title: 'Analyser', desc: 'Évaluer l\'efficacité des différentes stratégies selon les situations' },
-          { icon: FileText, color: 'nature', title: 'Créer', desc: 'Élaborer votre plan d\'action personnel adapté à votre contexte' }
+          {
+            icon: Target,
+            color: "nature",
+            title: "Identifier",
+            desc: "Reconnaître vos déclencheurs personnels de stress dans différents contextes",
+          },
+          {
+            icon: Heart,
+            color: "calm",
+            title: "Appliquer",
+            desc: "Utiliser des techniques physiologiques et cognitives de régulation",
+          },
+          {
+            icon: Lightbulb,
+            color: "serenity",
+            title: "Analyser",
+            desc: "Évaluer l'efficacité des différentes stratégies selon les situations",
+          },
+          {
+            icon: FileText,
+            color: "nature",
+            title: "Créer",
+            desc: "Élaborer votre plan d'action personnel adapté à votre contexte",
+          },
         ].map((obj, index) => {
           const Icon = obj.icon;
           return (
@@ -266,8 +314,12 @@ const StressRegulationModule = () => {
               style={{ animationDelay: `${index * 0.15}s` }}
             >
               <CardContent className="p-6">
-                <Icon className={`w-8 h-8 text-${obj.color}-500 mb-3 transition-transform duration-300 group-hover:scale-110`} />
-                <h3 className="font-semibold text-gray-900 mb-2">{obj.title}</h3>
+                <Icon
+                  className={`w-8 h-8 text-${obj.color}-500 mb-3 transition-transform duration-300 group-hover:scale-110`}
+                />
+                <h3 className="font-semibold text-gray-900 mb-2">
+                  {obj.title}
+                </h3>
                 <p className="text-gray-600 text-sm">{obj.desc}</p>
               </CardContent>
             </Card>
@@ -285,7 +337,10 @@ const StressRegulationModule = () => {
 
       <NeuroscienceBrain />
 
-      <div className="max-w-6xl mx-auto px-6 py-12" data-scroll-target="techniques">
+      <div
+        className="max-w-6xl mx-auto px-6 py-12"
+        data-scroll-target="techniques"
+      >
         <div className="grid lg:grid-cols-3 gap-8 mb-12">
           {sequences.map((sequence, index) => (
             <SequenceCard key={sequence.id} sequence={sequence} index={index} />
@@ -303,7 +358,8 @@ const StressRegulationModule = () => {
 
       <style jsx>{`
         @keyframes breathe {
-          0%, 100% {
+          0%,
+          100% {
             transform: scale(1);
             opacity: 0.8;
           }
@@ -333,7 +389,8 @@ const StressRegulationModule = () => {
           }
         }
         @keyframes pulse {
-          0%, 100% {
+          0%,
+          100% {
             transform: scale(1);
           }
           50% {
