@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Play, Clock, Target, CheckCircle, Brain, Heart, Users, Lightbulb, FileText } from 'lucide-react';
 import NeuroscienceBrain from '@/components/NeuroscienceBrain';
 import TransformationTimeline from '@/components/TransformationTimeline';
+import InteractiveConclusion from '@/components/InteractiveConclusion';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
