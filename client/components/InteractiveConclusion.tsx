@@ -2,10 +2,10 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { 
-  Trophy, Star, Download, Share2, Calendar, Zap, CheckCircle, 
+import {
+  Trophy, Star, Calendar, Zap, CheckCircle,
   Brain, Heart, Users, Lightbulb, FileText, Target, Clock,
-  Award, TrendingUp, Sparkles, Rocket, Gift, Crown
+  TrendingUp, Sparkles, Rocket, Crown
 } from 'lucide-react';
 
 const InteractiveConclusion = () => {
