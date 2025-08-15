@@ -277,20 +277,20 @@ const StressRegulationModule = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-serenity-50 via-white to-calm-50">
       <ModuleHeader />
-      
+
+      <ObjectivesSection />
+
       <div className="max-w-6xl mx-auto px-6 py-12">
         <div className="grid lg:grid-cols-3 gap-8 mb-12">
           {sequences.map((sequence, index) => (
             <SequenceCard key={sequence.id} sequence={sequence} index={index} />
           ))}
         </div>
-        
+
         <div className="mb-12">
           <BreathingDemo />
         </div>
       </div>
-      
-      <ObjectivesSection />
       
       <style jsx>{`
         @keyframes breathe {
