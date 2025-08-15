@@ -137,28 +137,39 @@ const StressRegulationModule = () => {
           <p className="text-gray-600 text-sm mb-4 leading-relaxed">
             {sequence.description}
           </p>
-          <Button 
-            onClick={() => {
-              setCurrentSequence(index);
-              if (!isCompleted) {
-                completeSequence(sequence.id);
-              }
-            }}
-            className={`w-full bg-${sequence.color}-500 hover:bg-${sequence.color}-600 text-white transition-colors`}
-            disabled={isCompleted}
-          >
-            {isCompleted ? (
-              <>
-                <CheckCircle className="w-4 h-4 mr-2" />
-                Terminé
-              </>
-            ) : (
-              <>
+          {sequence.id === 1 ? (
+            <Link to="/sequence/1" className="block w-full">
+              <Button
+                className={`w-full bg-${sequence.color}-500 hover:bg-${sequence.color}-600 text-white transition-colors`}
+              >
                 <Play className="w-4 h-4 mr-2" />
-                {isCurrent ? 'Continuer' : 'Commencer'}
-              </>
-            )}
-          </Button>
+                Commencer
+              </Button>
+            </Link>
+          ) : (
+            <Button
+              onClick={() => {
+                setCurrentSequence(index);
+                if (!isCompleted) {
+                  completeSequence(sequence.id);
+                }
+              }}
+              className={`w-full bg-${sequence.color}-500 hover:bg-${sequence.color}-600 text-white transition-colors`}
+              disabled={isCompleted}
+            >
+              {isCompleted ? (
+                <>
+                  <CheckCircle className="w-4 h-4 mr-2" />
+                  Terminé
+                </>
+              ) : (
+                <>
+                  <Play className="w-4 h-4 mr-2" />
+                  {isCurrent ? 'Continuer' : 'Commencer'}
+                </>
+              )}
+            </Button>
+          )}
         </CardContent>
       </Card>
     );
