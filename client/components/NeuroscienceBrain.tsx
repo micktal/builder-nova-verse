@@ -177,69 +177,170 @@ const NeuroscienceBrain = () => {
     setQuizAnswers(prev => ({ ...prev, [questionId]: answer }));
   };
 
+  const getColorByName = (colorName: string) => {
+    const colorMap = {
+      'red': { fill: '#ef4444', stroke: '#dc2626' },
+      'blue': '#3b82f6', 'green': '#10b981', 'purple': '#8b5cf6',
+      'orange': '#f97316', 'cyan': '#06b6d4', 'indigo': '#6366f1',
+      'pink': '#ec4899', 'yellow': '#eab308'
+    };
+    return colorMap[colorName as keyof typeof colorMap] || '#6b7280';
+  };
+
   const BrainSVG = () => (
-    <svg viewBox="0 0 400 300" className="w-full h-full max-w-md mx-auto">
-      {/* Brain outline */}
+    <svg viewBox="0 0 400 300" className="w-full h-full max-w-lg mx-auto">
+      <defs>
+        {/* Gradients for brain regions */}
+        <radialGradient id="brainGradient" cx="50%" cy="40%" r="60%">
+          <stop offset="0%" stopColor="#f8fafc" />
+          <stop offset="100%" stopColor="#e2e8f0" />
+        </radialGradient>
+        <linearGradient id="stemGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stopColor="#cbd5e1" />
+          <stop offset="100%" stopColor="#94a3b8" />
+        </linearGradient>
+        {/* Glowing effects */}
+        <filter id="glow">
+          <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+          <feMerge>
+            <feMergeNode in="coloredBlur"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        </filter>
+      </defs>
+
+      {/* Brain background shadow */}
+      <path
+        d="M85 125 C65 85, 105 65, 145 75 C185 65, 225 75, 265 85 C305 95, 325 125, 315 165 C305 205, 285 225, 245 235 C205 245, 165 240, 125 230 C95 220, 75 185, 85 125 Z"
+        fill="#1e293b"
+        opacity="0.3"
+        transform="translate(3, 3)"
+      />
+
+      {/* Main brain outline */}
       <path
         d="M80 120 C60 80, 100 60, 140 70 C180 60, 220 70, 260 80 C300 90, 320 120, 310 160 C300 200, 280 220, 240 230 C200 240, 160 235, 120 225 C90 215, 70 180, 80 120 Z"
-        fill="#f3f4f6"
-        stroke="#9ca3af"
+        fill="url(#brainGradient)"
+        stroke="#64748b"
         strokeWidth="2"
         className="transition-all duration-500"
       />
-      
+
+      {/* Brain folds/sulci for realism */}
+      <path d="M100 95 Q140 90, 180 95 Q220 100, 250 110"
+            stroke="#94a3b8" strokeWidth="1" fill="none" opacity="0.6" />
+      <path d="M90 140 Q130 135, 170 140 Q210 145, 240 155"
+            stroke="#94a3b8" strokeWidth="1" fill="none" opacity="0.6" />
+      <path d="M110 180 Q150 175, 190 180 Q220 185, 250 190"
+            stroke="#94a3b8" strokeWidth="1" fill="none" opacity="0.6" />
+
+      {/* Cerebellum */}
+      <ellipse cx="280" cy="200" rx="35" ry="25"
+               fill="#e2e8f0" stroke="#94a3b8" strokeWidth="1.5" />
+      <path d="M265 190 Q280 185, 295 190 M265 200 Q280 195, 295 200 M265 210 Q280 205, 295 210"
+            stroke="#94a3b8" strokeWidth="1" fill="none" opacity="0.7" />
+
       {/* Brain stem */}
-      <rect x="180" y="220" width="20" height="40" fill="#e5e7eb" rx="10" />
-      
-      {/* Hotspots */}
-      {brainAreas.map((area) => (
-        <g key={area.id}>
-          <circle
-            cx={area.position.x * 4}
-            cy={area.position.y * 3}
-            r="12"
-            fill={`hsl(var(--${area.color === 'red' ? 'destructive' : 
-                          area.color === 'blue' ? 'calm-500' :
-                          area.color === 'green' ? 'nature-500' :
-                          area.color === 'purple' ? 'serenity-500' :
-                          'orange-500'}))`}
-            opacity={getAreaOpacity(area)}
-            stroke={`hsl(var(--${area.color === 'red' ? 'destructive' : 
-                               area.color === 'blue' ? 'calm-600' :
-                               area.color === 'green' ? 'nature-600' :
-                               area.color === 'purple' ? 'serenity-600' :
-                               'orange-600'}))`}
-            strokeWidth="2"
-            className="cursor-pointer transition-all duration-300 hover:scale-110"
-            onClick={() => setActiveHotspot(activeHotspot === area.id ? null : area.id)}
-            role="button"
-            tabIndex={0}
-            aria-label={`${area.name} - ${area.role}`}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                setActiveHotspot(activeHotspot === area.id ? null : area.id);
-              }
-            }}
-          />
-          
-          {/* Activity indicator */}
-          <rect
-            x={area.position.x * 4 - 8}
-            y={area.position.y * 3 + 20}
-            width="16"
-            height="3"
-            fill={`hsl(var(--${area.color === 'red' ? 'destructive' : 
-                               area.color === 'blue' ? 'calm-500' :
-                               area.color === 'green' ? 'nature-500' :
-                               area.color === 'purple' ? 'serenity-500' :
-                               'orange-500'}))`}
-            opacity={getAreaOpacity(area)}
-            className="transition-all duration-500"
-            transform={`scale(${getAreaIntensity(area) / 100}, 1)`}
-            transformOrigin={`${area.position.x * 4} ${area.position.y * 3 + 21.5}`}
-          />
-        </g>
+      <rect x="175" y="220" width="25" height="45" fill="url(#stemGradient)" rx="12" />
+
+      {/* Corpus callosum (internal structure hint) */}
+      <ellipse cx="200" cy="140" rx="60" ry="8"
+               fill="none" stroke="#a1a1aa" strokeWidth="1" opacity="0.4" strokeDasharray="3,2" />
+
+      {/* Hotspots with enhanced visuals */}
+      {brainAreas.map((area) => {
+        const intensity = getAreaIntensity(area);
+        const baseRadius = 8;
+        const glowRadius = baseRadius + (intensity / 100) * 6;
+        const color = getColorByName(area.color);
+
+        return (
+          <g key={area.id} className="cursor-pointer"
+             onClick={() => setActiveHotspot(activeHotspot === area.id ? null : area.id)}>
+
+            {/* Pulsing glow effect */}
+            <circle
+              cx={area.position.x * 4}
+              cy={area.position.y * 3}
+              r={glowRadius}
+              fill={color}
+              opacity={0.2 + (intensity / 100) * 0.3}
+              className="transition-all duration-500"
+              style={{
+                animation: isAfterMode && intensity > 60 ? 'pulse 2s infinite' : 'none'
+              }}
+            />
+
+            {/* Main hotspot */}
+            <circle
+              cx={area.position.x * 4}
+              cy={area.position.y * 3}
+              r={baseRadius}
+              fill={color}
+              opacity={0.7 + (intensity / 100) * 0.3}
+              stroke="#ffffff"
+              strokeWidth="2"
+              className="transition-all duration-300 hover:scale-125 focus:scale-125"
+              filter={activeHotspot === area.id ? "url(#glow)" : "none"}
+              role="button"
+              tabIndex={0}
+              aria-label={`${area.name} - ${area.role}`}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  setActiveHotspot(activeHotspot === area.id ? null : area.id);
+                }
+              }}
+            />
+
+            {/* Emoji label */}
+            <text
+              x={area.position.x * 4}
+              y={area.position.y * 3 + 2}
+              textAnchor="middle"
+              fontSize="10"
+              className="pointer-events-none select-none"
+            >
+              {area.emoji}
+            </text>
+
+            {/* Neural pathways/connections */}
+            {activeHotspot === area.id && (
+              <g opacity="0.4">
+                <line x1={area.position.x * 4} y1={area.position.y * 3}
+                      x2="200" y2="140" stroke={color} strokeWidth="1"
+                      strokeDasharray="2,2" className="animate-pulse" />
+              </g>
+            )}
+
+            {/* Activity bar */}
+            <rect
+              x={area.position.x * 4 - 12}
+              y={area.position.y * 3 + baseRadius + 5}
+              width={24}
+              height="3"
+              fill="#e5e7eb"
+              rx="1.5"
+            />
+            <rect
+              x={area.position.x * 4 - 12}
+              y={area.position.y * 3 + baseRadius + 5}
+              width={24 * (intensity / 100)}
+              height="3"
+              fill={color}
+              rx="1.5"
+              className="transition-all duration-500"
+            />
+          </g>
+        );
+      })}
+
+      {/* Floating particles for visual appeal */}
+      {isAfterMode && [1,2,3].map(i => (
+        <circle key={i} cx={150 + i * 30} cy={100 + i * 20} r="1"
+                fill="#10b981" opacity="0.6"
+                className="animate-bounce"
+                style={{ animationDelay: `${i * 0.5}s` }} />
       ))}
     </svg>
   );
@@ -257,7 +358,7 @@ const NeuroscienceBrain = () => {
         <div className="flex items-center justify-center gap-2 mb-4">
           <Brain className="w-8 h-8 text-blue-600" />
           <h2 className="text-3xl font-bold text-gray-900">
-            Dimension neuroscientifique �� Zoom cerveau
+            Dimension neuroscientifique – Zoom cerveau
           </h2>
         </div>
         <p className="text-lg text-gray-600 max-w-3xl mx-auto">
