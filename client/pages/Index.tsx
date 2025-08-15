@@ -295,7 +295,9 @@ const StressRegulationModule = () => {
           <BreathingDemo />
         </div>
       </div>
-      
+
+      <TransformationTimeline />
+
       <style jsx>{`
         @keyframes breathe {
           0%, 100% {
