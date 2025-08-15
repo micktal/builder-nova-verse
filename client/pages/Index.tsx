@@ -173,13 +173,14 @@ const StressRegulationModule = () => {
       </p>
       <div className="flex justify-center mb-6">
         <div className="relative w-32 h-32">
-          <div 
+          <div
             ref={breathingRef}
-            className={`w-full h-full rounded-full bg-gradient-to-br from-calm-400 to-calm-600 transition-transform duration-4000 ${
-              isBreathingActive ? 'animate-pulse scale-110' : 'scale-100'
+            className={`w-full h-full rounded-full bg-gradient-to-br from-calm-400 to-calm-600 shadow-lg transition-all duration-1000 ${
+              isBreathingActive ? 'animate-pulse-gentle shadow-calm-300/50' : 'scale-100 hover:scale-105'
             }`}
             style={{
-              animation: isBreathingActive ? 'breathe 10s infinite' : 'none'
+              animation: isBreathingActive ? 'breathe 10s infinite' : 'none',
+              boxShadow: isBreathingActive ? '0 0 30px rgba(59, 130, 246, 0.5)' : '0 10px 25px rgba(0,0,0,0.1)'
             }}
           />
         </div>
