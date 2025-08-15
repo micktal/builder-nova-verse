@@ -375,6 +375,140 @@ const InteractiveConclusion = () => {
     </div>
   );
 
+  const ConclusionView = () => (
+    <div className="space-y-8">
+      <div className="text-center">
+        <h2 className="text-4xl font-bold text-gray-900 mb-4">Synthèse de votre apprentissage</h2>
+        <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+          Vous venez de terminer un parcours complet de formation à la gestion du stress.
+          Retour sur cette transformation remarquable.
+        </p>
+      </div>
+
+      {/* Journey Summary */}
+      <Card className="bg-gradient-to-br from-blue-50 to-purple-50 border-blue-200">
+        <CardContent className="p-8">
+          <h3 className="text-2xl font-bold text-center text-gray-900 mb-8">Votre parcours de transformation</h3>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            <div>
+              <h4 className="text-xl font-semibold text-blue-800 mb-4 flex items-center gap-2">
+                <Brain className="w-6 h-6" />
+                Ce que vous avez découvert
+              </h4>
+              <div className="space-y-4 text-gray-700">
+                <div className="border-l-4 border-blue-500 pl-4">
+                  <p className="font-medium">Les mécanismes du stress</p>
+                  <p className="text-sm text-gray-600">Comment votre cerveau réagit au stress et pourquoi certaines techniques fonctionnent</p>
+                </div>
+                <div className="border-l-4 border-green-500 pl-4">
+                  <p className="font-medium">Les 4 types de déclencheurs</p>
+                  <p className="text-sm text-gray-600">Environnementaux, organisationnels, relationnels et internes</p>
+                </div>
+                <div className="border-l-4 border-purple-500 pl-4">
+                  <p className="font-medium">L'impact de vos choix</p>
+                  <p className="text-sm text-gray-600">Une semaine sans techniques vs avec techniques : -71% de stress</p>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h4 className="text-xl font-semibold text-green-800 mb-4 flex items-center gap-2">
+                <Zap className="w-6 h-6" />
+                Ce que vous maîtrisez maintenant
+              </h4>
+              <div className="space-y-4 text-gray-700">
+                <div className="border-l-4 border-red-500 pl-4">
+                  <p className="font-medium">Techniques physiologiques</p>
+                  <p className="text-sm text-gray-600">Respiration 4-6, 4-7-8, relaxation progressive, micro-pauses</p>
+                </div>
+                <div className="border-l-4 border-yellow-500 pl-4">
+                  <p className="font-medium">Outils cognitifs</p>
+                  <p className="text-sm text-gray-600">Matrice d'Eisenhower, reframing, méthode des 3 tâches</p>
+                </div>
+                <div className="border-l-4 border-indigo-500 pl-4">
+                  <p className="font-medium">Communication assertive</p>
+                  <p className="text-sm text-gray-600">Modèle DESC, gestion des conflits, affirmation respectueuse</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Key Insights */}
+      <Card className="border-green-200 bg-green-50">
+        <CardContent className="p-8">
+          <h3 className="text-2xl font-bold text-center text-green-800 mb-6">Points clés à retenir</h3>
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="text-center">
+              <div className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Target className="w-8 h-8 text-white" />
+              </div>
+              <h4 className="font-bold text-green-800 mb-2">Le stress n'est pas une fatalité</h4>
+              <p className="text-green-700 text-sm">Avec les bonnes techniques, vous pouvez transformer votre relation au stress</p>
+            </div>
+            <div className="text-center">
+              <div className="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Heart className="w-8 h-8 text-white" />
+              </div>
+              <h4 className="font-bold text-blue-800 mb-2">La régularité prime sur l'intensité</h4>
+              <p className="text-blue-700 text-sm">5 minutes par jour de pratique valent mieux qu'une session intense par semaine</p>
+            </div>
+            <div className="text-center">
+              <div className="w-16 h-16 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Users className="w-8 h-8 text-white" />
+              </div>
+              <h4 className="font-bold text-purple-800 mb-2">L'assertivité libère</h4>
+              <p className="text-purple-700 text-sm">Exprimer ses besoins clairement réduit considérablement les tensions</p>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Personal Reflection */}
+      <Card className="border-orange-200 bg-orange-50">
+        <CardContent className="p-8">
+          <h3 className="text-2xl font-bold text-center text-orange-800 mb-6">Votre nouvelle réalité</h3>
+          <div className="max-w-4xl mx-auto">
+            <p className="text-lg text-gray-700 leading-relaxed mb-6 text-center">
+              Vous n'êtes plus la même personne qu'au début de ce module. Vous disposez maintenant d'un
+              <span className="font-bold text-orange-700"> arsenal complet de techniques scientifiquement prouvées</span>
+              pour gérer efficacement votre stress.
+            </p>
+
+            <div className="bg-white p-6 rounded-lg shadow-sm border border-orange-200">
+              <p className="text-gray-700 mb-4">
+                <span className="font-semibold">Avant ce module :</span> Le stress vous submergeait,
+                vous réagissiez impulsivement, les priorités étaient floues.
+              </p>
+              <p className="text-gray-700">
+                <span className="font-semibold">Maintenant :</span> Vous comprenez vos déclencheurs,
+                vous avez des techniques concrètes, vous communiquez avec assertivité et vous planifiez sereinement.
+              </p>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Next Steps */}
+      <Card className="bg-gradient-to-r from-indigo-50 to-purple-50 border-indigo-200">
+        <CardContent className="p-8 text-center">
+          <h3 className="text-2xl font-bold text-indigo-800 mb-4">L'aventure ne fait que commencer</h3>
+          <p className="text-lg text-gray-700 mb-6 max-w-3xl mx-auto">
+            Ce module vous a donné les <span className="font-bold text-indigo-700">fondations solides</span>.
+            Maintenant, c'est à vous de construire votre nouvelle relation au stress,
+            jour après jour, technique après technique.
+          </p>
+          <div className="inline-flex items-center gap-2 bg-white px-6 py-3 rounded-full shadow-sm border border-indigo-200">
+            <Sparkles className="w-5 h-5 text-indigo-600" />
+            <span className="font-medium text-indigo-800">Votre transformation commence maintenant</span>
+          </div>
+        </CardContent>
+      </Card>
+    </div>
+  );
+
   const RoadmapView = () => (
     <div className="space-y-8">
       <div className="text-center">
