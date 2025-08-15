@@ -10,6 +10,7 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Sequence1 from "./pages/Sequence1";
 import Sequence2 from "./pages/Sequence2";
+import Sequence3 from "./pages/Sequence3";
 
 const queryClient = new QueryClient();
 
