@@ -2,9 +2,10 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { 
+import {
   Calendar, TrendingUp, TrendingDown, RotateCcw, Zap,
-  Mail, Coffee, Users, MessageSquare, Clock, Moon, Sun
+  Mail, Coffee, Users, MessageSquare, Clock, Moon, Sun,
+  Target, Lightbulb, Heart, Brain
 } from 'lucide-react';
 
 const TransformationTimeline = () => {
