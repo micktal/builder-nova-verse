@@ -283,14 +283,51 @@ const StressRegulationModule = () => {
       
       <style jsx>{`
         @keyframes breathe {
-          0%, 100% { 
+          0%, 100% {
             transform: scale(1);
             opacity: 0.8;
           }
-          50% { 
+          50% {
             transform: scale(1.2);
             opacity: 1;
           }
+        }
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        @keyframes slideInLeft {
+          from {
+            opacity: 0;
+            transform: translateX(-30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+        @keyframes pulse {
+          0%, 100% {
+            transform: scale(1);
+          }
+          50% {
+            transform: scale(1.05);
+          }
+        }
+        .animate-fadeInUp {
+          animation: fadeInUp 0.6s ease-out forwards;
+        }
+        .animate-slideInLeft {
+          animation: slideInLeft 0.6s ease-out forwards;
+        }
+        .animate-pulse-gentle {
+          animation: pulse 2s ease-in-out infinite;
         }
       `}</style>
     </div>
