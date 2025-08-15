@@ -110,10 +110,10 @@ const StressRegulationModule = () => {
     const isCurrent = currentSequence === index;
     
     return (
-      <Card className={`group transition-all duration-300 hover:shadow-lg hover:-translate-y-1 border-2 ${
-        isCurrent ? `border-${sequence.color}-300 shadow-lg` : 
+      <Card className={`group transition-all duration-500 hover:shadow-xl hover:-translate-y-2 border-2 animate-fadeInUp ${
+        isCurrent ? `border-${sequence.color}-300 shadow-lg scale-105` :
         isCompleted ? `border-${sequence.color}-200 bg-${sequence.color}-25` : 'border-gray-200'
-      }`}>
+      }`} style={{ animationDelay: `${index * 0.1}s` }}>
         <CardHeader className="pb-3">
           <div className="flex items-start justify-between">
             <div className={`p-3 rounded-lg bg-${sequence.color}-100 text-${sequence.color}-600`}>
