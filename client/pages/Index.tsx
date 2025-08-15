@@ -285,31 +285,8 @@ const StressRegulationModule = () => {
           ))}
         </div>
         
-        <div className="grid lg:grid-cols-2 gap-8 mb-12">
+        <div className="mb-12">
           <BreathingDemo />
-          <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">
-              Approche interactive
-            </h3>
-            <ul className="space-y-3 text-gray-600">
-              <li className="flex items-center gap-3">
-                <div className="w-2 h-2 bg-calm-500 rounded-full"></div>
-                Hotspots cliquables et scénarios ramifiés
-              </li>
-              <li className="flex items-center gap-3">
-                <div className="w-2 h-2 bg-nature-500 rounded-full"></div>
-                Exercices glisser-déposer et matrices interactives
-              </li>
-              <li className="flex items-center gap-3">
-                <div className="w-2 h-2 bg-serenity-500 rounded-full"></div>
-                Animations guidées et feedback immédiat
-              </li>
-              <li className="flex items-center gap-3">
-                <div className="w-2 h-2 bg-calm-500 rounded-full"></div>
-                Export PDF de votre plan d'action personnalisé
-              </li>
-            </ul>
-          </div>
         </div>
       </div>
       
