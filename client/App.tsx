@@ -21,6 +21,7 @@ const App = () => (
         <div className="min-h-screen bg-gradient-to-br from-serenity-50 via-white to-calm-50">
           <Routes>
             <Route path="/" element={<Index />} />
+            <Route path="/sequence/1" element={<Sequence1 />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
