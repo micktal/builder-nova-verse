@@ -505,16 +505,6 @@ Module "Réguler le stress" - Builder.io Learning
         </Card>
       )}
 
-      <div className="text-center">
-        <Button 
-          onClick={() => setCurrentStep('quiz')}
-          disabled={!isActionPlanComplete}
-          className="bg-nature-500 hover:bg-nature-600 text-white"
-        >
-          Passer au quiz final
-          <ArrowLeft className="w-4 h-4 ml-2 rotate-180" />
-        </Button>
-      </div>
     </div>
   );
 
