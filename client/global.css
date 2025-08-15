@@ -9,26 +9,62 @@
    * A different format will require also updating the theme in tailwind.config.ts.
   */
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 47 100% 98%;
+    --foreground: 210 11% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 210 11% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 210 11% 15%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 200 100% 40%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 47 57% 92%;
+    --secondary-foreground: 210 11% 15%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 47 57% 95%;
+    --muted-foreground: 210 11% 50%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 150 40% 90%;
+    --accent-foreground: 150 30% 20%;
+
+    /* Calm Blues */
+    --calm-50: 200 100% 97%;
+    --calm-100: 200 100% 94%;
+    --calm-200: 200 100% 87%;
+    --calm-300: 200 100% 75%;
+    --calm-400: 200 100% 60%;
+    --calm-500: 200 100% 45%;
+    --calm-600: 200 100% 35%;
+    --calm-700: 200 100% 28%;
+    --calm-800: 200 100% 22%;
+    --calm-900: 200 100% 16%;
+
+    /* Nature Greens */
+    --nature-50: 150 40% 96%;
+    --nature-100: 150 40% 92%;
+    --nature-200: 150 40% 84%;
+    --nature-300: 150 40% 72%;
+    --nature-400: 150 40% 58%;
+    --nature-500: 150 40% 45%;
+    --nature-600: 150 40% 35%;
+    --nature-700: 150 40% 28%;
+    --nature-800: 150 40% 22%;
+    --nature-900: 150 40% 16%;
+
+    /* Serenity Beiges */
+    --serenity-50: 47 57% 97%;
+    --serenity-100: 47 57% 94%;
+    --serenity-200: 47 57% 87%;
+    --serenity-300: 47 57% 75%;
+    --serenity-400: 47 57% 60%;
+    --serenity-500: 47 57% 45%;
+    --serenity-600: 47 57% 35%;
+    --serenity-700: 47 57% 28%;
+    --serenity-800: 47 57% 22%;
+    --serenity-900: 47 57% 16%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
@@ -57,26 +93,62 @@
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 210 11% 8%;
+    --foreground: 47 57% 92%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 210 11% 10%;
+    --card-foreground: 47 57% 92%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 210 11% 10%;
+    --popover-foreground: 47 57% 92%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 200 100% 60%;
+    --primary-foreground: 210 11% 8%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 210 11% 15%;
+    --secondary-foreground: 47 57% 92%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 210 11% 15%;
+    --muted-foreground: 47 30% 70%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 150 30% 25%;
+    --accent-foreground: 150 40% 92%;
+
+    /* Dark mode calm colors */
+    --calm-50: 200 100% 8%;
+    --calm-100: 200 100% 12%;
+    --calm-200: 200 100% 18%;
+    --calm-300: 200 100% 25%;
+    --calm-400: 200 100% 35%;
+    --calm-500: 200 100% 45%;
+    --calm-600: 200 100% 60%;
+    --calm-700: 200 100% 75%;
+    --calm-800: 200 100% 87%;
+    --calm-900: 200 100% 94%;
+
+    /* Dark mode nature colors */
+    --nature-50: 150 30% 8%;
+    --nature-100: 150 30% 12%;
+    --nature-200: 150 30% 18%;
+    --nature-300: 150 30% 25%;
+    --nature-400: 150 30% 35%;
+    --nature-500: 150 30% 45%;
+    --nature-600: 150 40% 60%;
+    --nature-700: 150 40% 75%;
+    --nature-800: 150 40% 87%;
+    --nature-900: 150 40% 94%;
+
+    /* Dark mode serenity colors */
+    --serenity-50: 47 30% 8%;
+    --serenity-100: 47 30% 12%;
+    --serenity-200: 47 30% 18%;
+    --serenity-300: 47 30% 25%;
+    --serenity-400: 47 30% 35%;
+    --serenity-500: 47 30% 45%;
+    --serenity-600: 47 40% 60%;
+    --serenity-700: 47 50% 75%;
+    --serenity-800: 47 55% 87%;
+    --serenity-900: 47 57% 94%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
