@@ -1,62 +1,300 @@
-import { DemoResponse } from "@shared/api";
-import { useEffect, useState } from "react";
+import React, { useState, useRef, useEffect } from 'react';
+import { Play, Clock, Target, CheckCircle, Brain, Heart, Users, Lightbulb, FileText } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Progress } from '@/components/ui/progress';
 
-export default function Index() {
-  const [exampleFromServer, setExampleFromServer] = useState("");
-  // Fetch users on component mount
-  useEffect(() => {
-    fetchDemo();
-  }, []);
+const StressRegulationModule = () => {
+  const [currentSequence, setCurrentSequence] = useState(0);
+  const [progress, setProgress] = useState(0);
+  const [completedSequences, setCompletedSequences] = useState<number[]>([]);
+  const [isBreathingActive, setIsBreathingActive] = useState(false);
+  const breathingRef = useRef<HTMLDivElement>(null);
 
-  // Example of how to fetch data from the server (if needed)
-  const fetchDemo = async () => {
-    try {
-      const response = await fetch("/api/demo");
-      const data = (await response.json()) as DemoResponse;
-      setExampleFromServer(data.message);
-    } catch (error) {
-      console.error("Error fetching hello:", error);
+  const sequences = [
+    {
+      id: 1,
+      title: "Comprendre ses déclencheurs",
+      duration: "5 min",
+      icon: Brain,
+      description: "Identification des 4 catégories de déclencheurs de stress",
+      color: "calm"
+    },
+    {
+      id: 2,
+      title: "Techniques physiologiques",
+      duration: "7 min", 
+      icon: Heart,
+      description: "Respiration et relaxation musculaire progressive",
+      color: "nature"
+    },
+    {
+      id: 3,
+      title: "Techniques cognitives",
+      duration: "8 min",
+      icon: Lightbulb,
+      description: "Matrice d'Eisenhower et reframing cognitif",
+      color: "serenity"
+    },
+    {
+      id: 4,
+      title: "Communication assertive",
+      duration: "5 min",
+      icon: Users,
+      description: "Modèle DESC et gestion relationnelle",
+      color: "calm"
+    },
+    {
+      id: 5,
+      title: "Plan d'action personnel",
+      duration: "5 min",
+      icon: FileText,
+      description: "Routine anti-stress et tableau personnalisé",
+      color: "nature"
     }
+  ];
+
+  const startBreathingAnimation = () => {
+    setIsBreathingActive(true);
+    setTimeout(() => setIsBreathingActive(false), 30000); // 30 seconds demo
   };
 
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-100 to-slate-200">
-      <div className="text-center">
-        {/* TODO: FUSION_GENERATION_APP_PLACEHOLDER replace everything here with the actual app! */}
-        <h1 className="text-2xl font-semibold text-slate-800 flex items-center justify-center gap-3">
-          <svg
-            className="animate-spin h-8 w-8 text-slate-400"
-            viewBox="0 0 50 50"
-          >
-            <circle
-              className="opacity-30"
-              cx="25"
-              cy="25"
-              r="20"
-              stroke="currentColor"
-              strokeWidth="5"
-              fill="none"
-            />
-            <circle
-              className="text-slate-600"
-              cx="25"
-              cy="25"
-              r="20"
-              stroke="currentColor"
-              strokeWidth="5"
-              fill="none"
-              strokeDasharray="100"
-              strokeDashoffset="75"
-            />
-          </svg>
-          Generating your app...
+  const completeSequence = (sequenceId: number) => {
+    setCompletedSequences(prev => [...prev, sequenceId]);
+    setProgress((completedSequences.length + 1) * 20);
+  };
+
+  const ModuleHeader = () => (
+    <div className="relative overflow-hidden bg-gradient-to-br from-calm-50 via-serenity-50 to-nature-50 px-6 py-12 md:py-20">
+      <div className="absolute inset-0 bg-white/60"></div>
+      <div className="relative max-w-4xl mx-auto text-center">
+        <Badge className="mb-4 bg-calm-100 text-calm-700 hover:bg-calm-200">
+          Module 2 - Formation Gestion du Stress
+        </Badge>
+        <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+          Réguler le stress
         </h1>
-        <p className="mt-4 text-slate-600 max-w-md">
-          Watch the chat on the left for updates that might need your attention
-          to finish generating
+        <p className="text-xl md:text-2xl text-gray-700 mb-8 max-w-3xl mx-auto leading-relaxed">
+          Apprenez des techniques concrètes pour identifier vos déclencheurs, 
+          maîtriser votre physiologie et développer votre assertivité.
         </p>
-        <p className="mt-4 hidden max-w-md">{exampleFromServer}</p>
+        <div className="flex flex-wrap justify-center gap-6 mb-8">
+          <div className="flex items-center gap-2 text-gray-600">
+            <Clock className="w-5 h-5 text-calm-500" />
+            <span className="font-medium">30 minutes</span>
+          </div>
+          <div className="flex items-center gap-2 text-gray-600">
+            <Target className="w-5 h-5 text-nature-500" />
+            <span className="font-medium">Niveau Appliquer/Analyser</span>
+          </div>
+          <div className="flex items-center gap-2 text-gray-600">
+            <CheckCircle className="w-5 h-5 text-serenity-500" />
+            <span className="font-medium">5 séquences interactives</span>
+          </div>
+        </div>
+        <div className="max-w-md mx-auto mb-6">
+          <div className="flex justify-between text-sm text-gray-600 mb-2">
+            <span>Progression</span>
+            <span>{progress}%</span>
+          </div>
+          <Progress value={progress} className="h-3" />
+        </div>
       </div>
     </div>
   );
-}
+
+  const SequenceCard = ({ sequence, index }: { sequence: typeof sequences[0], index: number }) => {
+    const Icon = sequence.icon;
+    const isCompleted = completedSequences.includes(sequence.id);
+    const isCurrent = currentSequence === index;
+    
+    return (
+      <Card className={`group transition-all duration-300 hover:shadow-lg hover:-translate-y-1 border-2 ${
+        isCurrent ? `border-${sequence.color}-300 shadow-lg` : 
+        isCompleted ? `border-${sequence.color}-200 bg-${sequence.color}-25` : 'border-gray-200'
+      }`}>
+        <CardHeader className="pb-3">
+          <div className="flex items-start justify-between">
+            <div className={`p-3 rounded-lg bg-${sequence.color}-100 text-${sequence.color}-600`}>
+              <Icon className="w-6 h-6" />
+            </div>
+            <div className="text-right">
+              <Badge variant="outline" className="text-xs">
+                {sequence.duration}
+              </Badge>
+              {isCompleted && (
+                <CheckCircle className="w-5 h-5 text-green-500 mt-2" />
+              )}
+            </div>
+          </div>
+          <CardTitle className="text-lg font-semibold text-gray-900 leading-tight">
+            Séquence {sequence.id}: {sequence.title}
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="pt-0">
+          <p className="text-gray-600 text-sm mb-4 leading-relaxed">
+            {sequence.description}
+          </p>
+          <Button 
+            onClick={() => {
+              setCurrentSequence(index);
+              if (!isCompleted) {
+                completeSequence(sequence.id);
+              }
+            }}
+            className={`w-full bg-${sequence.color}-500 hover:bg-${sequence.color}-600 text-white transition-colors`}
+            disabled={isCompleted}
+          >
+            {isCompleted ? (
+              <>
+                <CheckCircle className="w-4 h-4 mr-2" />
+                Terminé
+              </>
+            ) : (
+              <>
+                <Play className="w-4 h-4 mr-2" />
+                {isCurrent ? 'Continuer' : 'Commencer'}
+              </>
+            )}
+          </Button>
+        </CardContent>
+      </Card>
+    );
+  };
+
+  const BreathingDemo = () => (
+    <div className="bg-gradient-to-br from-calm-50 to-nature-50 rounded-2xl p-8 text-center">
+      <h3 className="text-2xl font-bold text-gray-900 mb-4">
+        Démonstration: Respiration guidée
+      </h3>
+      <p className="text-gray-600 mb-6">
+        Suivez le cercle pour pratiquer la technique de respiration 4-6
+      </p>
+      <div className="flex justify-center mb-6">
+        <div className="relative w-32 h-32">
+          <div 
+            ref={breathingRef}
+            className={`w-full h-full rounded-full bg-gradient-to-br from-calm-400 to-calm-600 transition-transform duration-4000 ${
+              isBreathingActive ? 'animate-pulse scale-110' : 'scale-100'
+            }`}
+            style={{
+              animation: isBreathingActive ? 'breathe 10s infinite' : 'none'
+            }}
+          />
+        </div>
+      </div>
+      <Button 
+        onClick={startBreathingAnimation}
+        className="bg-calm-500 hover:bg-calm-600 text-white"
+        disabled={isBreathingActive}
+      >
+        {isBreathingActive ? 'En cours...' : 'Démarrer l\'exercice'}
+      </Button>
+    </div>
+  );
+
+  const ObjectivesSection = () => (
+    <div className="max-w-4xl mx-auto px-6 py-12">
+      <h2 className="text-3xl font-bold text-center text-gray-900 mb-8">
+        Objectifs d'apprentissage
+      </h2>
+      <div className="grid md:grid-cols-2 gap-6">
+        <Card className="border-nature-200 hover:shadow-md transition-shadow">
+          <CardContent className="p-6">
+            <Target className="w-8 h-8 text-nature-500 mb-3" />
+            <h3 className="font-semibold text-gray-900 mb-2">Identifier</h3>
+            <p className="text-gray-600 text-sm">
+              Reconnaître vos déclencheurs personnels de stress dans différents contextes
+            </p>
+          </CardContent>
+        </Card>
+        <Card className="border-calm-200 hover:shadow-md transition-shadow">
+          <CardContent className="p-6">
+            <Heart className="w-8 h-8 text-calm-500 mb-3" />
+            <h3 className="font-semibold text-gray-900 mb-2">Appliquer</h3>
+            <p className="text-gray-600 text-sm">
+              Utiliser des techniques physiologiques et cognitives de régulation
+            </p>
+          </CardContent>
+        </Card>
+        <Card className="border-serenity-200 hover:shadow-md transition-shadow">
+          <CardContent className="p-6">
+            <Lightbulb className="w-8 h-8 text-serenity-500 mb-3" />
+            <h3 className="font-semibold text-gray-900 mb-2">Analyser</h3>
+            <p className="text-gray-600 text-sm">
+              Évaluer l'efficacité des différentes stratégies selon les situations
+            </p>
+          </CardContent>
+        </Card>
+        <Card className="border-nature-200 hover:shadow-md transition-shadow">
+          <CardContent className="p-6">
+            <FileText className="w-8 h-8 text-nature-500 mb-3" />
+            <h3 className="font-semibold text-gray-900 mb-2">Créer</h3>
+            <p className="text-gray-600 text-sm">
+              Élaborer votre plan d'action personnel adapté à votre contexte
+            </p>
+          </CardContent>
+        </Card>
+      </div>
+    </div>
+  );
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-serenity-50 via-white to-calm-50">
+      <ModuleHeader />
+      
+      <div className="max-w-6xl mx-auto px-6 py-12">
+        <div className="grid lg:grid-cols-3 gap-8 mb-12">
+          {sequences.map((sequence, index) => (
+            <SequenceCard key={sequence.id} sequence={sequence} index={index} />
+          ))}
+        </div>
+        
+        <div className="grid lg:grid-cols-2 gap-8 mb-12">
+          <BreathingDemo />
+          <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">
+              Approche interactive
+            </h3>
+            <ul className="space-y-3 text-gray-600">
+              <li className="flex items-center gap-3">
+                <div className="w-2 h-2 bg-calm-500 rounded-full"></div>
+                Hotspots cliquables et scénarios ramifiés
+              </li>
+              <li className="flex items-center gap-3">
+                <div className="w-2 h-2 bg-nature-500 rounded-full"></div>
+                Exercices glisser-déposer et matrices interactives
+              </li>
+              <li className="flex items-center gap-3">
+                <div className="w-2 h-2 bg-serenity-500 rounded-full"></div>
+                Animations guidées et feedback immédiat
+              </li>
+              <li className="flex items-center gap-3">
+                <div className="w-2 h-2 bg-calm-500 rounded-full"></div>
+                Export PDF de votre plan d'action personnalisé
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <ObjectivesSection />
+      
+      <style jsx>{`
+        @keyframes breathe {
+          0%, 100% { 
+            transform: scale(1);
+            opacity: 0.8;
+          }
+          50% { 
+            transform: scale(1.2);
+            opacity: 1;
+          }
+        }
+      `}</style>
+    </div>
+  );
+};
+
+export default StressRegulationModule;
