@@ -11,6 +11,8 @@ import NotFound from "./pages/NotFound";
 import Sequence1 from "./pages/Sequence1";
 import Sequence2 from "./pages/Sequence2";
 import Sequence3 from "./pages/Sequence3";
+import Sequence4 from "./pages/Sequence4";
+import Sequence5 from "./pages/Sequence5";
 
 const queryClient = new QueryClient();
 
