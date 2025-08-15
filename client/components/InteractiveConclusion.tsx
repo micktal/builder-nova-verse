@@ -9,7 +9,7 @@ import {
 } from 'lucide-react';
 
 const InteractiveConclusion = () => {
-  const [currentView, setCurrentView] = useState<'celebration' | 'certificate' | 'skills' | 'roadmap'>('celebration');
+  const [currentView, setCurrentView] = useState<'celebration' | 'skills' | 'roadmap' | 'conclusion'>('celebration');
   const [animationPhase, setAnimationPhase] = useState(0);
   const [skillsRevealed, setSkillsRevealed] = useState<string[]>([]);
   const confettiRef = useRef<HTMLDivElement>(null);
