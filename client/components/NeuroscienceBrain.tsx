@@ -414,42 +414,88 @@ const NeuroscienceBrain = () => {
               <div className="space-y-4">
                 {(() => {
                   const area = brainAreas.find(a => a.id === activeHotspot)!;
+                  const intensity = getAreaIntensity(area);
+
                   return (
                     <>
-                      <div>
-                        <h5 className="font-semibold text-sm text-gray-700 mb-1">Rôle :</h5>
-                        <p className="text-gray-600 text-sm">{area.role}</p>
+                      {/* Emoji and title */}
+                      <div className="text-center pb-4 border-b border-gray-100">
+                        <div className="text-4xl mb-2">{area.emoji}</div>
+                        <h4 className="font-bold text-lg text-gray-900">{area.name}</h4>
                       </div>
-                      
-                      <div>
-                        <h5 className="font-semibold text-sm text-gray-700 mb-1">Sous stress :</h5>
-                        <p className="text-gray-600 text-sm">{area.underStress}</p>
+
+                      <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                        <h5 className="font-semibold text-blue-800 mb-2 flex items-center gap-2">
+                          <Target className="w-4 h-4" />
+                          Rôle :
+                        </h5>
+                        <p className="text-blue-700 text-sm leading-relaxed">{area.role}</p>
                       </div>
-                      
-                      <div>
-                        <h5 className="font-semibold text-sm text-gray-700 mb-1">
+
+                      <div className="bg-red-50 p-4 rounded-lg border border-red-200">
+                        <h5 className="font-semibold text-red-800 mb-2 flex items-center gap-2">
+                          <Zap className="w-4 h-4" />
+                          Sous stress :
+                        </h5>
+                        <p className="text-red-700 text-sm leading-relaxed">{area.underStress}</p>
+                      </div>
+
+                      <div className="bg-green-50 p-4 rounded-lg border border-green-200">
+                        <h5 className="font-semibold text-green-800 mb-2 flex items-center gap-2">
+                          <Heart className="w-4 h-4" />
                           Pourquoi {area.technique} aide :
                         </h5>
-                        <p className="text-gray-600 text-sm">{area.whyTechniqueHelps}</p>
+                        <p className="text-green-700 text-sm leading-relaxed">{area.whyTechniqueHelps}</p>
                       </div>
-                      
-                      {/* Activity indicator */}
-                      <div className="bg-gray-50 p-4 rounded-lg">
-                        <div className="flex justify-between items-center mb-2">
-                          <span className="text-sm font-medium">Niveau d'activité</span>
-                          <span className="text-sm text-gray-600">{getAreaIntensity(area)}%</span>
+
+                      {/* Fun fact */}
+                      <div className="bg-purple-50 p-4 rounded-lg border border-purple-200">
+                        <h5 className="font-semibold text-purple-800 mb-2 flex items-center gap-2">
+                          <Eye className="w-4 h-4" />
+                          Le saviez-vous ?
+                        </h5>
+                        <p className="text-purple-700 text-sm italic">{area.funFact}</p>
+                      </div>
+
+                      {/* Enhanced activity indicator */}
+                      <div className="bg-gradient-to-r from-gray-50 to-gray-100 p-4 rounded-lg border">
+                        <div className="flex justify-between items-center mb-3">
+                          <span className="text-sm font-semibold flex items-center gap-2">
+                            <div className={`w-3 h-3 rounded-full ${
+                              intensity > 70 ? 'bg-red-500 animate-pulse' :
+                              intensity > 40 ? 'bg-yellow-500' : 'bg-green-500'
+                            }`}></div>
+                            Niveau d'activité
+                          </span>
+                          <div className="flex items-center gap-2">
+                            <span className="text-lg font-bold text-gray-800">{intensity}%</span>
+                            <span className="text-xs text-gray-500">
+                              {intensity > 70 ? '🔥 Intense' : intensity > 40 ? '⚡ Modéré' : '😌 Calme'}
+                            </span>
+                          </div>
                         </div>
-                        <div className="w-full bg-gray-200 rounded-full h-2">
-                          <div 
-                            className={`h-2 rounded-full transition-all duration-500 ${
-                              area.color === 'red' ? 'bg-red-500' :
-                              area.color === 'blue' ? 'bg-blue-500' :
-                              area.color === 'green' ? 'bg-green-500' :
-                              area.color === 'purple' ? 'bg-purple-500' :
-                              'bg-orange-500'
+
+                        <div className="relative w-full bg-gray-200 rounded-full h-4 overflow-hidden">
+                          <div
+                            className={`h-full rounded-full transition-all duration-700 ${
+                              area.color === 'red' ? 'bg-gradient-to-r from-red-400 to-red-600' :
+                              area.color === 'blue' ? 'bg-gradient-to-r from-blue-400 to-blue-600' :
+                              area.color === 'green' ? 'bg-gradient-to-r from-green-400 to-green-600' :
+                              area.color === 'purple' ? 'bg-gradient-to-r from-purple-400 to-purple-600' :
+                              area.color === 'cyan' ? 'bg-gradient-to-r from-cyan-400 to-cyan-600' :
+                              area.color === 'orange' ? 'bg-gradient-to-r from-orange-400 to-orange-600' :
+                              area.color === 'indigo' ? 'bg-gradient-to-r from-indigo-400 to-indigo-600' :
+                              area.color === 'pink' ? 'bg-gradient-to-r from-pink-400 to-pink-600' :
+                              'bg-gradient-to-r from-yellow-400 to-yellow-600'
                             }`}
-                            style={{ width: `${getAreaIntensity(area)}%` }}
-                          />
+                            style={{ width: `${intensity}%` }}
+                          >
+                            <div className="h-full w-full bg-white/20 animate-pulse"></div>
+                          </div>
+                        </div>
+
+                        <div className="mt-2 text-xs text-gray-600 text-center">
+                          {isAfterMode ? '🧘‍♀️ Après application des techniques' : '😰 État de stress'}
                         </div>
                       </div>
                     </>
