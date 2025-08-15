@@ -565,9 +565,9 @@ const InteractiveConclusion = () => {
         <div className="bg-white rounded-full p-2 shadow-lg border">
           {[
             { key: 'celebration', label: 'Célébration', icon: Trophy },
-            { key: 'certificate', label: 'Certificat', icon: Award },
             { key: 'skills', label: 'Compétences', icon: Star },
-            { key: 'roadmap', label: 'Roadmap', icon: Rocket }
+            { key: 'roadmap', label: 'Roadmap', icon: Rocket },
+            { key: 'conclusion', label: 'Synthèse', icon: FileText }
           ].map(({ key, label, icon: Icon }) => (
             <Button
               key={key}
