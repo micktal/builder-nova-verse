@@ -585,9 +585,9 @@ const InteractiveConclusion = () => {
       {/* Content Views */}
       <div className="min-h-[600px]">
         {currentView === 'celebration' && <CelebrationView />}
-        {currentView === 'certificate' && <CertificateView />}
         {currentView === 'skills' && <SkillsView />}
         {currentView === 'roadmap' && <RoadmapView />}
+        {currentView === 'conclusion' && <ConclusionView />}
       </div>
 
       <style jsx>{`
