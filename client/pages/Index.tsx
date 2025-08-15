@@ -201,42 +201,27 @@ const StressRegulationModule = () => {
         Objectifs d'apprentissage
       </h2>
       <div className="grid md:grid-cols-2 gap-6">
-        <Card className="border-nature-200 hover:shadow-md transition-shadow">
-          <CardContent className="p-6">
-            <Target className="w-8 h-8 text-nature-500 mb-3" />
-            <h3 className="font-semibold text-gray-900 mb-2">Identifier</h3>
-            <p className="text-gray-600 text-sm">
-              Reconnaître vos déclencheurs personnels de stress dans différents contextes
-            </p>
-          </CardContent>
-        </Card>
-        <Card className="border-calm-200 hover:shadow-md transition-shadow">
-          <CardContent className="p-6">
-            <Heart className="w-8 h-8 text-calm-500 mb-3" />
-            <h3 className="font-semibold text-gray-900 mb-2">Appliquer</h3>
-            <p className="text-gray-600 text-sm">
-              Utiliser des techniques physiologiques et cognitives de régulation
-            </p>
-          </CardContent>
-        </Card>
-        <Card className="border-serenity-200 hover:shadow-md transition-shadow">
-          <CardContent className="p-6">
-            <Lightbulb className="w-8 h-8 text-serenity-500 mb-3" />
-            <h3 className="font-semibold text-gray-900 mb-2">Analyser</h3>
-            <p className="text-gray-600 text-sm">
-              Évaluer l'efficacité des différentes stratégies selon les situations
-            </p>
-          </CardContent>
-        </Card>
-        <Card className="border-nature-200 hover:shadow-md transition-shadow">
-          <CardContent className="p-6">
-            <FileText className="w-8 h-8 text-nature-500 mb-3" />
-            <h3 className="font-semibold text-gray-900 mb-2">Créer</h3>
-            <p className="text-gray-600 text-sm">
-              Élaborer votre plan d'action personnel adapté à votre contexte
-            </p>
-          </CardContent>
-        </Card>
+        {[
+          { icon: Target, color: 'nature', title: 'Identifier', desc: 'Reconnaître vos déclencheurs personnels de stress dans différents contextes' },
+          { icon: Heart, color: 'calm', title: 'Appliquer', desc: 'Utiliser des techniques physiologiques et cognitives de régulation' },
+          { icon: Lightbulb, color: 'serenity', title: 'Analyser', desc: 'Évaluer l\'efficacité des différentes stratégies selon les situations' },
+          { icon: FileText, color: 'nature', title: 'Créer', desc: 'Élaborer votre plan d\'action personnel adapté à votre contexte' }
+        ].map((obj, index) => {
+          const Icon = obj.icon;
+          return (
+            <Card
+              key={index}
+              className={`border-${obj.color}-200 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 animate-slideInLeft`}
+              style={{ animationDelay: `${index * 0.15}s` }}
+            >
+              <CardContent className="p-6">
+                <Icon className={`w-8 h-8 text-${obj.color}-500 mb-3 transition-transform duration-300 group-hover:scale-110`} />
+                <h3 className="font-semibold text-gray-900 mb-2">{obj.title}</h3>
+                <p className="text-gray-600 text-sm">{obj.desc}</p>
+              </CardContent>
+            </Card>
+          );
+        })}
       </div>
     </div>
   );
