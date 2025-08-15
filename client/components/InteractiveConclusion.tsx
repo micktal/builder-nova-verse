@@ -421,24 +421,6 @@ const InteractiveConclusion = () => {
         </div>
       </div>
 
-      {/* Call to Action */}
-      <Card className="bg-gradient-to-r from-blue-600 to-purple-600 text-white border-0">
-        <CardContent className="p-8 text-center">
-          <Rocket className="w-12 h-12 mx-auto mb-4" />
-          <h3 className="text-2xl font-bold mb-4">Prêt(e) à commencer votre transformation ?</h3>
-          <p className="mb-6">Votre boîte à outils anti-stress est complète. Il ne reste plus qu'à passer à l'action !</p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Button className="bg-white text-blue-600 hover:bg-gray-100">
-              <Calendar className="w-4 h-4 mr-2" />
-              Planifier ma routine
-            </Button>
-            <Button variant="outline" className="border-white text-white hover:bg-white hover:text-blue-600">
-              <Share2 className="w-4 h-4 mr-2" />
-              Partager mes résultats
-            </Button>
-          </div>
-        </CardContent>
-      </Card>
     </div>
   );
 
