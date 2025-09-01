@@ -752,25 +752,29 @@ const Sequence3 = () => {
                 <div className="w-8 h-8 bg-serenity-500 text-white rounded-full flex items-center justify-center font-semibold">
                   {num}
                 </div>
-                <Input
-                  ref={(el) => (inputRefs.current[index] = el)}
-                  placeholder={`Tâche essentielle ${num}...`}
-                  defaultValue={essentialTasks[index]}
-                  onChange={(e) => {
-                    // Update immediately for responsiveness but debounce state update
-                    const value = e.target.value;
-                    handleTaskInputDebounced(index, value);
-                  }}
-                  onBlur={(e) => {
-                    // Ensure final value is saved immediately on blur
-                    if (updateTimers.current[index]) {
-                      clearTimeout(updateTimers.current[index]!);
-                      updateTimers.current[index] = null;
-                    }
-                    handleTaskInput(index, e.target.value);
-                  }}
-                  className="flex-1"
-                />
+                <div className="flex-1">
+                  <Input
+                    placeholder={`Tâche essentielle ${num}...`}
+                    value={essentialTasks[index]}
+                    onChange={(e) => {
+                      // Prevent scroll during typing
+                      const currentScrollY = window.scrollY;
+                      handleTaskInput(index, e.target.value);
+                      // Restore scroll position immediately after state update
+                      setTimeout(() => {
+                        window.scrollTo({ top: currentScrollY, behavior: 'auto' });
+                      }, 0);
+                    }}
+                    onFocus={() => {
+                      // Lock scroll position
+                      const currentScrollY = window.scrollY;
+                      setTimeout(() => {
+                        window.scrollTo({ top: currentScrollY, behavior: 'auto' });
+                      }, 0);
+                    }}
+                    className="w-full"
+                  />
+                </div>
               </div>
             ))}
           </div>
