@@ -34,6 +34,8 @@ const Sequence3 = () => {
   }>({});
   const [essentialTasks, setEssentialTasks] = useState<string[]>(["", "", ""]);
   const [quizAnswers, setQuizAnswers] = useState<{ [key: number]: number }>({});
+  const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
+  const updateTimers = useRef<(NodeJS.Timeout | null)[]>([null, null, null]);
 
   const tasks = [
     "Répondre aux emails urgents",
