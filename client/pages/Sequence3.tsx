@@ -651,12 +651,8 @@ const Sequence3 = () => {
                 <Input
                   placeholder={`Tâche essentielle ${num}...`}
                   value={essentialTasks[index]}
-                  onChange={(e) => {
-                    e.preventDefault();
-                    handleTaskInput(index, e.target.value);
-                  }}
+                  onChange={(e) => handleTaskInput(index, e.target.value)}
                   onFocus={(e) => {
-                    e.preventDefault();
                     e.stopPropagation();
                   }}
                   className="flex-1"
