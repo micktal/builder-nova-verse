@@ -1047,6 +1047,170 @@ En comprenant le stress et en utilisant nos outils, nous transformons les défis
     );
   };
 
+  const TOPIntroVideoSection = () => {
+    const [showTranscript, setShowTranscript] = useState(false);
+
+    const videoUrl = "https://cdn.builder.io/o/assets%2Fd93d9a0ec7824aa1ac4d890a1f90a2ec%2Fbcf1f876361743faab708b383de9277c?alt=media&token=d8f9603f-c41d-4a38-92be-a014bd652dbb&apiKey=d93d9a0ec7824aa1ac4d890a1f90a2ec";
+
+    const transcript = `Avez-vous déjà entendu parler des techniques d'optimisation du potentiel, souvent appelées TOP ?
+Oui, ce sont des méthodes combinant préparation mentale, respiration, relaxation et concentration pour aider à gérer des situations exigeantes.
+Exactement, et ils se concentrent sur l'équilibre du corps, de l'esprit et des émotions pour mieux performer.
+Ils sont utilisés dans de nombreux domaines, par exemple pour les athlètes avant les compétitions et pour les employés qui préparent des présentations importantes.
+C'est exact. Il est intéressant de voir comment ces techniques aident non seulement dans le sport, mais aussi dans la gestion du stress au quotidien.
+Ils offrent des avantages tels qu'une meilleure gestion de l'énergie, une meilleure concentration, une reprise plus forte et une confiance accrue.
+J'ai entendu dire que la respiration contrôlée et la visualisation sont des outils clés de cette approche.
+Oui, et les techniques de concentration aident à rester concentré, tandis que les méthodes de récupération favorisent le repos et la régénération.
+Il semble important de choisir la bonne technique selon que vous êtes en train de vous préparer, d'agir ou de récupérer.
+Absolument, l'adaptation de la technique au contexte maximise son efficacité.
+Comprendre ces principes de base nous aide vraiment à maîtriser nos ressources et à optimiser notre potentiel.
+Il est fascinant de constater à quel point des méthodes aussi simples peuvent faire une grande différence en termes de performance et de bien-être.`;
+
+    return (
+      <div className="max-w-6xl mx-auto px-6 py-16 bg-gradient-to-br from-green-50 via-white to-teal-50">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+            Découvrir les Techniques d'Optimisation du Potentiel (TOP)
+          </h2>
+          <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+            Introduction aux méthodes scientifiques pour optimiser vos performances et votre bien-être
+          </p>
+        </div>
+
+        <div className="max-w-4xl mx-auto">
+          {/* Video Player */}
+          <div className="bg-white rounded-2xl shadow-xl overflow-hidden mb-8">
+            <div className="aspect-video">
+              <video
+                src={videoUrl}
+                controls
+                className="w-full h-full object-cover"
+                poster="https://images.pexels.com/photos/6774962/pexels-photo-6774962.jpeg?auto=compress&cs=tinysrgb&w=800"
+              >
+                Votre navigateur ne supporte pas la lecture de vidéos.
+              </video>
+            </div>
+
+            {/* Video Controls and Accessibility */}
+            <div className="p-6">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="text-lg font-semibold text-gray-900">
+                  Introduction aux TOP : optimiser votre potentiel
+                </h3>
+                <Button
+                  onClick={() => setShowTranscript(!showTranscript)}
+                  variant="outline"
+                  size="sm"
+                  className="flex items-center gap-2"
+                >
+                  <FileText className="w-4 h-4" />
+                  {showTranscript ? "Masquer" : "Afficher"} la transcription
+                </Button>
+              </div>
+
+              {/* Transcript Section */}
+              {showTranscript && (
+                <div className="bg-gray-50 rounded-lg p-6 space-y-4 animate-fadeInUp">
+                  <h4 className="font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                    <FileText className="w-5 h-5" />
+                    Transcription pour l'accessibilité
+                  </h4>
+                  <div className="text-sm text-gray-700 leading-relaxed space-y-3">
+                    {transcript.split('\n').map((line, index) => (
+                      <p key={index} className="border-l-2 border-green-200 pl-4">
+                        {line}
+                      </p>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Key Takeaways */}
+              <div className="mt-6 grid md:grid-cols-2 gap-6">
+                <div className="bg-green-50 rounded-lg p-4">
+                  <h4 className="font-semibold text-green-900 mb-2 flex items-center gap-2">
+                    <Target className="w-5 h-5" />
+                    Composants des TOP
+                  </h4>
+                  <ul className="text-sm text-green-800 space-y-1">
+                    <li>• Préparation mentale</li>
+                    <li>• Techniques de respiration</li>
+                    <li>• Méthodes de relaxation</li>
+                    <li>• Exercices de concentration</li>
+                  </ul>
+                </div>
+
+                <div className="bg-teal-50 rounded-lg p-4">
+                  <h4 className="font-semibold text-teal-900 mb-2 flex items-center gap-2">
+                    <TrendingUp className="w-5 h-5" />
+                    Bénéfices observés
+                  </h4>
+                  <ul className="text-sm text-teal-800 space-y-1">
+                    <li>• Meilleure gestion de l'énergie</li>
+                    <li>• Concentration renforcée</li>
+                    <li>• Récupération optimisée</li>
+                    <li>• Confiance accrue</li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* Applications */}
+              <div className="mt-6 bg-gradient-to-r from-green-100 to-teal-100 rounded-lg p-4">
+                <h4 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
+                  <Users className="w-5 h-5 text-green-600" />
+                  Domaines d'application
+                </h4>
+                <div className="grid md:grid-cols-3 gap-4 text-sm text-gray-700">
+                  <div>
+                    <p className="mb-2"><strong>🏃 Sport :</strong></p>
+                    <ul className="space-y-1 text-xs">
+                      <li>• Préparation aux compétitions</li>
+                      <li>• Gestion de la pression</li>
+                      <li>• Récupération post-effort</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <p className="mb-2"><strong>💼 Professionnel :</strong></p>
+                    <ul className="space-y-1 text-xs">
+                      <li>• Présentations importantes</li>
+                      <li>• Gestion du stress au travail</li>
+                      <li>• Performance en équipe</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <p className="mb-2"><strong>🧘 Personnel :</strong></p>
+                    <ul className="space-y-1 text-xs">
+                      <li>• Gestion quotidienne du stress</li>
+                      <li>• Amélioration du bien-être</li>
+                      <li>• Développement personnel</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              {/* Call to Action */}
+              <div className="mt-6 text-center bg-gradient-to-r from-green-100 to-teal-100 rounded-lg p-4">
+                <p className="text-sm text-gray-700 mb-3">
+                  <strong>🚀 Prêt(e) à découvrir les TOP en détail ?</strong> Explorez les techniques spécifiques et leurs applications
+                </p>
+                <div className="flex gap-2 justify-center flex-wrap">
+                  <Button size="sm" variant="outline" className="text-xs">
+                    Techniques physiologiques
+                  </Button>
+                  <Button size="sm" variant="outline" className="text-xs">
+                    Techniques cognitives
+                  </Button>
+                  <Button size="sm" variant="outline" className="text-xs">
+                    Applications pratiques
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
   const TOPTechniquesPreview = () => {
     const [activeCategory, setActiveCategory] = useState<string>("physiologique");
 
