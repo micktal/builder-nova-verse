@@ -19,6 +19,70 @@ import {
   Zap,
 } from "lucide-react";
 
+// Isolated input components to prevent typing issues
+const StableTextarea = memo(({
+  value,
+  onChange,
+  placeholder,
+  className
+}: {
+  value: string;
+  onChange: (value: string) => void;
+  placeholder: string;
+  className?: string;
+}) => {
+  const [localValue, setLocalValue] = useState(value);
+
+  useEffect(() => {
+    setLocalValue(value);
+  }, [value]);
+
+  const handleChange = useCallback((e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const newValue = e.target.value;
+    setLocalValue(newValue);
+    onChange(newValue);
+  }, [onChange]);
+
+  return (
+    <Textarea
+      value={localValue}
+      onChange={handleChange}
+      placeholder={placeholder}
+      className={className}
+    />
+  );
+});
+
+const StableInput = memo(({
+  value,
+  onChange,
+  placeholder
+}: {
+  value: string;
+  onChange: (value: string) => void;
+  placeholder: string;
+}) => {
+  const [localValue, setLocalValue] = useState(value);
+
+  useEffect(() => {
+    setLocalValue(value);
+  }, [value]);
+
+  const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = e.target.value;
+    setLocalValue(newValue);
+    onChange(newValue);
+  }, [onChange]);
+
+  return (
+    <Input
+      value={localValue}
+      onChange={handleChange}
+      placeholder={placeholder}
+    />
+  );
+});
+
 const Sequence5 = () => {
   const [currentStep, setCurrentStep] = useState<
     "intro" | "synthesis" | "action-plan" | "quiz" | "completion"
@@ -94,7 +158,7 @@ const Sequence5 = () => {
         "Les tâches urgentes et importantes",
         "Les tâches pas urgentes et pas importantes",
         "Les tâches urgentes mais pas importantes",
-        "Toutes les tâches en même temps",
+        "Toutes les t��ches en même temps",
       ],
       correct: 0,
       explanation:
