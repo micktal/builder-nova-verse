@@ -82,7 +82,7 @@ const Sequence3 = () => {
     {
       id: "urgent-important",
       title: "Urgent & Important",
-      subtitle: "À faire imm��diatement",
+      subtitle: "À faire immédiatement",
       color: "red",
       bgColor: "red-50",
       borderColor: "red-200",
@@ -785,26 +785,11 @@ const Sequence3 = () => {
                   {num}
                 </div>
                 <div className="flex-1">
-                  <Input
-                    placeholder={`Tâche essentielle ${num}...`}
+                  <StableTaskInput
+                    index={index}
                     value={essentialTasks[index]}
-                    onChange={(e) => {
-                      // Prevent scroll during typing
-                      const currentScrollY = window.scrollY;
-                      handleTaskInput(index, e.target.value);
-                      // Restore scroll position immediately after state update
-                      setTimeout(() => {
-                        window.scrollTo({ top: currentScrollY, behavior: 'auto' });
-                      }, 0);
-                    }}
-                    onFocus={() => {
-                      // Lock scroll position
-                      const currentScrollY = window.scrollY;
-                      setTimeout(() => {
-                        window.scrollTo({ top: currentScrollY, behavior: 'auto' });
-                      }, 0);
-                    }}
-                    className="w-full"
+                    onChange={handleTaskInput}
+                    placeholder={`Tâche essentielle ${num}...`}
                   />
                 </div>
               </div>
