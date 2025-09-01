@@ -742,16 +742,6 @@ const NeuroscienceBrain = () => {
         </CardContent>
       </Card>
 
-      {/* CTA */}
-      <div className="text-center">
-        <Button
-          onClick={scrollToTechniques}
-          className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3"
-        >
-          <Zap className="w-4 h-4 mr-2" />
-          Voir les techniques associées
-        </Button>
-      </div>
 
       <style jsx>{`
         @keyframes pulse {

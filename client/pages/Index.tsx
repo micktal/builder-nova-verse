@@ -243,10 +243,10 @@ const StressRegulationModule = () => {
   const BreathingDemo = () => (
     <div className="bg-gradient-to-br from-calm-50 to-nature-50 rounded-2xl p-8 text-center">
       <h3 className="text-2xl font-bold text-gray-900 mb-4">
-        Démonstration: Respiration guidée
+        Pratiquons la respiration guidée ensemble
       </h3>
       <p className="text-gray-600 mb-6">
-        Suivez le cercle pour pratiquer la technique de respiration 4-6
+        Inspirez et expirez en suivant le mouvement du cercle pour pratiquer la technique de respiration 4-6
       </p>
       <div className="flex justify-center mb-6">
         <div className="relative w-32 h-32">
