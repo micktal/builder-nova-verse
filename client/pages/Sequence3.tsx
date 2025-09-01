@@ -180,6 +180,28 @@ const Sequence3 = () => {
     });
   }, []);
 
+  const handleTaskInputDebounced = useCallback((index: number, value: string) => {
+    // Clear existing timer
+    if (updateTimers.current[index]) {
+      clearTimeout(updateTimers.current[index]!);
+    }
+
+    // Set new timer for debounced update
+    updateTimers.current[index] = setTimeout(() => {
+      handleTaskInput(index, value);
+      updateTimers.current[index] = null;
+    }, 300);
+  }, [handleTaskInput]);
+
+  // Cleanup timers on unmount
+  useEffect(() => {
+    return () => {
+      updateTimers.current.forEach(timer => {
+        if (timer) clearTimeout(timer);
+      });
+    };
+  }, []);
+
   const correctPlacements = useMemo(() => ({
     "urgent-important": [
       "Répondre aux emails urgents",
