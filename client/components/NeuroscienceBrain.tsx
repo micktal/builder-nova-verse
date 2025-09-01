@@ -472,7 +472,7 @@ const NeuroscienceBrain = () => {
           <img
             src="https://images.pexels.com/photos/8378747/pexels-photo-8378747.jpeg?auto=compress&cs=tinysrgb&w=800"
             alt="Schéma neuroscientifique du cerveau pour comprendre le stress"
-            className="mx-auto rounded-2xl shadow-lg w-64 h-40 object-cover"
+            className="mx-auto rounded-2xl shadow-lg w-96 h-56 object-cover"
           />
         </div>
         <div className="flex items-center justify-center gap-2 mb-4">

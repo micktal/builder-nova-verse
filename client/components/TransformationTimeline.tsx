@@ -441,7 +441,7 @@ const TransformationTimeline = () => {
           <img
             src="https://images.pexels.com/photos/1051838/pexels-photo-1051838.jpeg?auto=compress&cs=tinysrgb&w=800"
             alt="Transformation personnelle par la méditation et les techniques de gestion du stress"
-            className="mx-auto rounded-2xl shadow-lg w-64 h-40 object-cover"
+            className="mx-auto rounded-2xl shadow-lg w-96 h-56 object-cover"
           />
         </div>
         <div className="flex items-center justify-center gap-2 mb-4">

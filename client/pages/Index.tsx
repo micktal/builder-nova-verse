@@ -166,7 +166,7 @@ const StressRegulationModule = () => {
                 "https://images.pexels.com/photos/6774962/pexels-photo-6774962.jpeg?auto=compress&cs=tinysrgb&w=400"
               }
               alt={`Illustration pour ${sequence.title}`}
-              className="w-full h-32 object-cover rounded-lg"
+              className="w-full h-48 object-cover rounded-lg"
             />
           </div>
           <div className="flex items-start justify-between">
@@ -281,7 +281,7 @@ const StressRegulationModule = () => {
         <img
           src="https://images.pexels.com/photos/4325466/pexels-photo-4325466.jpeg?auto=compress&cs=tinysrgb&w=600"
           alt="Méditation et respiration guidée pour la relaxation"
-          className="mx-auto rounded-2xl shadow-lg w-48 h-32 object-cover"
+          className="mx-auto rounded-2xl shadow-lg w-72 h-44 object-cover"
         />
       </div>
       <h3 className="text-2xl font-bold text-gray-900 mb-4">
@@ -324,7 +324,7 @@ const StressRegulationModule = () => {
     const [showResult, setShowResult] = useState(false);
 
     const questions = [
-      "Je me sens souvent débordé(e) par mes responsabilités",
+      "Je me sens souvent débordé(e) par mes responsabilit��s",
       "J'ai du mal à gérer mes émotions en situation de pression",
       "Les conflits relationnels m'affectent beaucoup",
       "Je ressens des tensions physiques (maux de tête, dos, etc.)",
@@ -366,7 +366,7 @@ const StressRegulationModule = () => {
             <img
               src="https://images.pexels.com/photos/6560281/pexels-photo-6560281.jpeg?auto=compress&cs=tinysrgb&w=800"
               alt="Pierres d'équilibre zen pour évaluer et gérer le stress"
-              className="mx-auto rounded-2xl shadow-lg w-64 h-40 object-cover"
+              className="mx-auto rounded-2xl shadow-lg w-96 h-56 object-cover"
             />
           </div>
           <h2 className="text-3xl font-bold text-center text-gray-900">
@@ -547,7 +547,7 @@ const StressRegulationModule = () => {
             <img
               src="https://images.pexels.com/photos/1051838/pexels-photo-1051838.jpeg?auto=compress&cs=tinysrgb&w=800"
               alt="Silhouette méditative au coucher de soleil pour explorer les émotions"
-              className="mx-auto rounded-2xl shadow-lg w-64 h-40 object-cover"
+              className="mx-auto rounded-2xl shadow-lg w-96 h-56 object-cover"
             />
           </div>
           <h2 className="text-3xl font-bold text-center text-gray-900">
@@ -831,7 +831,7 @@ const StressRegulationModule = () => {
             <img
               src="https://images.pexels.com/photos/6774962/pexels-photo-6774962.jpeg?auto=compress&cs=tinysrgb&w=800"
               alt="Avion en papier symbolisant le développement et l'optimisation du potentiel"
-              className="mx-auto rounded-2xl shadow-lg w-64 h-40 object-cover"
+              className="mx-auto rounded-2xl shadow-lg w-96 h-56 object-cover"
             />
           </div>
           <h2 className="text-3xl font-bold text-center text-gray-900">
@@ -916,7 +916,7 @@ const StressRegulationModule = () => {
           <img
             src="https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800"
             alt="Équipe collaborant pour atteindre des objectifs d'apprentissage"
-            className="mx-auto rounded-2xl shadow-lg w-64 h-40 object-cover"
+            className="mx-auto rounded-2xl shadow-lg w-96 h-56 object-cover"
           />
         </div>
         <h2 className="text-3xl font-bold text-center text-gray-900">
