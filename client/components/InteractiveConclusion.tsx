@@ -271,6 +271,13 @@ const InteractiveConclusion = () => {
       <div
         className={`transition-all duration-1000 delay-500 ${animationPhase >= 2 ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`}
       >
+        <div className="mb-6">
+          <img
+            src="https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=600"
+            alt="Équipe célébrant le succès et l'accomplissement"
+            className="mx-auto rounded-2xl shadow-lg w-48 h-32 object-cover"
+          />
+        </div>
         <h1 className="text-5xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-green-600 bg-clip-text text-transparent mb-4">
           🎉 FÉLICITATIONS ! 🎉
         </h1>
