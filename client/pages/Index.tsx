@@ -768,6 +768,132 @@ const StressRegulationModule = () => {
     );
   };
 
+  const EmotionVideoSection = () => {
+    const [showTranscript, setShowTranscript] = useState(false);
+
+    const videoUrl = "https://cdn.builder.io/o/assets%2Fd93d9a0ec7824aa1ac4d890a1f90a2ec%2Fbd91e66e893e4177be663c1fb59cd616?alt=media&token=d013c531-0063-471b-969f-6e9bf09699c3&apiKey=d93d9a0ec7824aa1ac4d890a1f90a2ec";
+
+    const transcript = `Vous êtes-vous déjà demandé ce qu'est exactement une émotion ?
+Oui, les émotions sont des réactions naturelles de notre corps et de notre esprit lorsque quelque chose se produit.
+C'est logique. J'ai lu que différentes zones du cerveau s'illuminent en fonction de l'émotion que nous ressentons.
+C'est vrai, et certaines des principales émotions que nous ressentons sont la joie, la colère, la peur et la tristesse, chacune envoyant un message unique.
+Il est intéressant de constater que le fait de reconnaître et de nommer ces émotions sans jugement nous aide à mieux les comprendre.
+Exactement, et de nombreuses personnes utilisent des outils tels que la respiration contrôlée, la communication ouverte, les techniques de relaxation ou l'activité physique pour gérer leurs émotions.
+J'ai entendu dire que ces méthodes peuvent modifier la façon dont notre cerveau réagit au stress et améliorer l'équilibre émotionnel.
+Oui, comprendre les émotions est vraiment la première étape pour en faire une source de force.`;
+
+    return (
+      <div className="max-w-6xl mx-auto px-6 py-16 bg-gradient-to-br from-purple-50 via-white to-blue-50">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+            Comprendre le fonctionnement de ses émotions
+          </h2>
+          <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+            Développez vos propres outils pour mieux comprendre et gérer vos émotions
+          </p>
+        </div>
+
+        <div className="max-w-4xl mx-auto">
+          {/* Video Player */}
+          <div className="bg-white rounded-2xl shadow-xl overflow-hidden mb-8">
+            <div className="aspect-video">
+              <video
+                src={videoUrl}
+                controls
+                className="w-full h-full object-cover"
+                poster="https://images.pexels.com/photos/1051838/pexels-photo-1051838.jpeg?auto=compress&cs=tinysrgb&w=800"
+              >
+                Votre navigateur ne supporte pas la lecture de vidéos.
+              </video>
+            </div>
+
+            {/* Video Controls and Accessibility */}
+            <div className="p-6">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="text-lg font-semibold text-gray-900">
+                  Les émotions : comprendre pour mieux gérer
+                </h3>
+                <Button
+                  onClick={() => setShowTranscript(!showTranscript)}
+                  variant="outline"
+                  size="sm"
+                  className="flex items-center gap-2"
+                >
+                  <FileText className="w-4 h-4" />
+                  {showTranscript ? "Masquer" : "Afficher"} la transcription
+                </Button>
+              </div>
+
+              {/* Transcript Section */}
+              {showTranscript && (
+                <div className="bg-gray-50 rounded-lg p-6 space-y-4 animate-fadeInUp">
+                  <h4 className="font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                    <FileText className="w-5 h-5" />
+                    Transcription pour l'accessibilité
+                  </h4>
+                  <div className="text-sm text-gray-700 leading-relaxed space-y-3">
+                    {transcript.split('\n').map((line, index) => (
+                      <p key={index} className="border-l-2 border-blue-200 pl-4">
+                        {line}
+                      </p>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Key Takeaways */}
+              <div className="mt-6 grid md:grid-cols-2 gap-6">
+                <div className="bg-blue-50 rounded-lg p-4">
+                  <h4 className="font-semibold text-blue-900 mb-2 flex items-center gap-2">
+                    <Brain className="w-5 h-5" />
+                    Points clés
+                  </h4>
+                  <ul className="text-sm text-blue-800 space-y-1">
+                    <li>• Les émotions sont des réactions naturelles</li>
+                    <li>• Chaque émotion envoie un message unique</li>
+                    <li>• La reconnaissance sans jugement est essentielle</li>
+                    <li>• Comprendre = transformer en force</li>
+                  </ul>
+                </div>
+
+                <div className="bg-green-50 rounded-lg p-4">
+                  <h4 className="font-semibold text-green-900 mb-2 flex items-center gap-2">
+                    <Heart className="w-5 h-5" />
+                    Outils pratiques
+                  </h4>
+                  <ul className="text-sm text-green-800 space-y-1">
+                    <li>• Respiration contrôlée</li>
+                    <li>• Communication ouverte</li>
+                    <li>• Techniques de relaxation</li>
+                    <li>• Activité physique</li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* Call to Action */}
+              <div className="mt-6 text-center bg-gradient-to-r from-purple-100 to-blue-100 rounded-lg p-4">
+                <p className="text-sm text-gray-700 mb-3">
+                  <strong>💡 Prêt(e) à approfondir ?</strong> Explorez nos outils interactifs pour développer vos compétences émotionnelles
+                </p>
+                <div className="flex gap-2 justify-center flex-wrap">
+                  <Button size="sm" variant="outline" className="text-xs">
+                    Roue des émotions
+                  </Button>
+                  <Button size="sm" variant="outline" className="text-xs">
+                    Quiz de stress
+                  </Button>
+                  <Button size="sm" variant="outline" className="text-xs">
+                    Techniques TOP
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
   const TOPTechniquesPreview = () => {
     const [activeCategory, setActiveCategory] = useState<string>("physiologique");
 
