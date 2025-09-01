@@ -170,15 +170,15 @@ const Sequence3 = () => {
     }));
   };
 
-  const handleTaskInput = (index: number, value: string) => {
+  const handleTaskInput = useCallback((index: number, value: string) => {
     setEssentialTasks((prev) => {
       const newTasks = [...prev];
       newTasks[index] = value;
       return newTasks;
     });
-  };
+  }, []);
 
-  const getCorrectPlacements = () => {
+  const getCorrectPlacements = useCallback(() => {
     const correct = {
       "urgent-important": [
         "Répondre aux emails urgents",
@@ -195,18 +195,32 @@ const Sequence3 = () => {
       ],
     };
     return correct;
-  };
+  }, []);
 
-  const isMatrixComplete =
-    Object.values(matrixTasks).flat().length === tasks.length;
-  const reframingComplete =
-    Object.keys(reframingChoices).length === reframingScenarios.length;
-  const tasksComplete =
-    essentialTasks.filter((task) => task.trim().length > 0).length === 3;
-  const quizComplete = Object.keys(quizAnswers).length === quizQuestions.length;
+  const isMatrixComplete = useMemo(
+    () => Object.values(matrixTasks).flat().length === tasks.length,
+    [matrixTasks]
+  );
 
-  const isSequenceComplete =
-    isMatrixComplete && reframingComplete && tasksComplete && quizComplete;
+  const reframingComplete = useMemo(
+    () => Object.keys(reframingChoices).length === reframingScenarios.length,
+    [reframingChoices]
+  );
+
+  const tasksComplete = useMemo(
+    () => essentialTasks.filter((task) => task.trim().length > 0).length === 3,
+    [essentialTasks]
+  );
+
+  const quizComplete = useMemo(
+    () => Object.keys(quizAnswers).length === quizQuestions.length,
+    [quizAnswers]
+  );
+
+  const isSequenceComplete = useMemo(
+    () => isMatrixComplete && reframingComplete && tasksComplete && quizComplete,
+    [isMatrixComplete, reframingComplete, tasksComplete, quizComplete]
+  );
 
   useEffect(() => {
     if (isSequenceComplete && currentStep === "practice") {
