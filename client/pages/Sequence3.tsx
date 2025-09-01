@@ -176,7 +176,7 @@ const Sequence3 = () => {
       before: "J'ai trop de travail, je n'y arriverai jamais",
       after: "Je vais prioriser et traiter une tâche à la fois",
       explanation:
-        "Focus sur l'action constructive plutôt que sur l'émotion paralysante.",
+        "Focus sur l'action constructive plutôt que sur l'��motion paralysante.",
       isPositive: true,
     },
     {
@@ -631,7 +631,7 @@ const Sequence3 = () => {
                             <CheckCircle className="w-4 h-4 text-green-600 ml-2" />
                           ) : (
                             <div className="ml-2">
-                              <span className="text-red-600 text-xs">✗</span>
+                              <span className="text-red-600 text-xs">���</span>
                             </div>
                           )}
                         </div>
@@ -797,10 +797,20 @@ const Sequence3 = () => {
             Identifiez 3 tâches qui, une fois accomplies, vous donneront le
             sentiment d'avoir eu une journée productive :
           </p>
-          <div className="space-y-4">
+          <div
+            className="space-y-4 relative"
+            style={{
+              contain: 'layout',
+              willChange: 'auto'
+            }}
+          >
             {[1, 2, 3].map((num, index) => (
-              <div key={num} className="flex items-center gap-3">
-                <div className="w-8 h-8 bg-serenity-500 text-white rounded-full flex items-center justify-center font-semibold">
+              <div
+                key={`task-${num}`}
+                className="flex items-center gap-3"
+                style={{ minHeight: '40px' }}
+              >
+                <div className="w-8 h-8 bg-serenity-500 text-white rounded-full flex items-center justify-center font-semibold shrink-0">
                   {num}
                 </div>
                 <div className="flex-1">
