@@ -93,12 +93,9 @@ const StressRegulationModule = () => {
     <div className="relative overflow-hidden bg-gradient-to-br from-calm-50 via-serenity-50 to-nature-50 px-6 py-12 md:py-20">
       <div className="absolute inset-0 bg-white/60"></div>
       <div className="relative max-w-4xl mx-auto text-center">
-        <Badge className="mb-4 bg-calm-100 text-calm-700 hover:bg-calm-200">
-          Module 2 - Appréhender le Stress & ses émotions en situation complexe
-        </Badge>
         <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
           <span style={{color: "rgb(144, 19, 254)"}}>
-            Appréhender le Stress & ses émotions en situation complexe
+            Module 2-Appréhender le Stress & ses émotions en situation complexe
           </span>
         </h1>
         <p className="text-xl md:text-2xl text-gray-700 mb-8 max-w-3xl mx-auto leading-relaxed">
