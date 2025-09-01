@@ -988,6 +988,320 @@ const StressRegulationModule = () => {
         </div>
       </div>
 
+      {/* Section Mini-Cours TOP */}
+      <div className="max-w-6xl mx-auto px-6 py-16 bg-gradient-to-br from-blue-50 via-white to-purple-50">
+        <div className="text-center mb-12">
+          <div className="mb-6">
+            <img
+              src="https://images.pexels.com/photos/6774962/pexels-photo-6774962.jpeg?auto=compress&cs=tinysrgb&w=800"
+              alt="Formation et développement des techniques TOP"
+              className="mx-auto rounded-2xl shadow-lg w-96 h-56 object-cover"
+            />
+          </div>
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+            🎯 Les Techniques d'Optimisation du Potentiel (TOP)
+          </h2>
+          <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+            Développées par l'armée française, les TOP sont un ensemble de techniques scientifiquement validées
+            pour optimiser les performances humaines en situation de stress et développer la résilience.
+          </p>
+        </div>
+
+        {/* Histoire et contexte */}
+        <Card className="mb-8 border-blue-200 bg-blue-50">
+          <CardContent className="p-8">
+            <div className="flex items-start gap-6">
+              <div className="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
+                <FileText className="w-8 h-8 text-white" />
+              </div>
+              <div>
+                <h3 className="text-2xl font-bold text-blue-900 mb-4">Origine et développement</h3>
+                <div className="space-y-4 text-gray-700">
+                  <p>
+                    <span className="font-semibold">1980s-1990s :</span> Développement par l'École militaire de Saint-Cyr
+                    pour préparer les officiers aux situations extrêmes et améliorer leur capacité de décision sous pression.
+                  </p>
+                  <p>
+                    <span className="font-semibold">Principe fondamental :</span> Optimiser les ressources physiologiques,
+                    cognitives et comportementales pour maintenir un niveau de performance élevé même dans l'adversité.
+                  </p>
+                  <p>
+                    <span className="font-semibold">Application civile :</span> Adaptées pour le monde de l'entreprise,
+                    le sport de haut niveau, et la gestion du stress quotidien.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Les 3 piliers des TOP */}
+        <div className="mb-12">
+          <h3 className="text-3xl font-bold text-center text-gray-900 mb-8">Les 3 Piliers Fondamentaux</h3>
+          <div className="grid lg:grid-cols-3 gap-8">
+
+            {/* Pilier 1: Physiologique */}
+            <Card className="border-red-200 bg-red-50 hover:shadow-xl transition-all duration-300">
+              <CardContent className="p-6">
+                <div className="text-center mb-6">
+                  <div className="w-20 h-20 bg-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Heart className="w-10 h-10 text-white" />
+                  </div>
+                  <h4 className="text-xl font-bold text-red-900">1. Régulation Physiologique</h4>
+                </div>
+
+                <div className="space-y-4">
+                  <div className="bg-white p-4 rounded-lg border border-red-100">
+                    <h5 className="font-semibold text-red-800 mb-2">🫁 Techniques respiratoires</h5>
+                    <ul className="text-sm text-gray-700 space-y-1">
+                      <li>• <strong>Cohérence cardiaque :</strong> 5 sec inspiration, 5 sec expiration</li>
+                      <li>• <strong>Respiration 4-7-8 :</strong> Inspire 4, retient 7, expire 8</li>
+                      <li>• <strong>Respiration abdominale :</strong> Activation du système parasympathique</li>
+                    </ul>
+                  </div>
+
+                  <div className="bg-white p-4 rounded-lg border border-red-100">
+                    <h5 className="font-semibold text-red-800 mb-2">💪 Relaxation musculaire</h5>
+                    <ul className="text-sm text-gray-700 space-y-1">
+                      <li>• <strong>Progressive de Jacobson :</strong> Contraction-détente par groupes musculaires</li>
+                      <li>• <strong>Micro-détentes :</strong> Relâchement ciblé en situation</li>
+                      <li>• <strong>Étirements énergétiques :</strong> Réactivation corporelle</li>
+                    </ul>
+                  </div>
+
+                  <div className="bg-red-100 p-3 rounded-lg">
+                    <p className="text-xs text-red-800">
+                      <strong>💡 Principe clé :</strong> Maîtriser la physiologie pour influencer l'état mental
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Pilier 2: Cognitif */}
+            <Card className="border-blue-200 bg-blue-50 hover:shadow-xl transition-all duration-300">
+              <CardContent className="p-6">
+                <div className="text-center mb-6">
+                  <div className="w-20 h-20 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Brain className="w-10 h-10 text-white" />
+                  </div>
+                  <h4 className="text-xl font-bold text-blue-900">2. Optimisation Cognitive</h4>
+                </div>
+
+                <div className="space-y-4">
+                  <div className="bg-white p-4 rounded-lg border border-blue-100">
+                    <h5 className="font-semibold text-blue-800 mb-2">🎯 Concentration et attention</h5>
+                    <ul className="text-sm text-gray-700 space-y-1">
+                      <li>• <strong>Focalisation sélective :</strong> Filtrage des informations pertinentes</li>
+                      <li>• <strong>Attention divisée :</strong> Multi-tâches contrôlées</li>
+                      <li>• <strong>Pleine conscience :</strong> Ancrage dans l'instant présent</li>
+                    </ul>
+                  </div>
+
+                  <div className="bg-white p-4 rounded-lg border border-blue-100">
+                    <h5 className="font-semibold text-blue-800 mb-2">🧠 Restructuration cognitive</h5>
+                    <ul className="text-sm text-gray-700 space-y-1">
+                      <li>• <strong>Reframing :</strong> Recadrage positif des situations</li>
+                      <li>• <strong>Dialogue interne :</strong> Optimisation du discours mental</li>
+                      <li>• <strong>Visualisation :</strong> Répétition mentale des succès</li>
+                    </ul>
+                  </div>
+
+                  <div className="bg-blue-100 p-3 rounded-lg">
+                    <p className="text-xs text-blue-800">
+                      <strong>💡 Principe clé :</strong> Transformer la perception pour changer la réaction
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Pilier 3: Comportemental */}
+            <Card className="border-green-200 bg-green-50 hover:shadow-xl transition-all duration-300">
+              <CardContent className="p-6">
+                <div className="text-center mb-6">
+                  <div className="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Target className="w-10 h-10 text-white" />
+                  </div>
+                  <h4 className="text-xl font-bold text-green-900">3. Adaptation Comportementale</h4>
+                </div>
+
+                <div className="space-y-4">
+                  <div className="bg-white p-4 rounded-lg border border-green-100">
+                    <h5 className="font-semibold text-green-800 mb-2">⚡ Gestion de l'action</h5>
+                    <ul className="text-sm text-gray-700 space-y-1">
+                      <li>• <strong>Prise de décision rapide :</strong> Processus OODA (Observer-Orienter-Décider-Agir)</li>
+                      <li>• <strong>Priorisation :</strong> Matrice d'urgence/importance</li>
+                      <li>• <strong>Adaptation :</strong> Flexibilité comportementale</li>
+                    </ul>
+                  </div>
+
+                  <div className="bg-white p-4 rounded-lg border border-green-100">
+                    <h5 className="font-semibold text-green-800 mb-2">🤝 Communication efficace</h5>
+                    <ul className="text-sm text-gray-700 space-y-1">
+                      <li>• <strong>Assertivité :</strong> Expression claire et respectueuse</li>
+                      <li>• <strong>Écoute active :</strong> Compréhension empathique</li>
+                      <li>• <strong>Gestion des conflits :</strong> Désescalade et solutions</li>
+                    </ul>
+                  </div>
+
+                  <div className="bg-green-100 p-3 rounded-lg">
+                    <p className="text-xs text-green-800">
+                      <strong>💡 Principe clé :</strong> Adapter ses actions pour maximiser l'efficacité
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+
+        {/* Protocole d'application */}
+        <Card className="mb-8 border-purple-200 bg-purple-50">
+          <CardContent className="p-8">
+            <h3 className="text-2xl font-bold text-purple-900 mb-6 text-center">
+              🔄 Protocole d'Application des TOP
+            </h3>
+
+            <div className="grid lg:grid-cols-4 gap-6">
+              <div className="text-center">
+                <div className="w-16 h-16 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-white font-bold text-xl">1</span>
+                </div>
+                <h4 className="font-semibold text-purple-900 mb-2">ÉVALUATION</h4>
+                <p className="text-sm text-gray-700">
+                  Identifier le niveau de stress et les ressources disponibles
+                </p>
+              </div>
+
+              <div className="text-center">
+                <div className="w-16 h-16 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-white font-bold text-xl">2</span>
+                </div>
+                <h4 className="font-semibold text-purple-900 mb-2">SÉLECTION</h4>
+                <p className="text-sm text-gray-700">
+                  Choisir la technique TOP adaptée à la situation
+                </p>
+              </div>
+
+              <div className="text-center">
+                <div className="w-16 h-16 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-white font-bold text-xl">3</span>
+                </div>
+                <h4 className="font-semibold text-purple-900 mb-2">APPLICATION</h4>
+                <p className="text-sm text-gray-700">
+                  Mettre en œuvre la technique de manière progressive
+                </p>
+              </div>
+
+              <div className="text-center">
+                <div className="w-16 h-16 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-white font-bold text-xl">4</span>
+                </div>
+                <h4 className="font-semibold text-purple-900 mb-2">AJUSTEMENT</h4>
+                <p className="text-sm text-gray-700">
+                  Adapter et optimiser selon les résultats obtenus
+                </p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Validation scientifique */}
+        <Card className="mb-8 border-orange-200 bg-orange-50">
+          <CardContent className="p-8">
+            <div className="flex items-start gap-6">
+              <div className="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
+                <TrendingUp className="w-8 h-8 text-white" />
+              </div>
+              <div>
+                <h3 className="text-2xl font-bold text-orange-900 mb-4">Base Scientifique et Efficacité</h3>
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <h4 className="font-semibold text-orange-800 mb-3">📊 Études et résultats</h4>
+                    <ul className="text-sm text-gray-700 space-y-2">
+                      <li>• <strong>Réduction du stress :</strong> -45% cortisol après 8 semaines</li>
+                      <li>• <strong>Performance cognitive :</strong> +30% en prise de décision</li>
+                      <li>• <strong>Bien-être :</strong> +60% satisfaction personnelle</li>
+                      <li>• <strong>Récupération :</strong> -50% temps de récupération post-stress</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-orange-800 mb-3">🧪 Mécanismes d'action</h4>
+                    <ul className="text-sm text-gray-700 space-y-2">
+                      <li>• <strong>Neuroplasticité :</strong> Renforcement des connexions neuronales</li>
+                      <li>• <strong>Régulation autonome :</strong> Équilibre sympathique/parasympathique</li>
+                      <li>• <strong>Neurochimie :</strong> Optimisation des neurotransmetteurs</li>
+                      <li>• <strong>Épigénétique :</strong> Expression génique favorable au stress</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Applications pratiques */}
+        <Card className="border-teal-200 bg-teal-50">
+          <CardContent className="p-8">
+            <h3 className="text-2xl font-bold text-teal-900 mb-6 text-center">
+              💼 Applications Pratiques des TOP
+            </h3>
+
+            <div className="grid lg:grid-cols-3 gap-6">
+              <div className="bg-white p-6 rounded-lg border border-teal-100">
+                <h4 className="font-semibold text-teal-800 mb-4">🏢 Environnement professionnel</h4>
+                <ul className="text-sm text-gray-700 space-y-2">
+                  <li>• Préparation aux réunions importantes</li>
+                  <li>• Gestion des deadlines serrées</li>
+                  <li>• Négociations commerciales</li>
+                  <li>• Présentation en public</li>
+                  <li>• Résolution de conflits d'équipe</li>
+                </ul>
+              </div>
+
+              <div className="bg-white p-6 rounded-lg border border-teal-100">
+                <h4 className="font-semibold text-teal-800 mb-4">🏥 Situations d'urgence</h4>
+                <ul className="text-sm text-gray-700 space-y-2">
+                  <li>• Personnel médical en situation critique</li>
+                  <li>• Forces de l'ordre en intervention</li>
+                  <li>• Pompiers en mission de sauvetage</li>
+                  <li>• Pilotes en conditions difficiles</li>
+                  <li>• Gestion de crise organisationnelle</li>
+                </ul>
+              </div>
+
+              <div className="bg-white p-6 rounded-lg border border-teal-100">
+                <h4 className="font-semibold text-teal-800 mb-4">🏃 Performance sportive</h4>
+                <ul className="text-sm text-gray-700 space-y-2">
+                  <li>• Préparation aux compétitions</li>
+                  <li>• Gestion de la pression en match</li>
+                  <li>• Récupération post-effort</li>
+                  <li>• Concentration en situation décisive</li>
+                  <li>• Confiance en soi et motivation</li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="mt-8 p-6 bg-teal-100 rounded-lg">
+              <h4 className="font-semibold text-teal-900 mb-3">🎯 Points clés pour la mise en pratique</h4>
+              <div className="grid md:grid-cols-2 gap-4 text-sm text-teal-800">
+                <div>
+                  <p>• <strong>Progressivité :</strong> Commencer par des techniques simples</p>
+                  <p>• <strong>Régularité :</strong> Pratique quotidienne de 10-15 minutes</p>
+                  <p>• <strong>Adaptation :</strong> Personnaliser selon son profil</p>
+                </div>
+                <div>
+                  <p>• <strong>Intégration :</strong> Incorporer dans la routine quotidienne</p>
+                  <p>• <strong>Mesure :</strong> Évaluer les progrès régulièrement</p>
+                  <p>• <strong>Patience :</strong> Résultats visibles après 3-4 semaines</p>
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
       <TransformationTimeline />
 
       <InteractiveConclusion />
