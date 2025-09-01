@@ -155,6 +155,20 @@ const StressRegulationModule = () => {
         style={{ animationDelay: `${index * 0.1}s` }}
       >
         <CardHeader className="pb-3">
+          <div className="mb-4">
+            <img
+              src={
+                sequence.id === 1 ? "https://images.pexels.com/photos/8378747/pexels-photo-8378747.jpeg?auto=compress&cs=tinysrgb&w=400" :
+                sequence.id === 2 ? "https://images.pexels.com/photos/4325466/pexels-photo-4325466.jpeg?auto=compress&cs=tinysrgb&w=400" :
+                sequence.id === 3 ? "https://images.pexels.com/photos/6560281/pexels-photo-6560281.jpeg?auto=compress&cs=tinysrgb&w=400" :
+                sequence.id === 4 ? "https://images.pexels.com/photos/1051838/pexels-photo-1051838.jpeg?auto=compress&cs=tinysrgb&w=400" :
+                sequence.id === 5 ? "https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=400" :
+                "https://images.pexels.com/photos/6774962/pexels-photo-6774962.jpeg?auto=compress&cs=tinysrgb&w=400"
+              }
+              alt={`Illustration pour ${sequence.title}`}
+              className="w-full h-32 object-cover rounded-lg"
+            />
+          </div>
           <div className="flex items-start justify-between">
             <div
               className={`p-3 rounded-lg bg-${sequence.color}-100 text-${sequence.color}-600`}
