@@ -642,9 +642,9 @@ Module "Réguler le stress" - Builder.io Learning
             <label className="block font-semibold mb-2 text-gray-900">
               Routine personnalisée (optionnel) :
             </label>
-            <Input
+            <StableInput
               value={customRoutine}
-              onChange={(e) => setCustomRoutine(e.target.value)}
+              onChange={handleCustomRoutineChange}
               placeholder="Ajoutez votre propre élément de routine..."
             />
           </div>
