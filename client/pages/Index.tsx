@@ -310,7 +310,7 @@ const StressRegulationModule = () => {
     const [showResult, setShowResult] = useState(false);
 
     const questions = [
-      "Je me sens souvent débordé(e) par mes responsabilit��s",
+      "Je me sens souvent débordé(e) par mes responsabilités",
       "J'ai du mal à gérer mes émotions en situation de pression",
       "Les conflits relationnels m'affectent beaucoup",
       "Je ressens des tensions physiques (maux de tête, dos, etc.)",
@@ -407,7 +407,7 @@ const StressRegulationModule = () => {
                 </div>
 
                 <div className="bg-gray-50 rounded-lg p-4">
-                  <h4 className="font-semibold text-gray-900 mb-2">🎯 Recommandations personnalisées :</h4>
+                  <h4 className="font-semibold text-gray-900 mb-2">Recommandations personnalisées :</h4>
                   <div className="text-sm text-gray-700 space-y-1">
                     {getTotalScore() > 24 && <p>• Priorisez les techniques physiologiques (séquence 2)</p>}
                     {getTotalScore() > 20 && <p>• Travaillez sur la gestion émotionnelle (séquence 1)</p>}
@@ -719,7 +719,7 @@ const StressRegulationModule = () => {
                   {/* Navigation vers les séquences */}
                   <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
                     <p className="text-sm text-blue-800 mb-3">
-                      🎯 <strong>Approfondissez vos connaissances :</strong>
+                      <strong>Approfondissez vos connaissances :</strong>
                     </p>
                     <div className="flex gap-2 flex-wrap">
                       <Button size="sm" variant="outline" className="text-xs">
@@ -1026,7 +1026,7 @@ En comprenant le stress et en utilisant nos outils, nous transformons les défis
               {/* Call to Action */}
               <div className="mt-6 text-center bg-gradient-to-r from-orange-100 to-red-100 rounded-lg p-4">
                 <p className="text-sm text-gray-700 mb-3">
-                  <strong>🎯 Prêt(e) à appliquer ces outils ?</strong> Explorez nos techniques pratiques pour maîtriser votre stress
+                  <strong>Prêt(e) à appliquer ces outils ?</strong> Explorez nos techniques pratiques pour maîtriser votre stress
                 </p>
                 <div className="flex gap-2 justify-center flex-wrap">
                   <Button size="sm" variant="outline" className="text-xs">
@@ -1161,7 +1161,7 @@ Il est fascinant de constater à quel point des méthodes aussi simples peuvent 
                 </h4>
                 <div className="grid md:grid-cols-3 gap-4 text-sm text-gray-700">
                   <div>
-                    <p className="mb-2"><strong>🏃 Sport :</strong></p>
+                    <p className="mb-2"><strong>Sport :</strong></p>
                     <ul className="space-y-1 text-xs">
                       <li>• Préparation aux compétitions</li>
                       <li>• Gestion de la pression</li>
@@ -1169,7 +1169,7 @@ Il est fascinant de constater à quel point des méthodes aussi simples peuvent 
                     </ul>
                   </div>
                   <div>
-                    <p className="mb-2"><strong>💼 Professionnel :</strong></p>
+                    <p className="mb-2"><strong>Professionnel :</strong></p>
                     <ul className="space-y-1 text-xs">
                       <li>• Présentations importantes</li>
                       <li>• Gestion du stress au travail</li>
@@ -1177,7 +1177,7 @@ Il est fascinant de constater à quel point des méthodes aussi simples peuvent 
                     </ul>
                   </div>
                   <div>
-                    <p className="mb-2"><strong>🧘 Personnel :</strong></p>
+                    <p className="mb-2"><strong>Personnel :</strong></p>
                     <ul className="space-y-1 text-xs">
                       <li>• Gestion quotidienne du stress</li>
                       <li>• Amélioration du bien-être</li>
@@ -1364,7 +1364,7 @@ Il est fascinant de constater à quel point des méthodes aussi simples peuvent 
             icon: Zap,
             color: "nature",
             title: "Réguler",
-            desc: "Maîtriser la m��canique du stress et développer ses outils de régulation en situation difficile",
+            desc: "Maîtriser la mécanique du stress et développer ses outils de régulation en situation difficile",
           },
         ].map((obj, index) => {
           const Icon = obj.icon;
