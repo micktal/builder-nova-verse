@@ -158,7 +158,7 @@ const Sequence5 = () => {
         "Les tâches urgentes et importantes",
         "Les tâches pas urgentes et pas importantes",
         "Les tâches urgentes mais pas importantes",
-        "Toutes les t��ches en même temps",
+        "Toutes les tâches en même temps",
       ],
       correct: 0,
       explanation:
@@ -217,31 +217,31 @@ const Sequence5 = () => {
   };
 
   // Memoized handlers for action plan inputs to prevent typing issues
-  const handleTriggersChange = useCallback((e: React.ChangeEvent<HTMLTextAreaElement>) => {
+  const handleTriggersChange = useCallback((value: string) => {
     setActionPlan((prev) => ({
       ...prev,
-      triggers: e.target.value,
+      triggers: value,
     }));
   }, []);
 
-  const handleTechniquesChange = useCallback((e: React.ChangeEvent<HTMLTextAreaElement>) => {
+  const handleTechniquesChange = useCallback((value: string) => {
     setActionPlan((prev) => ({
       ...prev,
-      favoriteTechniques: e.target.value,
+      favoriteTechniques: value,
     }));
   }, []);
 
-  const handleMomentsChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleMomentsChange = useCallback((value: string) => {
     setActionPlan((prev) => ({
       ...prev,
-      applicationMoments: e.target.value,
+      applicationMoments: value,
     }));
   }, []);
 
-  const handleResultsChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleResultsChange = useCallback((value: string) => {
     setActionPlan((prev) => ({
       ...prev,
-      expectedResults: e.target.value,
+      expectedResults: value,
     }));
   }, []);
 
