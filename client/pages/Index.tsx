@@ -1047,7 +1047,7 @@ Oui, comprendre les émotions est vraiment la première étape pour en faire une
             icon: Zap,
             color: "nature",
             title: "Réguler",
-            desc: "Maîtriser la mécanique du stress et développer ses outils de régulation en situation difficile",
+            desc: "Maîtriser la m��canique du stress et développer ses outils de régulation en situation difficile",
           },
         ].map((obj, index) => {
           const Icon = obj.icon;
@@ -1082,6 +1082,8 @@ Oui, comprendre les émotions est vraiment la première étape pour en faire une
       <StressAssessmentQuiz />
 
       <EmotionWheelInteractive />
+
+      <EmotionVideoSection />
 
       <NeuroscienceBrain />
 
