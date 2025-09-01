@@ -91,7 +91,13 @@ const StressRegulationModule = () => {
 
   const ModuleHeader = () => (
     <div className="relative overflow-hidden bg-gradient-to-br from-calm-50 via-serenity-50 to-nature-50 px-6 py-12 md:py-20">
-      <div className="absolute inset-0 bg-white/60"></div>
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
+        style={{
+          backgroundImage: 'url(https://images.pexels.com/photos/33702530/pexels-photo-33702530.jpeg?auto=compress&cs=tinysrgb&w=1600)'
+        }}
+      ></div>
+      <div className="absolute inset-0 bg-white/70"></div>
       <div className="relative max-w-4xl mx-auto text-center">
         <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
           <span style={{color: "rgb(144, 19, 254)"}}>
