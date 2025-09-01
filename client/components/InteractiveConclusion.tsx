@@ -28,6 +28,40 @@ const InteractiveConclusion = () => {
   const [animationPhase, setAnimationPhase] = useState(0);
   const [skillsRevealed, setSkillsRevealed] = useState<string[]>([]);
   const confettiRef = useRef<HTMLDivElement>(null);
+  const celebrationRef = useRef<HTMLDivElement>(null);
+  const skillsRef = useRef<HTMLDivElement>(null);
+  const roadmapRef = useRef<HTMLDivElement>(null);
+  const conclusionRef = useRef<HTMLDivElement>(null);
+
+  const scrollToSection = (view: "celebration" | "skills" | "roadmap" | "conclusion") => {
+    setCurrentView(view);
+
+    // Wait for state update and DOM change
+    setTimeout(() => {
+      let targetRef;
+      switch (view) {
+        case "celebration":
+          targetRef = celebrationRef;
+          break;
+        case "skills":
+          targetRef = skillsRef;
+          break;
+        case "roadmap":
+          targetRef = roadmapRef;
+          break;
+        case "conclusion":
+          targetRef = conclusionRef;
+          break;
+      }
+
+      if (targetRef?.current) {
+        targetRef.current.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+    }, 100);
+  };
 
   const userStats = {
     name: "Apprenant",
