@@ -355,7 +355,13 @@ const StressRegulationModule = () => {
 
       <ObjectivesSection />
 
+      <StressAssessmentQuiz />
+
+      <EmotionWheelInteractive />
+
       <NeuroscienceBrain />
+
+      <TOPTechniquesPreview />
 
       <div
         className="max-w-6xl mx-auto px-6 py-12"
