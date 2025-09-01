@@ -245,6 +245,10 @@ const Sequence5 = () => {
     }));
   }, []);
 
+  const handleCustomRoutineChange = useCallback((value: string) => {
+    setCustomRoutine(value);
+  }, []);
+
   const generatePDF = () => {
     const routineText = selectedRoutine
       .map((id) => routineOptions.find((opt) => opt.id === id)?.name)
