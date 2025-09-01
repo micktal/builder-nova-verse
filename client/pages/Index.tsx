@@ -812,18 +812,6 @@ const StressRegulationModule = () => {
 
     return (
       <div className="max-w-6xl mx-auto px-6 py-12 bg-gradient-to-br from-gray-50 to-blue-50 rounded-3xl my-12">
-        <div className="text-center mb-8">
-          <div className="mb-6">
-            <img
-              src="https://images.pexels.com/photos/6774962/pexels-photo-6774962.jpeg?auto=compress&cs=tinysrgb&w=800"
-              alt="Avion en papier symbolisant le développement et l'optimisation du potentiel"
-              className="mx-auto rounded-2xl shadow-lg w-96 h-56 object-cover"
-            />
-          </div>
-          <h2 className="text-3xl font-bold text-center text-gray-900">
-            Aperçu des Techniques d'Optimisation du Potentiel
-          </h2>
-        </div>
 
         <div className="flex justify-center gap-4 mb-8">
           {Object.entries(categories).map(([key, category]) => {
@@ -982,7 +970,7 @@ const StressRegulationModule = () => {
             />
           </div>
           <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            🎯 Les Techniques d'Optimisation du Potentiel (TOP)
+            Les Techniques d'Optimisation du Potentiel (TOP)
           </h2>
           <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
             Développées par l'armée française, les TOP sont un ensemble de techniques scientifiquement validées
@@ -1143,7 +1131,7 @@ const StressRegulationModule = () => {
         <Card className="mb-8 border-purple-200 bg-purple-50">
           <CardContent className="p-8">
             <h3 className="text-2xl font-bold text-purple-900 mb-6 text-center">
-              🔄 Protocole d'Application des TOP
+              Protocole d'Application des TOP
             </h3>
 
             <div className="grid lg:grid-cols-4 gap-6">
@@ -1190,50 +1178,17 @@ const StressRegulationModule = () => {
           </CardContent>
         </Card>
 
-        {/* Validation scientifique */}
-        <Card className="mb-8 border-orange-200 bg-orange-50">
-          <CardContent className="p-8">
-            <div className="flex items-start gap-6">
-              <div className="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
-                <TrendingUp className="w-8 h-8 text-white" />
-              </div>
-              <div>
-                <h3 className="text-2xl font-bold text-orange-900 mb-4">Base Scientifique et Efficacité</h3>
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <h4 className="font-semibold text-orange-800 mb-3">📊 Études et résultats</h4>
-                    <ul className="text-sm text-gray-700 space-y-2">
-                      <li>• <strong>Réduction du stress :</strong> -45% cortisol après 8 semaines</li>
-                      <li>• <strong>Performance cognitive :</strong> +30% en prise de décision</li>
-                      <li>• <strong>Bien-être :</strong> +60% satisfaction personnelle</li>
-                      <li>• <strong>Récupération :</strong> -50% temps de récupération post-stress</li>
-                    </ul>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-orange-800 mb-3">🧪 Mécanismes d'action</h4>
-                    <ul className="text-sm text-gray-700 space-y-2">
-                      <li>• <strong>Neuroplasticité :</strong> Renforcement des connexions neuronales</li>
-                      <li>• <strong>Régulation autonome :</strong> Équilibre sympathique/parasympathique</li>
-                      <li>• <strong>Neurochimie :</strong> Optimisation des neurotransmetteurs</li>
-                      <li>• <strong>Épigénétique :</strong> Expression génique favorable au stress</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
 
         {/* Applications pratiques */}
         <Card className="border-teal-200 bg-teal-50">
           <CardContent className="p-8">
             <h3 className="text-2xl font-bold text-teal-900 mb-6 text-center">
-              💼 Applications Pratiques des TOP
+              Applications Pratiques des TOP
             </h3>
 
             <div className="grid lg:grid-cols-3 gap-6">
               <div className="bg-white p-6 rounded-lg border border-teal-100">
-                <h4 className="font-semibold text-teal-800 mb-4">🏢 Environnement professionnel</h4>
+                <h4 className="font-semibold text-teal-800 mb-4">Environnement professionnel</h4>
                 <ul className="text-sm text-gray-700 space-y-2">
                   <li>• Préparation aux réunions importantes</li>
                   <li>• Gestion des deadlines serrées</li>
@@ -1244,7 +1199,7 @@ const StressRegulationModule = () => {
               </div>
 
               <div className="bg-white p-6 rounded-lg border border-teal-100">
-                <h4 className="font-semibold text-teal-800 mb-4">🏥 Situations d'urgence</h4>
+                <h4 className="font-semibold text-teal-800 mb-4">Situations d'urgence</h4>
                 <ul className="text-sm text-gray-700 space-y-2">
                   <li>• Personnel médical en situation critique</li>
                   <li>• Forces de l'ordre en intervention</li>
@@ -1255,7 +1210,7 @@ const StressRegulationModule = () => {
               </div>
 
               <div className="bg-white p-6 rounded-lg border border-teal-100">
-                <h4 className="font-semibold text-teal-800 mb-4">🏃 Performance sportive</h4>
+                <h4 className="font-semibold text-teal-800 mb-4">Performance sportive</h4>
                 <ul className="text-sm text-gray-700 space-y-2">
                   <li>• Préparation aux compétitions</li>
                   <li>• Gestion de la pression en match</li>
@@ -1267,7 +1222,7 @@ const StressRegulationModule = () => {
             </div>
 
             <div className="mt-8 p-6 bg-teal-100 rounded-lg">
-              <h4 className="font-semibold text-teal-900 mb-3">🎯 Points clés pour la mise en pratique</h4>
+              <h4 className="font-semibold text-teal-900 mb-3">Points clés pour la mise en pratique</h4>
               <div className="grid md:grid-cols-2 gap-4 text-sm text-teal-800">
                 <div>
                   <p>• <strong>Progressivité :</strong> Commencer par des techniques simples</p>
