@@ -863,9 +863,18 @@ const StressRegulationModule = () => {
 
   const ObjectivesSection = () => (
     <div className="max-w-4xl mx-auto px-6 py-12">
-      <h2 className="text-3xl font-bold text-center text-gray-900 mb-8">
-        Objectifs d'apprentissage
-      </h2>
+      <div className="text-center mb-8">
+        <div className="mb-6">
+          <img
+            src="https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800"
+            alt="Équipe collaborant pour atteindre des objectifs d'apprentissage"
+            className="mx-auto rounded-2xl shadow-lg w-64 h-40 object-cover"
+          />
+        </div>
+        <h2 className="text-3xl font-bold text-center text-gray-900">
+          Objectifs d'apprentissage
+        </h2>
+      </div>
       <div className="grid md:grid-cols-2 gap-6">
         {[
           {
