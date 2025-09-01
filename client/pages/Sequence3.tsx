@@ -153,7 +153,7 @@ const Sequence3 = () => {
     },
   ];
 
-  const handleTaskDrop = (quadrantId: string) => {
+  const handleTaskDrop = useCallback((quadrantId: string) => {
     if (draggedTask) {
       setMatrixTasks((prev) => ({
         ...prev,
@@ -161,14 +161,14 @@ const Sequence3 = () => {
       }));
       setDraggedTask(null);
     }
-  };
+  }, [draggedTask]);
 
-  const handleReframingChoice = (scenarioId: string, isPositive: boolean) => {
+  const handleReframingChoice = useCallback((scenarioId: string, isPositive: boolean) => {
     setReframingChoices((prev) => ({
       ...prev,
       [scenarioId]: isPositive,
     }));
-  };
+  }, []);
 
   const handleTaskInput = useCallback((index: number, value: string) => {
     setEssentialTasks((prev) => {
