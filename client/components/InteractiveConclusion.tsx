@@ -338,7 +338,7 @@ const InteractiveConclusion = () => {
     },
     {
       id: "timeline",
-      title: "Transformation visualisée",
+      title: "Transformation visualis��e",
       description: "Impact des techniques compris",
       icon: TrendingUp,
     },
@@ -837,6 +837,83 @@ const InteractiveConclusion = () => {
               Votre transformation commence maintenant
             </span>
           </div>
+        </CardContent>
+      </Card>
+
+      {/* PDF Download Section */}
+      <Card className="bg-gradient-to-r from-emerald-50 to-teal-50 border-emerald-200">
+        <CardContent className="p-8 text-center">
+          <div className="mb-6">
+            <div className="w-20 h-20 bg-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4">
+              <BookOpen className="w-10 h-10 text-white" />
+            </div>
+            <h3 className="text-2xl font-bold text-emerald-800 mb-4">
+              📚 Emportez vos connaissances avec vous
+            </h3>
+            <p className="text-lg text-gray-700 mb-6 max-w-3xl mx-auto">
+              Téléchargez votre{" "}
+              <span className="font-bold text-emerald-700">
+                guide personnel de régulation du stress
+              </span>
+              . Un résumé complet avec tous les points clés, techniques et astuces pratiques pour une consultation hors ligne.
+            </p>
+          </div>
+
+          <div className="bg-white p-6 rounded-xl shadow-sm border border-emerald-200 max-w-2xl mx-auto mb-6">
+            <h4 className="font-bold text-gray-800 mb-4">📄 Ce que contient votre PDF :</h4>
+            <div className="grid md:grid-cols-2 gap-4 text-left">
+              <div className="space-y-2">
+                <div className="flex items-center gap-2">
+                  <CheckCircle className="w-4 h-4 text-emerald-500" />
+                  <span className="text-sm">Résumé des objectifs maîtrisés</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle className="w-4 h-4 text-emerald-500" />
+                  <span className="text-sm">Toutes les techniques TOP</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle className="w-4 h-4 text-emerald-500" />
+                  <span className="text-sm">Outils cognitifs pratiques</span>
+                </div>
+              </div>
+              <div className="space-y-2">
+                <div className="flex items-center gap-2">
+                  <CheckCircle className="w-4 h-4 text-emerald-500" />
+                  <span className="text-sm">Trucs et astuces quotidiens</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle className="w-4 h-4 text-emerald-500" />
+                  <span className="text-sm">Plan d'action personnalisé</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle className="w-4 h-4 text-emerald-500" />
+                  <span className="text-sm">Format professionnel</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <Button
+            onClick={generatePDF}
+            disabled={isGeneratingPdf}
+            className="bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-3 text-lg font-medium rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+          >
+            {isGeneratingPdf ? (
+              <>
+                <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+                Génération en cours...
+              </>
+            ) : (
+              <>
+                <Download className="w-5 h-5 mr-2" />
+                Télécharger mon guide PDF
+              </>
+            )}
+          </Button>
+
+          <p className="text-sm text-gray-600 mt-4">
+            💡 <span className="font-medium">Astuce :</span> Imprimez les pages techniques pour les avoir toujours à portée de main !
+          </p>
         </CardContent>
       </Card>
     </div>
