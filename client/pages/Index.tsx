@@ -10,6 +10,8 @@ import {
   Users,
   Lightbulb,
   FileText,
+  Zap,
+  TrendingUp,
 } from "lucide-react";
 import NeuroscienceBrain from "@/components/NeuroscienceBrain";
 import TransformationTimeline from "@/components/TransformationTimeline";
@@ -29,43 +31,51 @@ const StressRegulationModule = () => {
   const sequences = [
     {
       id: 1,
-      title: "Comprendre ses déclencheurs",
-      duration: "5 min",
+      title: "Comprendre stress & émotions",
+      duration: "7 min",
       icon: Brain,
-      description: "Identification des 4 catégories de déclencheurs de stress",
+      description: "Mécanismes du stress et émotions en situation complexe avec TOP",
       color: "calm",
     },
     {
       id: 2,
-      title: "Techniques physiologiques",
-      duration: "7 min",
+      title: "Techniques physiologiques TOP",
+      duration: "8 min",
       icon: Heart,
-      description: "Respiration et relaxation musculaire progressive",
+      description: "Techniques d'Optimisation du Potentiel pour la régulation physiologique",
       color: "nature",
     },
     {
       id: 3,
-      title: "Techniques cognitives",
-      duration: "8 min",
+      title: "Techniques cognitives avancées",
+      duration: "7 min",
       icon: Lightbulb,
-      description: "Matrice d'Eisenhower et reframing cognitif",
+      description: "Outils cognitifs TOP pour situations difficiles et reframing émotionnel",
       color: "serenity",
     },
     {
       id: 4,
-      title: "Communication assertive",
-      duration: "5 min",
-      icon: Users,
-      description: "Modèle DESC et gestion relationnelle",
-      color: "calm",
+      title: "Processus motivationnel",
+      duration: "6 min",
+      icon: TrendingUp,
+      description: "Comprendre et maîtriser la motivation en contexte stressant",
+      color: "nature",
     },
     {
       id: 5,
-      title: "Plan d'action personnel",
-      duration: "5 min",
-      icon: FileText,
-      description: "Routine anti-stress et tableau personnalisé",
-      color: "nature",
+      title: "Communication & assertivité",
+      duration: "6 min",
+      icon: Users,
+      description: "Gestion relationnelle et communication en situation complexe",
+      color: "calm",
+    },
+    {
+      id: 6,
+      title: "Préparation aux situations difficiles",
+      duration: "6 min",
+      icon: Zap,
+      description: "Plan d'action personnalisé et stratégies d'adaptation",
+      color: "serenity",
     },
   ];
 
@@ -76,7 +86,7 @@ const StressRegulationModule = () => {
 
   const completeSequence = (sequenceId: number) => {
     setCompletedSequences((prev) => [...prev, sequenceId]);
-    setProgress((completedSequences.length + 1) * 20);
+    setProgress(Math.round((completedSequences.length + 1) * (100 / 6)));
   };
 
   const ModuleHeader = () => (
