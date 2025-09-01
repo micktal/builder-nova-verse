@@ -1,10 +1,9 @@
-import React, { useState, useEffect, useMemo, useCallback, useRef, memo } from "react";
+import React, { useState, useEffect, useMemo, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
-import { Input } from "@/components/ui/input";
 import {
   Lightbulb,
   ArrowLeft,
@@ -138,7 +137,7 @@ const Sequence3 = () => {
       strategies: [
         "Lire l'email immédiatement pour voir si c'est urgent",
         "Désactiver les notifications pendant les périodes de focus",
-        "Répondre rapidement pour vider votre boîte mail",
+        "Répondre rapidement pour vider votre bo��te mail",
         "Laisser la notification ouverte pour ne pas oublier"
       ],
       correct: 1,
