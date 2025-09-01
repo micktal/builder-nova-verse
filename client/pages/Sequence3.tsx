@@ -643,7 +643,7 @@ const Sequence3 = () => {
             ([
               isMatrixComplete,
               reframingComplete,
-              tasksComplete,
+              interruptionComplete,
               quizComplete,
             ].filter(Boolean).length /
               4) *
