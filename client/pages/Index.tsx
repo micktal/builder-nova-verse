@@ -894,6 +894,159 @@ Oui, comprendre les émotions est vraiment la première étape pour en faire une
     );
   };
 
+  const StressVideoSection = () => {
+    const [showTranscript, setShowTranscript] = useState(false);
+
+    const videoUrl = "https://cdn.builder.io/o/assets%2Fd93d9a0ec7824aa1ac4d890a1f90a2ec%2Fcd23bbe0f34f4482a2bec68ce4145169?alt=media&token=42e3668c-a470-43da-8764-0984aabbb1c1&apiKey=d93d9a0ec7824aa1ac4d890a1f90a2ec";
+
+    const transcript = `Le stress est une réaction naturelle ; le comprendre nous aide à mieux gérer les situations difficiles.
+Lorsqu'il est déclenché, le cerveau alerte le corps en libérant de l'adrénaline et du cortisol pour nous préparer.
+Cela entraîne des battements cardiaques plus rapides et des changements dans la respiration pour nous préparer à agir.
+Le stress peut améliorer les performances à court terme, comme un athlète concentré sur le jeu.
+Mais trop de stress, comme un employé débordé, peut nous épuiser et nous gêner.
+Pour gérer le stress, nous pouvons utiliser des outils tels que la respiration profonde, les changements de perspective et la communication ouverte.
+Des habitudes positives comme l'exercice, le sommeil et une alimentation saine aident également à contrôler le stress.
+Dans les moments difficiles, l'application de ces outils nous aide à rester calmes et à réagir efficacement.
+En comprenant le stress et en utilisant nos outils, nous transformons les défis en opportunités de contrôle.`;
+
+    return (
+      <div className="max-w-6xl mx-auto px-6 py-16 bg-gradient-to-br from-orange-50 via-white to-red-50">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+            La mécanique du stress et ses outils de régulation
+          </h2>
+          <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+            Découvrez comment fonctionne le stress et maîtrisez les outils pour le transformer en force
+          </p>
+        </div>
+
+        <div className="max-w-4xl mx-auto">
+          {/* Video Player */}
+          <div className="bg-white rounded-2xl shadow-xl overflow-hidden mb-8">
+            <div className="aspect-video">
+              <video
+                src={videoUrl}
+                controls
+                className="w-full h-full object-cover"
+                poster="https://images.pexels.com/photos/8378747/pexels-photo-8378747.jpeg?auto=compress&cs=tinysrgb&w=800"
+              >
+                Votre navigateur ne supporte pas la lecture de vidéos.
+              </video>
+            </div>
+
+            {/* Video Controls and Accessibility */}
+            <div className="p-6">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="text-lg font-semibold text-gray-900">
+                  Comprendre et maîtriser le stress
+                </h3>
+                <Button
+                  onClick={() => setShowTranscript(!showTranscript)}
+                  variant="outline"
+                  size="sm"
+                  className="flex items-center gap-2"
+                >
+                  <FileText className="w-4 h-4" />
+                  {showTranscript ? "Masquer" : "Afficher"} la transcription
+                </Button>
+              </div>
+
+              {/* Transcript Section */}
+              {showTranscript && (
+                <div className="bg-gray-50 rounded-lg p-6 space-y-4 animate-fadeInUp">
+                  <h4 className="font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                    <FileText className="w-5 h-5" />
+                    Transcription pour l'accessibilité
+                  </h4>
+                  <div className="text-sm text-gray-700 leading-relaxed space-y-3">
+                    {transcript.split('\n').map((line, index) => (
+                      <p key={index} className="border-l-2 border-orange-200 pl-4">
+                        {line}
+                      </p>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Key Takeaways */}
+              <div className="mt-6 grid md:grid-cols-2 gap-6">
+                <div className="bg-orange-50 rounded-lg p-4">
+                  <h4 className="font-semibold text-orange-900 mb-2 flex items-center gap-2">
+                    <Zap className="w-5 h-5" />
+                    Mécanisme du stress
+                  </h4>
+                  <ul className="text-sm text-orange-800 space-y-1">
+                    <li>• Réaction naturelle de protection</li>
+                    <li>• Libération d'adrénaline et cortisol</li>
+                    <li>• Préparation à l'action</li>
+                    <li>• Performance à court terme</li>
+                  </ul>
+                </div>
+
+                <div className="bg-red-50 rounded-lg p-4">
+                  <h4 className="font-semibold text-red-900 mb-2 flex items-center gap-2">
+                    <Target className="w-5 h-5" />
+                    Outils de régulation
+                  </h4>
+                  <ul className="text-sm text-red-800 space-y-1">
+                    <li>• Respiration profonde</li>
+                    <li>• Changement de perspective</li>
+                    <li>• Communication ouverte</li>
+                    <li>• Habitudes saines (sport, sommeil)</li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* Stress Management Tips */}
+              <div className="mt-6 bg-gradient-to-r from-yellow-100 to-orange-100 rounded-lg p-4">
+                <h4 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
+                  <Lightbulb className="w-5 h-5 text-yellow-600" />
+                  Transformation du stress en opportunité
+                </h4>
+                <div className="grid md:grid-cols-2 gap-4 text-sm text-gray-700">
+                  <div>
+                    <p className="mb-2"><strong>✅ Stress positif :</strong></p>
+                    <ul className="space-y-1 text-xs">
+                      <li>• Améliore la concentration</li>
+                      <li>• Augmente les performances</li>
+                      <li>• Renforce la résilience</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <p className="mb-2"><strong>⚠️ Stress excessif :</strong></p>
+                    <ul className="space-y-1 text-xs">
+                      <li>• Épuisement et fatigue</li>
+                      <li>• Diminution des capacités</li>
+                      <li>• Impact sur la santé</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              {/* Call to Action */}
+              <div className="mt-6 text-center bg-gradient-to-r from-orange-100 to-red-100 rounded-lg p-4">
+                <p className="text-sm text-gray-700 mb-3">
+                  <strong>🎯 Prêt(e) à appliquer ces outils ?</strong> Explorez nos techniques pratiques pour maîtriser votre stress
+                </p>
+                <div className="flex gap-2 justify-center flex-wrap">
+                  <Button size="sm" variant="outline" className="text-xs">
+                    Techniques TOP
+                  </Button>
+                  <Button size="sm" variant="outline" className="text-xs">
+                    Quiz de stress
+                  </Button>
+                  <Button size="sm" variant="outline" className="text-xs">
+                    Exercices pratiques
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
   const TOPTechniquesPreview = () => {
     const [activeCategory, setActiveCategory] = useState<string>("physiologique");
 
