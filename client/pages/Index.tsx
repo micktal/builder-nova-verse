@@ -277,6 +277,13 @@ const StressRegulationModule = () => {
 
   const BreathingDemo = () => (
     <div className="bg-gradient-to-br from-calm-50 to-nature-50 rounded-2xl p-8 text-center">
+      <div className="mb-6">
+        <img
+          src="https://images.pexels.com/photos/4325466/pexels-photo-4325466.jpeg?auto=compress&cs=tinysrgb&w=600"
+          alt="Méditation et respiration guidée pour la relaxation"
+          className="mx-auto rounded-2xl shadow-lg w-48 h-32 object-cover"
+        />
+      </div>
       <h3 className="text-2xl font-bold text-gray-900 mb-4">
         Pratiquons la respiration guidée ensemble
       </h3>
