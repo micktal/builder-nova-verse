@@ -103,7 +103,7 @@ const Sequence3 = () => {
   const [reframingChoices, setReframingChoices] = useState<{
     [key: string]: boolean;
   }>({});
-  const [essentialTasks, setEssentialTasks] = useState<string[]>(["", "", ""]);
+  const [interruptionChoices, setInterruptionChoices] = useState<{ [key: string]: number }>({});
   const [quizAnswers, setQuizAnswers] = useState<{ [key: number]: number }>({});
 
   const tasks = [
@@ -241,16 +241,11 @@ const Sequence3 = () => {
     }));
   }, []);
 
-  const handleTaskInput = useCallback((index: number, value: string) => {
-    setEssentialTasks((prev) => {
-      // Only update if the value has actually changed
-      if (prev[index] === value) {
-        return prev;
-      }
-      const newTasks = [...prev];
-      newTasks[index] = value;
-      return newTasks;
-    });
+  const handleInterruptionChoice = useCallback((scenarioId: string, choiceIndex: number) => {
+    setInterruptionChoices((prev) => ({
+      ...prev,
+      [scenarioId]: choiceIndex,
+    }));
   }, []);
 
   const correctPlacements = useMemo(() => ({
@@ -296,9 +291,9 @@ const Sequence3 = () => {
     [reframingChoices]
   );
 
-  const tasksComplete = useMemo(
-    () => essentialTasks.filter((task) => task.trim().length > 0).length === 3,
-    [essentialTasks]
+  const interruptionComplete = useMemo(
+    () => Object.keys(interruptionChoices).length === interruptionScenarios.length,
+    [interruptionChoices]
   );
 
   const quizComplete = useMemo(
@@ -307,8 +302,8 @@ const Sequence3 = () => {
   );
 
   const isSequenceComplete = useMemo(
-    () => isMatrixComplete && reframingComplete && tasksComplete && quizComplete,
-    [isMatrixComplete, reframingComplete, tasksComplete, quizComplete]
+    () => isMatrixComplete && reframingComplete && interruptionComplete && quizComplete,
+    [isMatrixComplete, reframingComplete, interruptionComplete, quizComplete]
   );
 
   useEffect(() => {
