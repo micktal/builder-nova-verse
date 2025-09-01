@@ -719,7 +719,7 @@ const InteractiveConclusion = () => {
             <Button
               key={key}
               variant={currentView === key ? "default" : "ghost"}
-              onClick={() => setCurrentView(key as any)}
+              onClick={() => scrollToSection(key as any)}
               className="rounded-full mx-1"
             >
               <Icon className="w-4 h-4 mr-2" />
