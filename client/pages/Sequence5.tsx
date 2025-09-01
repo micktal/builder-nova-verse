@@ -470,12 +470,7 @@ Module "Réguler le stress" - Builder.io Learning
               </label>
               <Textarea
                 value={actionPlan.triggers}
-                onChange={(e) =>
-                  setActionPlan((prev) => ({
-                    ...prev,
-                    triggers: e.target.value,
-                  }))
-                }
+                onChange={handleTriggersChange}
                 placeholder="Ex: Réunions imprévues, surcharge d'emails, conflits interpersonnels..."
                 className="min-h-[100px]"
               />
@@ -487,12 +482,7 @@ Module "Réguler le stress" - Builder.io Learning
               </label>
               <Textarea
                 value={actionPlan.favoriteTechniques}
-                onChange={(e) =>
-                  setActionPlan((prev) => ({
-                    ...prev,
-                    favoriteTechniques: e.target.value,
-                  }))
-                }
+                onChange={handleTechniquesChange}
                 placeholder="Ex: Respiration 4-6, matrice d'Eisenhower, modèle DESC..."
                 className="min-h-[100px]"
               />
@@ -504,12 +494,7 @@ Module "Réguler le stress" - Builder.io Learning
               </label>
               <Input
                 value={actionPlan.applicationMoments}
-                onChange={(e) =>
-                  setActionPlan((prev) => ({
-                    ...prev,
-                    applicationMoments: e.target.value,
-                  }))
-                }
+                onChange={handleMomentsChange}
                 placeholder="Ex: Début de journée, avant réunions importantes, en fin de journée..."
               />
             </div>
@@ -520,12 +505,7 @@ Module "Réguler le stress" - Builder.io Learning
               </label>
               <Input
                 value={actionPlan.expectedResults}
-                onChange={(e) =>
-                  setActionPlan((prev) => ({
-                    ...prev,
-                    expectedResults: e.target.value,
-                  }))
-                }
+                onChange={handleResultsChange}
                 placeholder="Ex: Plus de sérénité, meilleure concentration, relations apaisées..."
               />
             </div>
