@@ -642,7 +642,7 @@ const Sequence3 = () => {
             Identifiez 3 tâches qui, une fois accomplies, vous donneront le
             sentiment d'avoir eu une journée productive :
           </p>
-          <div className="space-y-4">
+          <div className="space-y-4" style={{ scrollMarginTop: '0px', scrollBehavior: 'auto' }}>
             {[1, 2, 3].map((num, index) => (
               <div key={num} className="flex items-center gap-3">
                 <div className="w-8 h-8 bg-serenity-500 text-white rounded-full flex items-center justify-center font-semibold">
