@@ -178,24 +178,38 @@ const Sequence3 = () => {
     });
   }, []);
 
-  const getCorrectPlacements = useCallback(() => {
-    const correct = {
-      "urgent-important": [
-        "Répondre aux emails urgents",
-        "Appel client mécontent",
-      ],
-      "urgent-not-important": [],
-      "not-urgent-important": [
-        "Planifier la stratégie trimestrielle",
-        "Formation sur nouveau logiciel",
-      ],
-      "not-urgent-not-important": [
-        "Réorganiser le bureau",
-        "Lecture d'articles métier",
-      ],
+  const correctPlacements = useMemo(() => ({
+    "urgent-important": [
+      "Répondre aux emails urgents",
+      "Appel client mécontent",
+    ],
+    "urgent-not-important": [],
+    "not-urgent-important": [
+      "Planifier la stratégie trimestrielle",
+      "Formation sur nouveau logiciel",
+    ],
+    "not-urgent-not-important": [
+      "Réorganiser le bureau",
+      "Lecture d'articles métier",
+    ],
+  }), []);
+
+  const getTaskFeedback = useCallback((quadrantId: string, task: string) => {
+    const correctQuadrant = correctPlacements[quadrantId as keyof typeof correctPlacements];
+    const isCorrect = correctQuadrant.includes(task);
+
+    // Check if the task is placed in wrong quadrant
+    const correctQuadrantId = Object.entries(correctPlacements).find(([_, tasks]) =>
+      tasks.includes(task)
+    )?.[0];
+
+    return {
+      isCorrect,
+      correctQuadrantId,
+      shouldBeIn: correctQuadrantId !== quadrantId ?
+        matrixQuadrants.find(q => q.id === correctQuadrantId)?.title : null
     };
-    return correct;
-  }, []);
+  }, [correctPlacements]);
 
   const isMatrixComplete = useMemo(
     () => Object.values(matrixTasks).flat().length === tasks.length,
@@ -234,7 +248,7 @@ const Sequence3 = () => {
       <div className="bg-white rounded-2xl p-8 shadow-lg border border-serenity-200">
         <Lightbulb className="w-16 h-16 text-serenity-500 mx-auto mb-6" />
         <h1 className="text-4xl font-bold text-gray-900 mb-4">
-          Séquence 3: Techniques cognitives
+          S��quence 3: Techniques cognitives
         </h1>
         <p className="text-xl text-gray-600 mb-6 leading-relaxed">
           Apprenez à structurer votre pensée, prioriser efficacement et
