@@ -37,6 +37,198 @@ const InteractiveConclusion = () => {
   const conclusionRef = useRef<HTMLDivElement>(null);
   const [isGeneratingPdf, setIsGeneratingPdf] = useState(false);
 
+  const generatePDF = async () => {
+    setIsGeneratingPdf(true);
+    try {
+      const pdf = new jsPDF();
+      const pageWidth = pdf.internal.pageSize.getWidth();
+      const pageHeight = pdf.internal.pageSize.getHeight();
+      let yPosition = 30;
+
+      // Page de couverture
+      pdf.setFillColor(59, 130, 246); // blue-500
+      pdf.rect(0, 0, pageWidth, pageHeight, 'F');
+
+      pdf.setTextColor(255, 255, 255);
+      pdf.setFontSize(24);
+      pdf.setFont('helvetica', 'bold');
+      pdf.text('Module 2 - Réguler le Stress', pageWidth / 2, 80, { align: 'center' });
+
+      pdf.setFontSize(16);
+      pdf.setFont('helvetica', 'normal');
+      pdf.text('Résumé et Guide Pratique', pageWidth / 2, 100, { align: 'center' });
+
+      pdf.setFontSize(12);
+      pdf.text(new Date().toLocaleDateString('fr-FR'), pageWidth / 2, 120, { align: 'center' });
+
+      // Nouvelle page - Contenu
+      pdf.addPage();
+      pdf.setTextColor(0, 0, 0);
+      yPosition = 30;
+
+      // Titre principal
+      pdf.setFontSize(20);
+      pdf.setFont('helvetica', 'bold');
+      pdf.text('🎯 Objectifs d\'apprentissage maîtrisés', 20, yPosition);
+      yPosition += 20;
+
+      // Objectifs
+      pdf.setFontSize(12);
+      pdf.setFont('helvetica', 'normal');
+      const objectives = [
+        '✓ Identifier vos déclencheurs personnels de stress',
+        '✓ Appliquer des techniques physiologiques et cognitives',
+        '✓ Analyser l\'efficacité des stratégies selon les situations',
+        '✓ Créer votre plan d\'action personnel adapté'
+      ];
+
+      objectives.forEach(obj => {
+        pdf.text(obj, 20, yPosition);
+        yPosition += 10;
+      });
+
+      yPosition += 10;
+
+      // Techniques apprises
+      pdf.setFontSize(16);
+      pdf.setFont('helvetica', 'bold');
+      pdf.text('🧠 Techniques que vous maîtrisez maintenant', 20, yPosition);
+      yPosition += 15;
+
+      pdf.setFontSize(12);
+      pdf.setFont('helvetica', 'normal');
+
+      const techniques = [
+        'Techniques Physiologiques TOP:',
+        '  • Respiration 4-6 et 4-7-8',
+        '  • Relaxation progressive musculaire',
+        '  • Micro-pauses de récupération',
+        '',
+        'Outils Cognitifs:',
+        '  • Matrice d\'Eisenhower (urgent/important)',
+        '  • Techniques de reframing',
+        '  • Méthode des 3 tâches prioritaires',
+        '',
+        'Communication Assertive:',
+        '  • Modèle DESC (Décrire, Exprimer, Spécifier, Conséquences)',
+        '  • Gestion constructive des conflits',
+        '  • Affirmation respectueuse de ses besoins'
+      ];
+
+      techniques.forEach(technique => {
+        if (yPosition > 250) {
+          pdf.addPage();
+          yPosition = 30;
+        }
+        pdf.text(technique, 20, yPosition);
+        yPosition += 8;
+      });
+
+      // Nouvelle page - Trucs et astuces
+      pdf.addPage();
+      yPosition = 30;
+
+      pdf.setFontSize(16);
+      pdf.setFont('helvetica', 'bold');
+      pdf.text('💡 Trucs et Astuces Pratiques', 20, yPosition);
+      yPosition += 20;
+
+      pdf.setFontSize(12);
+      pdf.setFont('helvetica', 'normal');
+
+      const tips = [
+        '🌅 ROUTINE MATINALE (5 min)',
+        '  • 2 min de respiration 4-6',
+        '  • Définir 3 priorités de la journée',
+        '  • Visualiser une journée sereine',
+        '',
+        '⚡ GESTION DES PICS DE STRESS',
+        '  • STOP : arrêter ce que vous faites',
+        '  • 3 respirations profondes 4-7-8',
+        '  • Question : "Quelle est ma vraie priorité ?"',
+        '  • Action : choisir la technique appropriée',
+        '',
+        '🎯 PLANIFICATION EFFICACE',
+        '  • Matrice d\'Eisenhower chaque lundi',
+        '  • Micro-pauses toutes les 90 minutes',
+        '  • "Non" respectueux aux demandes non prioritaires',
+        '',
+        '💬 COMMUNICATION ASSERTIVE',
+        '  • "Je comprends... ET j\'ai besoin de..."',
+        '  • Reformuler avant de répondre',
+        '  • Proposer des alternatives constructives',
+        '',
+        '🔄 RÉCUPÉRATION',
+        '  • 10 min de marche après le déjeuner',
+        '  • Technique de relaxation progressive le soir',
+        '  • Bilan quotidien : 3 réussites + 1 amélioration'
+      ];
+
+      tips.forEach(tip => {
+        if (yPosition > 250) {
+          pdf.addPage();
+          yPosition = 30;
+        }
+        pdf.text(tip, 20, yPosition);
+        yPosition += 8;
+      });
+
+      // Nouvelle page - Plan d'action
+      pdf.addPage();
+      yPosition = 30;
+
+      pdf.setFontSize(16);
+      pdf.setFont('helvetica', 'bold');
+      pdf.text('📋 Votre Plan d\'Action Personnel', 20, yPosition);
+      yPosition += 20;
+
+      pdf.setFontSize(12);
+      pdf.setFont('helvetica', 'normal');
+
+      const actionPlan = [
+        'SEMAINE 1-2 : FONDATIONS',
+        '☐ Pratiquer la respiration 4-6 matin et soir',
+        '☐ Identifier mes 3 principaux déclencheurs',
+        '☐ Tester la matrice d\'Eisenhower',
+        '',
+        'SEMAINE 3-4 : APPROFONDISSEMENT',
+        '☐ Intégrer les micro-pauses dans ma routine',
+        '☐ Pratiquer le modèle DESC dans 1 situation',
+        '☐ Expérimenter la relaxation progressive',
+        '',
+        'MOIS 2 : MAÎTRISE',
+        '☐ Adapter les techniques à mes situations spécifiques',
+        '☐ Développer mes propres variantes',
+        '☐ Accompagner d\'autres dans leur démarche',
+        '',
+        'RAPPEL IMPORTANT :',
+        '"La régularité prime sur l\'intensité"',
+        '5 minutes par jour > 1 heure par semaine',
+        '',
+        'CONTACT EN CAS DE BESOIN :',
+        '• Revisiter ce module',
+        '��� Pratiquer avec un collègue',
+        '• Adapter selon vos contraintes'
+      ];
+
+      actionPlan.forEach(item => {
+        if (yPosition > 250) {
+          pdf.addPage();
+          yPosition = 30;
+        }
+        pdf.text(item, 20, yPosition);
+        yPosition += 8;
+      });
+
+      // Sauvegarde
+      pdf.save('Module-Stress-Regulation-Resume.pdf');
+    } catch (error) {
+      console.error('Erreur lors de la génération du PDF:', error);
+    } finally {
+      setIsGeneratingPdf(false);
+    }
+  };
+
   const scrollToSection = (view: "celebration" | "skills" | "roadmap" | "conclusion") => {
     setCurrentView(view);
 
