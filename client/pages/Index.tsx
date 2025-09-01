@@ -84,21 +84,20 @@ const StressRegulationModule = () => {
       <div className="absolute inset-0 bg-white/60"></div>
       <div className="relative max-w-4xl mx-auto text-center">
         <Badge className="mb-4 bg-calm-100 text-calm-700 hover:bg-calm-200">
-          Module 2 - Formation Gestion du Stress
+          Module 2 - Appréhender le Stress & ses émotions en situation complexe
         </Badge>
         <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
           <span style={{color: "rgb(144, 19, 254)"}}>
-            Module 2-Réguler le stress
+            Appréhender le Stress & ses émotions en situation complexe
           </span>
         </h1>
         <p className="text-xl md:text-2xl text-gray-700 mb-8 max-w-3xl mx-auto leading-relaxed">
-          Apprenez des techniques concrètes pour identifier vos déclencheurs,
-          maîtriser votre physiologie et développer votre assertivité.
+          Acquérez les connaissances pour comprendre vos émotions, maîtriser les Techniques d'Optimisation du Potentiel et vous préparer à affronter les situations difficiles.
         </p>
         <div className="flex flex-wrap justify-center gap-6 mb-8">
           <div className="flex items-center gap-2 text-gray-600">
             <Clock className="w-5 h-5 text-calm-500" />
-            <span className="font-medium">30 minutes</span>
+            <span className="font-medium">40 minutes</span>
           </div>
           <div className="flex items-center gap-2 text-gray-600">
             <Target className="w-5 h-5 text-nature-500" />
@@ -106,7 +105,7 @@ const StressRegulationModule = () => {
           </div>
           <div className="flex items-center gap-2 text-gray-600">
             <CheckCircle className="w-5 h-5 text-serenity-500" />
-            <span className="font-medium">5 séquences interactives</span>
+            <span className="font-medium">6 séquences interactives</span>
           </div>
         </div>
         <div className="max-w-md mx-auto mb-6">
