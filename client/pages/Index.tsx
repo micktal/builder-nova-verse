@@ -87,7 +87,9 @@ const StressRegulationModule = () => {
           Module 2 - Formation Gestion du Stress
         </Badge>
         <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-          Réguler le stress
+          <span style={{color: "rgb(144, 19, 254)"}}>
+            Module 2-Réguler le stress
+          </span>
         </h1>
         <p className="text-xl md:text-2xl text-gray-700 mb-8 max-w-3xl mx-auto leading-relaxed">
           Apprenez des techniques concrètes pour identifier vos déclencheurs,
