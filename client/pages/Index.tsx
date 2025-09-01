@@ -521,9 +521,18 @@ const StressRegulationModule = () => {
 
     return (
       <div className="max-w-6xl mx-auto px-6 py-12">
-        <h2 className="text-3xl font-bold text-center text-gray-900 mb-8">
-          🎭 Roue des émotions interactive
-        </h2>
+        <div className="text-center mb-8">
+          <div className="mb-6">
+            <img
+              src="https://images.pexels.com/photos/1051838/pexels-photo-1051838.jpeg?auto=compress&cs=tinysrgb&w=800"
+              alt="Silhouette méditative au coucher de soleil pour explorer les émotions"
+              className="mx-auto rounded-2xl shadow-lg w-64 h-40 object-cover"
+            />
+          </div>
+          <h2 className="text-3xl font-bold text-center text-gray-900">
+            🎭 Roue des émotions interactive
+          </h2>
+        </div>
 
         <div className="flex flex-col xl:flex-row items-start gap-8">
           {/* Roue des émotions */}
