@@ -188,6 +188,69 @@ const Sequence3 = () => {
     },
   ];
 
+  const interruptionScenarios = [
+    {
+      id: "phone-call",
+      situation: "Vous êtes en pleine concentration sur un projet important quand votre téléphone sonne (appel non-urgent).",
+      strategies: [
+        "Répondre immédiatement pour ne pas paraître impoli",
+        "Ignorer l'appel et rappeler plus tard",
+        "Décrocher, expliquer brièvement que vous êtes occupé et proposer de rappeler",
+        "Mettre le téléphone en mode silencieux"
+      ],
+      correct: 2,
+      explanation: "Décrocher brièvement permet de gérer l'interruption tout en préservant votre focus."
+    },
+    {
+      id: "email-notification",
+      situation: "Une notification d'email apparaît sur votre écran pendant que vous travaillez sur une tâche complexe.",
+      strategies: [
+        "Lire l'email immédiatement pour voir si c'est urgent",
+        "Désactiver les notifications pendant les périodes de focus",
+        "Répondre rapidement pour vider votre boîte mail",
+        "Laisser la notification ouverte pour ne pas oublier"
+      ],
+      correct: 1,
+      explanation: "Désactiver les notifications évite la tentation de vérifier constamment et préserve la concentration."
+    },
+    {
+      id: "colleague-help",
+      situation: "Un collègue vient vous demander de l'aide sur un problème qui pourrait attendre.",
+      strategies: [
+        "L'aider immédiatement pour maintenir de bonnes relations",
+        "Lui proposer un moment précis plus tard dans la journée",
+        "Dire que vous êtes trop occupé sans proposer d'alternative",
+        "L'aider tout en continuant votre travail actuel"
+      ],
+      correct: 1,
+      explanation: "Proposer un moment spécifique plus tard respecte vos priorités tout en aidant votre collègue."
+    },
+    {
+      id: "social-media",
+      situation: "Vous ressentez l'envie de vérifier vos réseaux sociaux pendant une tâche ennuyeuse.",
+      strategies: [
+        "Prendre une pause de 5 minutes sur les réseaux sociaux",
+        "Utiliser la technique Pomodoro : travailler 25 min puis pause",
+        "Changer de tâche pour quelque chose de plus intéressant",
+        "Fermer tous les onglets non-professionnels"
+      ],
+      correct: 1,
+      explanation: "La technique Pomodoro structure le travail et les pauses, réduisant l'envie de distraction."
+    },
+    {
+      id: "meeting-invitation",
+      situation: "Vous recevez une invitation à une réunion qui coïncide avec votre créneau de travail approfondi.",
+      strategies: [
+        "Accepter la réunion pour ne pas créer de conflit",
+        "Décliner sans explication",
+        "Proposer un autre créneau en expliquant vos contraintes",
+        "Accepter mais partir plus tôt si c'est ennuyeux"
+      ],
+      correct: 2,
+      explanation: "Proposer une alternative montre votre engagement tout en protégeant votre temps de focus."
+    }
+  ];
+
   const quizQuestions = [
     {
       question:
@@ -216,11 +279,16 @@ const Sequence3 = () => {
     },
     {
       question:
-        "Combien de tâches essentielles maximum devriez-vous définir par jour ?",
-      options: ["1", "3", "5", "10"],
+        "Quelle est la meilleure stratégie face à une interruption non-urgente ?",
+      options: [
+        "Traiter immédiatement toutes les interruptions",
+        "Évaluer l'urgence et proposer un moment adapté",
+        "Ignorer complètement les interruptions",
+        "Traiter les interruptions par ordre d'arrivée"
+      ],
       correct: 1,
       explanation:
-        "3 tâches essentielles permettent de rester focalisé sans se disperser.",
+        "Évaluer l'urgence permet de gérer les interruptions sans sacrifier ses priorités importantes.",
     },
   ];
 
