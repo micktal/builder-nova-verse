@@ -16,6 +16,7 @@ import {
   Zap,
   Grid3X3,
   MessageSquare,
+  Shield,
 } from "lucide-react";
 
 // Isolated input component to prevent scroll jumps
