@@ -845,60 +845,122 @@ const Sequence3 = () => {
         </CardContent>
       </Card>
 
-      {/* 3 Essential Tasks */}
+      {/* Interruption Management */}
       <Card className="mb-8">
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <Target className="w-5 h-5" />
-            Exercice 3: Définissez vos 3 tâches essentielles d'aujourd'hui
-            {tasksComplete && (
+            <Shield className="w-5 h-5" />
+            Exercice 3: Gestion des interruptions - Stratégies anti-distractions
+            {interruptionComplete && (
               <CheckCircle className="w-5 h-5 text-green-500" />
             )}
           </CardTitle>
         </CardHeader>
         <CardContent>
           <p className="text-gray-600 mb-4">
-            Identifiez 3 tâches qui, une fois accomplies, vous donneront le
-            sentiment d'avoir eu une journée productive :
+            Pour chaque situation d'interruption, choisissez la stratégie la plus efficace pour préserver votre concentration :
           </p>
-          <div
-            className="space-y-4 relative"
-            style={{
-              contain: 'layout',
-              willChange: 'auto'
-            }}
-          >
-            {[1, 2, 3].map((num, index) => (
-              <div
-                key={`task-${num}`}
-                className="flex items-center gap-3"
-                style={{ minHeight: '40px' }}
-              >
-                <div className="w-8 h-8 bg-serenity-500 text-white rounded-full flex items-center justify-center font-semibold shrink-0">
-                  {num}
-                </div>
-                <div className="flex-1">
-                  <StableTaskInput
-                    index={index}
-                    value={essentialTasks[index]}
-                    onChange={handleTaskInput}
-                    placeholder={`Tâche essentielle ${num}...`}
-                  />
+          <div className="space-y-6">
+            {interruptionScenarios.map((scenario, index) => (
+              <div key={scenario.id} className="border rounded-lg p-4 bg-gray-50">
+                <div className="flex items-start gap-3 mb-4">
+                  <div className="w-8 h-8 bg-purple-500 text-white rounded-full flex items-center justify-center font-semibold shrink-0">
+                    {index + 1}
+                  </div>
+                  <div className="flex-1">
+                    <h5 className="font-semibold text-gray-900 mb-2">Situation :</h5>
+                    <p className="text-gray-700 text-sm mb-4 bg-white p-3 rounded border">{scenario.situation}</p>
+
+                    <h6 className="font-medium text-gray-800 mb-3">Quelle stratégie choisissez-vous ?</h6>
+                    <div className="space-y-2">
+                      {scenario.strategies.map((strategy, strategyIndex) => (
+                        <button
+                          key={strategyIndex}
+                          onClick={() => handleInterruptionChoice(scenario.id, strategyIndex)}
+                          className={`w-full p-3 text-left rounded-lg border transition-colors text-sm ${
+                            interruptionChoices[scenario.id] === strategyIndex
+                              ? strategyIndex === scenario.correct
+                                ? "border-green-500 bg-green-50 text-green-700"
+                                : "border-red-500 bg-red-50 text-red-700"
+                              : "border-gray-200 hover:border-gray-300 bg-white"
+                          }`}
+                        >
+                          <span className="font-medium">{String.fromCharCode(65 + strategyIndex)}.</span> {strategy}
+                        </button>
+                      ))}
+                    </div>
+
+                    {interruptionChoices[scenario.id] !== undefined && (
+                      <div className={`mt-3 p-3 rounded border ${
+                        interruptionChoices[scenario.id] === scenario.correct
+                          ? "bg-green-50 border-green-200 text-green-700"
+                          : "bg-red-50 border-red-200 text-red-700"
+                      }`}>
+                        <p className="text-sm">
+                          {interruptionChoices[scenario.id] === scenario.correct
+                            ? "✓ Excellente stratégie !"
+                            : "✗ Stratégie à revoir."}{" "}
+                          {scenario.explanation}
+                        </p>
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
             ))}
           </div>
-          {tasksComplete && (
-            <div className="mt-4 p-4 bg-green-50 rounded-lg border border-green-200">
-              <div className="flex items-center gap-2 text-green-700">
-                <CheckCircle className="w-5 h-5" />
-                <span className="font-semibold">Excellent focus !</span>
-              </div>
-              <p className="text-green-600 text-sm mt-1">
-                Vous avez défini vos priorités. Commencez par la tâche la plus
-                difficile.
-              </p>
-            </div>
+
+          {interruptionComplete && (
+            (() => {
+              const correctAnswers = Object.entries(interruptionChoices).filter(([scenarioId, choice]) => {
+                const scenario = interruptionScenarios.find(s => s.id === scenarioId);
+                return scenario && choice === scenario.correct;
+              }).length;
+              const totalScenarios = interruptionScenarios.length;
+              const scorePercentage = Math.round((correctAnswers / totalScenarios) * 100);
+
+              return (
+                <div className={`mt-6 p-4 rounded-lg border ${
+                  scorePercentage >= 80
+                    ? 'bg-green-50 border-green-200'
+                    : scorePercentage >= 60
+                      ? 'bg-yellow-50 border-yellow-200'
+                      : 'bg-red-50 border-red-200'
+                }`}>
+                  <div className={`flex items-center gap-2 ${
+                    scorePercentage >= 80
+                      ? 'text-green-700'
+                      : scorePercentage >= 60
+                        ? 'text-yellow-700'
+                        : 'text-red-700'
+                  }`}>
+                    <Shield className="w-5 h-5" />
+                    <span className="font-semibold">
+                      Score : {correctAnswers}/{totalScenarios} ({scorePercentage}%)
+                    </span>
+                  </div>
+                  <p className={`text-sm mt-1 ${
+                    scorePercentage >= 80
+                      ? 'text-green-600'
+                      : scorePercentage >= 60
+                        ? 'text-yellow-600'
+                        : 'text-red-600'
+                  }`}>
+                    {scorePercentage >= 80
+                      ? "Parfait ! Vous maîtrisez bien les stratégies de gestion des interruptions."
+                      : scorePercentage >= 60
+                        ? "Bien ! Quelques stratégies à affiner pour optimiser votre gestion des interruptions."
+                        : "À améliorer. Revoir les explications pour mieux gérer les interruptions au quotidien."
+                    }
+                  </p>
+                  {scorePercentage < 100 && (
+                    <div className="mt-2 text-xs text-gray-600">
+                      💡 <strong>Conseil :</strong> La clé est d'évaluer l'urgence réelle et de proposer des alternatives qui préservent votre concentration.
+                    </div>
+                  )}
+                </div>
+              );
+            })()
           )}
         </CardContent>
       </Card>
