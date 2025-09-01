@@ -19,7 +19,10 @@ import {
   Sparkles,
   Rocket,
   Crown,
+  Download,
+  BookOpen,
 } from "lucide-react";
+import jsPDF from 'jspdf';
 
 const InteractiveConclusion = () => {
   const [currentView, setCurrentView] = useState<
@@ -32,6 +35,7 @@ const InteractiveConclusion = () => {
   const skillsRef = useRef<HTMLDivElement>(null);
   const roadmapRef = useRef<HTMLDivElement>(null);
   const conclusionRef = useRef<HTMLDivElement>(null);
+  const [isGeneratingPdf, setIsGeneratingPdf] = useState(false);
 
   const scrollToSection = (view: "celebration" | "skills" | "roadmap" | "conclusion") => {
     setCurrentView(view);
