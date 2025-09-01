@@ -294,6 +294,342 @@ const StressRegulationModule = () => {
     </div>
   );
 
+  const StressAssessmentQuiz = () => {
+    const [currentQuestion, setCurrentQuestion] = useState(0);
+    const [answers, setAnswers] = useState<number[]>([]);
+    const [showResult, setShowResult] = useState(false);
+
+    const questions = [
+      "Je me sens souvent débordé(e) par mes responsabilités",
+      "J'ai du mal à gérer mes émotions en situation de pression",
+      "Les conflits relationnels m'affectent beaucoup",
+      "Je ressens des tensions physiques (maux de tête, dos, etc.)",
+      "J'ai tendance à procrastiner face aux tâches difficiles",
+      "Je perds facilement mes moyens lors de présentations",
+      "Le changement m'angoisse et me déstabilise",
+      "J'ai du mal à dire non aux demandes supplémentaires"
+    ];
+
+    const handleAnswer = (score: number) => {
+      const newAnswers = [...answers, score];
+      setAnswers(newAnswers);
+
+      if (currentQuestion < questions.length - 1) {
+        setCurrentQuestion(currentQuestion + 1);
+      } else {
+        setShowResult(true);
+      }
+    };
+
+    const getTotalScore = () => answers.reduce((sum, score) => sum + score, 0);
+    const getStressLevel = () => {
+      const total = getTotalScore();
+      if (total <= 16) return { level: "Faible", color: "green", message: "Vous gérez bien votre stress !" };
+      if (total <= 24) return { level: "Modéré", color: "yellow", message: "Quelques ajustements seraient bénéfiques" };
+      return { level: "Élevé", color: "red", message: "Ce module va vous aider significativement" };
+    };
+
+    const resetQuiz = () => {
+      setCurrentQuestion(0);
+      setAnswers([]);
+      setShowResult(false);
+    };
+
+    return (
+      <div className="max-w-4xl mx-auto px-6 py-12">
+        <h2 className="text-3xl font-bold text-center text-gray-900 mb-8">
+          🎯 Évaluez votre niveau de stress
+        </h2>
+
+        <Card className="max-w-2xl mx-auto">
+          <CardContent className="p-6">
+            {!showResult ? (
+              <div className="space-y-6">
+                <div className="flex justify-between items-center mb-4">
+                  <span className="text-sm text-gray-500">Question {currentQuestion + 1}/{questions.length}</span>
+                  <Progress value={((currentQuestion + 1) / questions.length) * 100} className="w-32" />
+                </div>
+
+                <h3 className="text-lg font-semibold text-gray-900 mb-6">
+                  {questions[currentQuestion]}
+                </h3>
+
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                  {[
+                    { score: 1, label: "Jamais", color: "green" },
+                    { score: 2, label: "Parfois", color: "yellow" },
+                    { score: 3, label: "Souvent", color: "orange" },
+                    { score: 4, label: "Toujours", color: "red" }
+                  ].map((option) => (
+                    <Button
+                      key={option.score}
+                      onClick={() => handleAnswer(option.score)}
+                      variant="outline"
+                      className={`h-16 flex flex-col items-center justify-center border-2 hover:border-${option.color}-300 hover:bg-${option.color}-50`}
+                    >
+                      <span className="font-medium">{option.score}</span>
+                      <span className="text-xs">{option.label}</span>
+                    </Button>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <div className="text-center space-y-6">
+                <div className="w-20 h-20 mx-auto bg-gradient-to-br from-blue-400 to-purple-500 rounded-full flex items-center justify-center">
+                  <Target className="w-10 h-10 text-white" />
+                </div>
+
+                <div>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">Votre profil de stress</h3>
+                  <div className={`inline-block px-4 py-2 rounded-full bg-${getStressLevel().color}-100 text-${getStressLevel().color}-800 font-semibold`}>
+                    Niveau {getStressLevel().level} ({getTotalScore()}/32 points)
+                  </div>
+                  <p className="text-gray-600 mt-3">{getStressLevel().message}</p>
+                </div>
+
+                <div className="bg-gray-50 rounded-lg p-4">
+                  <h4 className="font-semibold text-gray-900 mb-2">🎯 Recommandations personnalisées :</h4>
+                  <div className="text-sm text-gray-700 space-y-1">
+                    {getTotalScore() > 24 && <p>• Priorisez les techniques physiologiques (séquence 2)</p>}
+                    {getTotalScore() > 20 && <p>• Travaillez sur la gestion émotionnelle (séquence 1)</p>}
+                    {getTotalScore() > 16 && <p>• Développez vos stratégies cognitives (séquence 3)</p>}
+                    <p>• Créez votre plan d'action personnalisé (séquence 6)</p>
+                  </div>
+                </div>
+
+                <Button onClick={resetQuiz} variant="outline" className="mr-3">
+                  Refaire le test
+                </Button>
+              </div>
+            )}
+          </CardContent>
+        </Card>
+      </div>
+    );
+  };
+
+  const EmotionWheelInteractive = () => {
+    const [selectedEmotion, setSelectedEmotion] = useState<string | null>(null);
+    const [hoveredEmotion, setHoveredEmotion] = useState<string | null>(null);
+
+    const emotions = [
+      { name: "Colère", color: "#ef4444", techniques: ["Respiration profonde", "Pause reflexive", "Exercice physique"] },
+      { name: "Peur", color: "#8b5cf6", techniques: ["Ancrage 5-4-3-2-1", "Visualisation positive", "Planification"] },
+      { name: "Tristesse", color: "#06b6d4", techniques: ["Expression créative", "Soutien social", "Auto-compassion"] },
+      { name: "Joie", color: "#eab308", techniques: ["Gratitude", "Partage", "Ancrage positif"] },
+      { name: "Stress", color: "#f97316", techniques: ["Cohérence cardiaque", "Priorisation", "Délégation"] },
+      { name: "Anxiété", color: "#84cc16", techniques: ["Mindfulness", "Reframing", "Action graduée"] }
+    ];
+
+    return (
+      <div className="max-w-4xl mx-auto px-6 py-12">
+        <h2 className="text-3xl font-bold text-center text-gray-900 mb-8">
+          🎭 Roue des émotions interactive
+        </h2>
+
+        <div className="flex flex-col lg:flex-row items-center gap-8">
+          <div className="flex-1">
+            <div className="relative w-80 h-80 mx-auto">
+              <svg viewBox="0 0 200 200" className="w-full h-full">
+                {emotions.map((emotion, index) => {
+                  const angle = (index * 360) / emotions.length;
+                  const radian = (angle * Math.PI) / 180;
+                  const x1 = 100 + 40 * Math.cos(radian);
+                  const y1 = 100 + 40 * Math.sin(radian);
+                  const x2 = 100 + 80 * Math.cos(radian);
+                  const y2 = 100 + 80 * Math.sin(radian);
+
+                  return (
+                    <g key={emotion.name}>
+                      <path
+                        d={`M 100 100 L ${x1} ${y1} A 40 40 0 0 1 ${100 + 40 * Math.cos((angle + 60) * Math.PI / 180)} ${100 + 40 * Math.sin((angle + 60) * Math.PI / 180)} Z`}
+                        fill={hoveredEmotion === emotion.name || selectedEmotion === emotion.name ? emotion.color : `${emotion.color}80`}
+                        stroke="white"
+                        strokeWidth="2"
+                        className="cursor-pointer transition-all duration-300 hover:scale-105"
+                        onMouseEnter={() => setHoveredEmotion(emotion.name)}
+                        onMouseLeave={() => setHoveredEmotion(null)}
+                        onClick={() => setSelectedEmotion(selectedEmotion === emotion.name ? null : emotion.name)}
+                      />
+                      <text
+                        x={x2}
+                        y={y2}
+                        textAnchor="middle"
+                        dominantBaseline="middle"
+                        className="text-xs font-medium fill-gray-800 pointer-events-none"
+                      >
+                        {emotion.name}
+                      </text>
+                    </g>
+                  );
+                })}
+                <circle cx="100" cy="100" r="35" fill="white" stroke="#e5e7eb" strokeWidth="2" />
+                <text x="100" y="100" textAnchor="middle" dominantBaseline="middle" className="text-sm font-semibold fill-gray-700">
+                  Émotions
+                </text>
+              </svg>
+            </div>
+          </div>
+
+          <div className="flex-1 space-y-4">
+            <h3 className="text-xl font-semibold text-gray-900">
+              {selectedEmotion ? `Gérer la ${selectedEmotion.toLowerCase()}` : "Cliquez sur une émotion"}
+            </h3>
+
+            {selectedEmotion && (
+              <div className="space-y-3">
+                <p className="text-gray-600">
+                  Techniques TOP recommandées pour gérer {selectedEmotion.toLowerCase()} :
+                </p>
+                <div className="space-y-2">
+                  {emotions.find(e => e.name === selectedEmotion)?.techniques.map((technique, idx) => (
+                    <div key={idx} className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                      <div className="w-2 h-2 rounded-full" style={{ backgroundColor: emotions.find(e => e.name === selectedEmotion)?.color }} />
+                      <span className="text-sm font-medium text-gray-900">{technique}</span>
+                    </div>
+                  ))}
+                </div>
+                <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
+                  <p className="text-sm text-blue-800">
+                    💡 Vous apprendrez ces techniques en détail dans les séquences du module !
+                  </p>
+                </div>
+              </div>
+            )}
+
+            {!selectedEmotion && (
+              <div className="text-gray-500 text-center py-8">
+                <Heart className="w-12 h-12 mx-auto mb-3 text-gray-300" />
+                <p>Explorez les différentes émotions et découvrez les techniques adaptées</p>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  const TOPTechniquesPreview = () => {
+    const [activeCategory, setActiveCategory] = useState<string>("physiologique");
+
+    const categories = {
+      physiologique: {
+        icon: Heart,
+        color: "nature",
+        title: "Techniques Physiologiques TOP",
+        description: "Régulation par le corps et la respiration",
+        techniques: [
+          { name: "Cohérence cardiaque", demo: "Respiration 5-5", difficulty: "Facile" },
+          { name: "Relaxation progressive", demo: "Tensions-détente", difficulty: "Moyen" },
+          { name: "Ancrage sensoriel", demo: "5-4-3-2-1", difficulty: "Facile" },
+          { name: "Respiration contrôlée", demo: "4-6-2", difficulty: "Facile" }
+        ]
+      },
+      cognitif: {
+        icon: Brain,
+        color: "calm",
+        title: "Techniques Cognitives TOP",
+        description: "Optimisation mentale et reframing",
+        techniques: [
+          { name: "Reframing positif", demo: "Recadrage situation", difficulty: "Moyen" },
+          { name: "Visualisation TOP", demo: "Imagerie mentale", difficulty: "Moyen" },
+          { name: "Auto-dialogue", demo: "Coaching interne", difficulty: "Facile" },
+          { name: "Matrice Eisenhower", demo: "Priorisation", difficulty: "Facile" }
+        ]
+      },
+      comportemental: {
+        icon: Users,
+        color: "serenity",
+        title: "Techniques Comportementales TOP",
+        description: "Action et communication efficace",
+        techniques: [
+          { name: "Communication assertive", demo: "Modèle DESC", difficulty: "Moyen" },
+          { name: "Gestion du temps", demo: "Planification TOP", difficulty: "Moyen" },
+          { name: "Résolution problème", demo: "Méthode 6 étapes", difficulty: "Avancé" },
+          { name: "Leadership positif", demo: "Influence bienveillante", difficulty: "Avancé" }
+        ]
+      }
+    };
+
+    return (
+      <div className="max-w-6xl mx-auto px-6 py-12 bg-gradient-to-br from-gray-50 to-blue-50 rounded-3xl my-12">
+        <h2 className="text-3xl font-bold text-center text-gray-900 mb-8">
+          🛠️ Aperçu des Techniques d'Optimisation du Potentiel
+        </h2>
+
+        <div className="flex justify-center gap-4 mb-8">
+          {Object.entries(categories).map(([key, category]) => {
+            const Icon = category.icon;
+            return (
+              <Button
+                key={key}
+                onClick={() => setActiveCategory(key)}
+                variant={activeCategory === key ? "default" : "outline"}
+                className={`flex items-center gap-2 ${
+                  activeCategory === key
+                    ? `bg-${category.color}-500 hover:bg-${category.color}-600 text-white`
+                    : `hover:bg-${category.color}-50 hover:border-${category.color}-300`
+                }`}
+              >
+                <Icon className="w-4 h-4" />
+                {key.charAt(0).toUpperCase() + key.slice(1)}
+              </Button>
+            );
+          })}
+        </div>
+
+        <div className="bg-white rounded-2xl p-6 shadow-lg">
+          <div className="text-center mb-6">
+            <h3 className="text-2xl font-bold text-gray-900 mb-2">
+              {categories[activeCategory as keyof typeof categories].title}
+            </h3>
+            <p className="text-gray-600">
+              {categories[activeCategory as keyof typeof categories].description}
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {categories[activeCategory as keyof typeof categories].techniques.map((technique, index) => (
+              <Card key={index} className="hover:shadow-md transition-shadow">
+                <CardContent className="p-4">
+                  <h4 className="font-semibold text-gray-900 mb-2">{technique.name}</h4>
+                  <p className="text-sm text-gray-600 mb-3">{technique.demo}</p>
+                  <div className="flex justify-between items-center">
+                    <Badge
+                      variant="outline"
+                      className={`text-xs ${
+                        technique.difficulty === "Facile" ? "border-green-300 text-green-600" :
+                        technique.difficulty === "Moyen" ? "border-yellow-300 text-yellow-600" :
+                        "border-red-300 text-red-600"
+                      }`}
+                    >
+                      {technique.difficulty}
+                    </Badge>
+                    <Button size="sm" variant="ghost" className="text-xs p-1 h-6">
+                      Essayer
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          <div className="mt-6 text-center">
+            <div className="bg-blue-50 rounded-lg p-4 mb-4">
+              <p className="text-sm text-blue-800">
+                💡 <strong>Les TOP</strong> sont des techniques validées scientifiquement pour optimiser vos performances
+                physiques, mentales et émotionnelles en situation de stress.
+              </p>
+            </div>
+            <Button className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white">
+              Découvrir toutes les techniques dans les séquences
+            </Button>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
   const ObjectivesSection = () => (
     <div className="max-w-4xl mx-auto px-6 py-12">
       <h2 className="text-3xl font-bold text-center text-gray-900 mb-8">
