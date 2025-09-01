@@ -106,7 +106,7 @@ const Sequence3 = () => {
       before: "J'ai trop de travail, je n'y arriverai jamais",
       after: "Je vais prioriser et traiter une tâche à la fois",
       explanation:
-        "Focus sur l'action constructive plutôt que sur l'��motion paralysante.",
+        "Focus sur l'action constructive plut��t que sur l'��motion paralysante.",
       isPositive: true,
     },
     {
@@ -1015,7 +1015,7 @@ const Sequence3 = () => {
               <ul className="text-left space-y-2 text-gray-600">
                 <li>• Matrice d'Eisenhower pour la priorisation</li>
                 <li>• Reframing cognitif pour changer de perspective</li>
-                <li>• Méthode des 3 tâches essentielles</li>
+                <li>• Stratégies de gestion des interruptions</li>
                 <li>• Évaluation et application des concepts</li>
               </ul>
             </div>
