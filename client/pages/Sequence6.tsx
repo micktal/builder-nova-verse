@@ -282,7 +282,7 @@ const Sequence6 = () => {
 
       <div className="bg-gradient-to-br from-green-50 to-blue-50 rounded-xl p-6 mb-6">
         <h3 className="text-lg font-semibold text-gray-900 mb-3">
-          🎯 Principe des TOP en situation difficile
+          Principe des TOP en situation difficile
         </h3>
         <p className="text-gray-700 leading-relaxed">
           Les TOP vous permettent d'optimiser vos ressources internes pour maintenir votre performance 
@@ -333,7 +333,7 @@ const Sequence6 = () => {
 
       <div className="bg-blue-50 rounded-lg p-4">
         <p className="text-sm text-blue-800">
-          💡 <strong>Conseil :</strong> Sélectionnez 2-3 techniques par cat��gorie pour créer votre boîte à outils personnelle.
+          💡 <strong>Conseil :</strong> Sélectionnez 2-3 techniques par catégorie pour créer votre boîte à outils personnelle.
           Techniques sélectionnées : {personalPlan.strategies.length}
         </p>
       </div>
@@ -387,17 +387,17 @@ const Sequence6 = () => {
             
             <div className="space-y-4">
               <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
-                <h4 className="font-semibold text-gray-900 mb-2">🎯 Situation :</h4>
+                <h4 className="font-semibold text-gray-900 mb-2">Situation :</h4>
                 <p className="text-gray-700">{simulationScenarios[simulationStep].situation}</p>
               </div>
               
               <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-                <h4 className="font-semibold text-gray-900 mb-2">😤 Émotion ressentie :</h4>
+                <h4 className="font-semibold text-gray-900 mb-2">Émotion ressentie :</h4>
                 <p className="text-gray-700">{simulationScenarios[simulationStep].emotion}</p>
               </div>
               
               <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-                <h4 className="font-semibold text-gray-900 mb-2">🛠️ Technique TOP recommandée :</h4>
+                <h4 className="font-semibold text-gray-900 mb-2">Technique TOP recommandée :</h4>
                 <p className="text-gray-700 font-medium">{simulationScenarios[simulationStep].topTechnique}</p>
               </div>
               
@@ -451,7 +451,7 @@ const Sequence6 = () => {
       <div className="space-y-4">
         <Card className="border-yellow-200">
           <CardHeader>
-            <CardTitle className="text-lg">🎯 Mes déclencheurs prioritaires</CardTitle>
+            <CardTitle className="text-lg">Mes déclencheurs prioritaires</CardTitle>
           </CardHeader>
           <CardContent>
             <Textarea
@@ -483,7 +483,7 @@ const Sequence6 = () => {
 
         <Card className="border-red-200">
           <CardHeader>
-            <CardTitle className="text-lg">🚨 Plan d'urgence</CardTitle>
+            <CardTitle className="text-lg">Plan d'urgence</CardTitle>
           </CardHeader>
           <CardContent>
             <Textarea
@@ -497,7 +497,7 @@ const Sequence6 = () => {
 
         <Card className="border-blue-200">
           <CardHeader>
-            <CardTitle className="text-lg">🤝 Réseau de soutien</CardTitle>
+            <CardTitle className="text-lg">Réseau de soutien</CardTitle>
           </CardHeader>
           <CardContent>
             <Input
@@ -577,7 +577,7 @@ const Sequence6 = () => {
       </div>
 
       <div className="bg-blue-50 rounded-lg p-4">
-        <h4 className="font-semibold text-blue-900 mb-2">🎯 Prochaines étapes :</h4>
+        <h4 className="font-semibold text-blue-900 mb-2">Prochaines étapes :</h4>
         <ul className="text-sm text-blue-800 space-y-1">
           <li>• Pratiquez vos techniques TOP quotidiennement</li>
           <li>• Testez votre plan dans des situations réelles</li>
