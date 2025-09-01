@@ -106,7 +106,7 @@ const Sequence3 = () => {
       before: "J'ai trop de travail, je n'y arriverai jamais",
       after: "Je vais prioriser et traiter une tâche à la fois",
       explanation:
-        "Focus sur l'action constructive plut��t que sur l'��motion paralysante.",
+        "Focus sur l'action constructive plutôt que sur l'émotion paralysante.",
       isPositive: true,
     },
     {
@@ -137,7 +137,7 @@ const Sequence3 = () => {
       strategies: [
         "Lire l'email immédiatement pour voir si c'est urgent",
         "Désactiver les notifications pendant les périodes de focus",
-        "Répondre rapidement pour vider votre bo��te mail",
+        "Répondre rapidement pour vider votre boîte mail",
         "Laisser la notification ouverte pour ne pas oublier"
       ],
       correct: 1,
