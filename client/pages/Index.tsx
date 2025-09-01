@@ -340,9 +340,18 @@ const StressRegulationModule = () => {
 
     return (
       <div className="max-w-4xl mx-auto px-6 py-12">
-        <h2 className="text-3xl font-bold text-center text-gray-900 mb-8">
-          🎯 Évaluez votre niveau de stress
-        </h2>
+        <div className="text-center mb-8">
+          <div className="mb-6">
+            <img
+              src="https://images.pexels.com/photos/6560281/pexels-photo-6560281.jpeg?auto=compress&cs=tinysrgb&w=800"
+              alt="Pierres d'équilibre zen pour évaluer et gérer le stress"
+              className="mx-auto rounded-2xl shadow-lg w-64 h-40 object-cover"
+            />
+          </div>
+          <h2 className="text-3xl font-bold text-center text-gray-900">
+            🎯 Évaluez votre niveau de stress
+          </h2>
+        </div>
 
         <Card className="max-w-2xl mx-auto">
           <CardContent className="p-6">
