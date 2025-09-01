@@ -243,6 +243,10 @@ const Sequence3 = () => {
 
   const handleTaskInput = useCallback((index: number, value: string) => {
     setEssentialTasks((prev) => {
+      // Only update if the value has actually changed
+      if (prev[index] === value) {
+        return prev;
+      }
       const newTasks = [...prev];
       newTasks[index] = value;
       return newTasks;
