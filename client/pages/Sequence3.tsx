@@ -574,16 +574,61 @@ const Sequence3 = () => {
           </div>
 
           {isMatrixComplete && (
-            <div className="mt-4 p-4 bg-green-50 rounded-lg border border-green-200">
-              <div className="flex items-center gap-2 text-green-700">
-                <CheckCircle className="w-5 h-5" />
-                <span className="font-semibold">Excellent !</span>
-              </div>
-              <p className="text-green-600 text-sm mt-1">
-                Vous avez classé toutes les tâches. Cette méthode vous aide à
-                prioriser efficacement.
-              </p>
-            </div>
+            (() => {
+              const allTasks = Object.values(matrixTasks).flat();
+              const correctTasks = allTasks.filter(task => {
+                const correctQuadrant = Object.entries(correctPlacements).find(([_, tasks]) =>
+                  tasks.includes(task)
+                )?.[0];
+                const currentQuadrant = Object.entries(matrixTasks).find(([_, tasks]) =>
+                  tasks.includes(task)
+                )?.[0];
+                return correctQuadrant === currentQuadrant;
+              });
+              const scorePercentage = Math.round((correctTasks.length / allTasks.length) * 100);
+
+              return (
+                <div className={`mt-4 p-4 rounded-lg border ${
+                  scorePercentage >= 80
+                    ? 'bg-green-50 border-green-200'
+                    : scorePercentage >= 60
+                      ? 'bg-yellow-50 border-yellow-200'
+                      : 'bg-red-50 border-red-200'
+                }`}>
+                  <div className={`flex items-center gap-2 ${
+                    scorePercentage >= 80
+                      ? 'text-green-700'
+                      : scorePercentage >= 60
+                        ? 'text-yellow-700'
+                        : 'text-red-700'
+                  }`}>
+                    <CheckCircle className="w-5 h-5" />
+                    <span className="font-semibold">
+                      Score: {correctTasks.length}/{allTasks.length} ({scorePercentage}%)
+                    </span>
+                  </div>
+                  <p className={`text-sm mt-1 ${
+                    scorePercentage >= 80
+                      ? 'text-green-600'
+                      : scorePercentage >= 60
+                        ? 'text-yellow-600'
+                        : 'text-red-600'
+                  }`}>
+                    {scorePercentage >= 80
+                      ? "Excellent ! Vous maîtrisez bien la matrice d'Eisenhower."
+                      : scorePercentage >= 60
+                        ? "Bien ! Quelques ajustements nécessaires. Regardez les indications en rouge."
+                        : "À revoir. Consultez les corrections en rouge pour améliorer votre classement."
+                    }
+                  </p>
+                  {scorePercentage < 100 && (
+                    <div className="mt-2 text-xs text-gray-600">
+                      💡 <strong>Astuce :</strong> Les tâches en rouge montrent où elles devraient être placées.
+                    </div>
+                  )}
+                </div>
+              );
+            })()
           )}
         </CardContent>
       </Card>
