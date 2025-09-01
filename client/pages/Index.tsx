@@ -1240,6 +1240,8 @@ En comprenant le stress et en utilisant nos outils, nous transformons les défis
 
       <NeuroscienceBrain />
 
+      <StressVideoSection />
+
       {/* Section Mini-Cours TOP */}
       <div className="max-w-6xl mx-auto px-6 py-16 bg-gradient-to-br from-blue-50 via-white to-purple-50">
         <div className="text-center mb-12">
