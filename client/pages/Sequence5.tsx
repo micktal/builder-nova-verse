@@ -44,39 +44,33 @@ const Sequence5 = () => {
       id: "breathing",
       name: "2 min de respiration profonde",
       time: "2 min",
-      icon: "🫁",
     },
     {
       id: "priorities",
       name: "Définir 3 priorités du jour",
       time: "2 min",
-      icon: "🎯",
     },
     {
       id: "stretching",
       name: "Étirements au bureau",
       time: "1 min",
-      icon: "🤸",
     },
     { id: "screen-break", name: "Pause sans écran", time: "30s", icon: "📵" },
     {
       id: "gratitude",
       name: "Note de gratitude express",
       time: "1 min",
-      icon: "🙏",
     },
     {
       id: "emotional-check",
       name: "Check émotionnel",
       time: "30s",
-      icon: "💭",
     },
     { id: "posture", name: "Correction de posture", time: "30s", icon: "🚶" },
     {
       id: "hydration",
       name: "Pause hydratation mindful",
       time: "1 min",
-      icon: "💧",
     },
   ];
 
@@ -159,45 +153,33 @@ const Sequence5 = () => {
   };
 
   // Memoized handlers for action plan inputs to prevent typing issues
-  const handleTriggersChange = useCallback(
-    (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-      setActionPlan((prev) => ({
-        ...prev,
-        triggers: e.target.value,
-      }));
-    },
-    [],
-  );
+  const handleTriggersChange = useCallback((e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setActionPlan((prev) => ({
+      ...prev,
+      triggers: e.target.value,
+    }));
+  }, []);
 
-  const handleTechniquesChange = useCallback(
-    (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-      setActionPlan((prev) => ({
-        ...prev,
-        favoriteTechniques: e.target.value,
-      }));
-    },
-    [],
-  );
+  const handleTechniquesChange = useCallback((e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setActionPlan((prev) => ({
+      ...prev,
+      favoriteTechniques: e.target.value,
+    }));
+  }, []);
 
-  const handleMomentsChange = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      setActionPlan((prev) => ({
-        ...prev,
-        applicationMoments: e.target.value,
-      }));
-    },
-    [],
-  );
+  const handleMomentsChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    setActionPlan((prev) => ({
+      ...prev,
+      applicationMoments: e.target.value,
+    }));
+  }, []);
 
-  const handleResultsChange = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      setActionPlan((prev) => ({
-        ...prev,
-        expectedResults: e.target.value,
-      }));
-    },
-    [],
-  );
+  const handleResultsChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    setActionPlan((prev) => ({
+      ...prev,
+      expectedResults: e.target.value,
+    }));
+  }, []);
 
   const generatePDF = () => {
     const routineText = selectedRoutine
@@ -211,19 +193,19 @@ const Sequence5 = () => {
 PLAN D'ACTION PERSONNEL - MODULE GESTION DU STRESS
 =====================================================
 
-📊 ANALYSE PERSONNELLE
+ANALYSE PERSONNELLE
 Mes déclencheurs identifiés: ${actionPlan.triggers || "Non spécifié"}
 Techniques préférées: ${actionPlan.favoriteTechniques || "Non spécifié"}
 Moments d'application: ${actionPlan.applicationMoments || "Non spécifié"}
 Résultats attendus: ${actionPlan.expectedResults || "Non spécifié"}
 
-⏰ MA ROUTINE ANTI-STRESS QUOTIDIENNE (5 MIN)
+MA ROUTINE ANTI-STRESS QUOTIDIENNE (5 MIN)
 ${routineText || "Aucune routine définie"}
 
-📈 RÉSULTATS QUIZ FINAL
+RÉSULTATS QUIZ FINAL
 Score: ${Object.entries(quizAnswers).filter(([qIndex, answer]) => answer === finalQuiz[parseInt(qIndex)].correct).length}/${finalQuiz.length}
 
-🎯 PLAN D'ACTION
+PLAN D'ACTION
 □ Pratiquer ma routine quotidienne
 □ Identifier les déclencheurs en temps réel
 □ Appliquer les techniques selon la situation
@@ -373,7 +355,7 @@ Module "Réguler le stress" - Builder.io Learning
           </div>
           <div className="mt-6 p-4 bg-blue-50 rounded-lg">
             <h5 className="font-semibold text-blue-800 mb-2">
-              🎯 Compétences développées :
+              Compétences développées :
             </h5>
             <div className="grid md:grid-cols-2 gap-4 text-blue-700 text-sm">
               <ul className="space-y-1">
@@ -400,7 +382,6 @@ Module "Réguler le stress" - Builder.io Learning
           <div className="grid md:grid-cols-4 gap-6">
             <div className="text-center p-4 bg-red-50 rounded-lg">
               <div className="w-12 h-12 bg-red-500 text-white rounded-full flex items-center justify-center mx-auto mb-3">
-                🧠
               </div>
               <h5 className="font-semibold text-red-800 mb-2">Déclencheurs</h5>
               <p className="text-red-700 text-xs">
@@ -409,7 +390,6 @@ Module "Réguler le stress" - Builder.io Learning
             </div>
             <div className="text-center p-4 bg-blue-50 rounded-lg">
               <div className="w-12 h-12 bg-blue-500 text-white rounded-full flex items-center justify-center mx-auto mb-3">
-                🫁
               </div>
               <h5 className="font-semibold text-blue-800 mb-2">
                 Physiologique
@@ -420,7 +400,6 @@ Module "Réguler le stress" - Builder.io Learning
             </div>
             <div className="text-center p-4 bg-green-50 rounded-lg">
               <div className="w-12 h-12 bg-green-500 text-white rounded-full flex items-center justify-center mx-auto mb-3">
-                🎯
               </div>
               <h5 className="font-semibold text-green-800 mb-2">Cognitif</h5>
               <p className="text-green-700 text-xs">
@@ -429,7 +408,6 @@ Module "Réguler le stress" - Builder.io Learning
             </div>
             <div className="text-center p-4 bg-purple-50 rounded-lg">
               <div className="w-12 h-12 bg-purple-500 text-white rounded-full flex items-center justify-center mx-auto mb-3">
-                💬
               </div>
               <h5 className="font-semibold text-purple-800 mb-2">
                 Relationnel
@@ -758,16 +736,16 @@ Module "Réguler le stress" - Builder.io Learning
                 <li>
                   🏆 Score final: {getQuizScore()}/{finalQuiz.length}
                 </li>
-                <li>⏱️ Routine: {getTotalRoutineTime()} min/jour</li>
-                <li>📋 Plan d'action téléchargé</li>
-                <li>🎯 Prêt(e) pour l'application</li>
+                <li>Routine: {getTotalRoutineTime()} min/jour</li>
+                <li>Plan d'action téléchargé</li>
+                <li>Prêt(e) pour l'application</li>
               </ul>
             </div>
           </div>
 
           <div className="bg-yellow-50 p-6 rounded-lg border border-yellow-200 mb-6">
             <h4 className="font-bold text-yellow-800 mb-2">
-              🚀 Prochaines étapes recommandées :
+              Prochaines étapes recommandées :
             </h4>
             <ul className="text-yellow-700 text-sm space-y-1">
               <li>• Pratiquez votre routine quotidienne pendant 21 jours</li>
