@@ -356,7 +356,7 @@ const StressRegulationModule = () => {
             />
           </div>
           <h2 className="text-3xl font-bold text-center text-gray-900">
-            🎯 Évaluez votre niveau de stress
+            Évaluez votre niveau de stress
           </h2>
         </div>
 
@@ -474,7 +474,7 @@ const StressRegulationModule = () => {
         intensity: "Élevée"
       },
       {
-        name: "Anxiét��",
+        name: "Anxiété",
         color: "#84cc16",
         icon: "😟",
         description: "Inquiétude anticipatoire face à l'avenir",
@@ -537,7 +537,7 @@ const StressRegulationModule = () => {
             />
           </div>
           <h2 className="text-3xl font-bold text-center text-gray-900">
-            🎭 Roue des émotions interactive
+            Roue des émotions interactive
           </h2>
         </div>
 
