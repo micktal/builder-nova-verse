@@ -224,7 +224,8 @@ const Sequence3 = () => {
 
   useEffect(() => {
     if (isSequenceComplete && currentStep === "practice") {
-      setTimeout(() => setCurrentStep("completion"), 1000);
+      const timer = setTimeout(() => setCurrentStep("completion"), 1000);
+      return () => clearTimeout(timer);
     }
   }, [isSequenceComplete, currentStep]);
 
