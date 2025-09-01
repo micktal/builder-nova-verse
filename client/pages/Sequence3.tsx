@@ -536,46 +536,68 @@ const Sequence3 = () => {
         </CardContent>
       </Card>
 
-      {/* Méthode des 3 tâches */}
+      {/* Gestion des interruptions */}
       <Card className="mb-8">
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <Target className="w-6 h-6 text-serenity-500" />
-            La Méthode des 3 Tâches Essentielles
+            <Shield className="w-6 h-6 text-serenity-500" />
+            La Gestion des Interruptions
           </CardTitle>
         </CardHeader>
         <CardContent>
           <p className="text-gray-600 mb-4">
-            Chaque matin, identifiez 3 tâches qui auront le plus d'impact sur
-            vos objectifs. Cette limitation force la priorisation et évite la
-            dispersion.
+            Les interruptions sont l'ennemi numéro un de la productivité. Apprendre à les gérer efficacement
+            permet de maintenir sa concentration et réduire le stress lié aux distractions constantes.
           </p>
+          <div className="bg-serenity-50 p-6 rounded-lg mb-6">
+            <h5 className="font-semibold text-serenity-800 mb-3">
+              Stratégies principales :
+            </h5>
+            <div className="grid md:grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <h6 className="font-medium text-serenity-700">🔍 Évaluation</h6>
+                <p className="text-sm text-serenity-600">Distinguer l'urgent du vraiment important</p>
+              </div>
+              <div className="space-y-2">
+                <h6 className="font-medium text-serenity-700">⏰ Temporisation</h6>
+                <p className="text-sm text-serenity-600">Proposer un moment adapté plus tard</p>
+              </div>
+              <div className="space-y-2">
+                <h6 className="font-medium text-serenity-700">🛡️ Protection</h6>
+                <p className="text-sm text-serenity-600">Créer des créneaux de travail protégé</p>
+              </div>
+              <div className="space-y-2">
+                <h6 className="font-medium text-serenity-700">💬 Communication</h6>
+                <p className="text-sm text-serenity-600">Expliquer clairement ses contraintes</p>
+              </div>
+            </div>
+          </div>
           <div className="grid md:grid-cols-3 gap-4">
-            <div className="bg-green-50 p-4 rounded-lg text-center">
-              <Target className="w-8 h-8 text-green-600 mx-auto mb-2" />
-              <h5 className="font-semibold text-green-800 mb-1">
-                Impact maximum
+            <div className="bg-orange-50 p-4 rounded-lg text-center">
+              <Shield className="w-8 h-8 text-orange-600 mx-auto mb-2" />
+              <h5 className="font-semibold text-orange-800 mb-1">
+                Prévention
               </h5>
-              <p className="text-green-700 text-sm">
-                Choisissez les tâches les plus importantes
+              <p className="text-orange-700 text-sm">
+                Anticiper et éviter les distractions
               </p>
             </div>
             <div className="bg-blue-50 p-4 rounded-lg text-center">
               <Zap className="w-8 h-8 text-blue-600 mx-auto mb-2" />
               <h5 className="font-semibold text-blue-800 mb-1">
-                Énergie optimale
+                Réaction rapide
               </h5>
               <p className="text-blue-700 text-sm">
-                Commencez quand vous êtes au top
+                Gérer l'interruption en quelques secondes
               </p>
             </div>
-            <div className="bg-purple-50 p-4 rounded-lg text-center">
-              <CheckCircle className="w-8 h-8 text-purple-600 mx-auto mb-2" />
-              <h5 className="font-semibold text-purple-800 mb-1">
-                Satisfaction garantie
+            <div className="bg-green-50 p-4 rounded-lg text-center">
+              <CheckCircle className="w-8 h-8 text-green-600 mx-auto mb-2" />
+              <h5 className="font-semibold text-green-800 mb-1">
+                Retour au focus
               </h5>
-              <p className="text-purple-700 text-sm">
-                Sentiment d'accomplissement
+              <p className="text-green-700 text-sm">
+                Reprendre rapidement sa concentration
               </p>
             </div>
           </div>
