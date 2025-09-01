@@ -42,7 +42,7 @@ const Sequence4 = () => {
       letter: "E",
       title: "Exprimer",
       description: "Vos émotions et sentiments personnels",
-      example: '"...je me sens frustré car cela retarde nos décisions..."',
+      example: '"...je me sens frustré car cela retarde nos d��cisions..."',
       color: "orange",
     },
     {
@@ -483,7 +483,7 @@ const Sequence4 = () => {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Play className="w-5 h-5" />
-            Sc��nario {currentScenario + 1}/{scenarios.length}:{" "}
+            Scénario {currentScenario + 1}/{scenarios.length}:{" "}
             {scenarios[currentScenario].title}
             {completedExercises.includes("scenarios") && (
               <CheckCircle className="w-5 h-5 text-green-500" />
