@@ -241,11 +241,11 @@ const InteractiveConclusion = () => {
           🎉 FÉLICITATIONS ! 🎉
         </h1>
         <p className="text-2xl text-gray-700 mb-2">
-          Vous avez terminé le module "Réguler le stress" !
+          Vous avez terminé le module "Appréhender le stress et ses émotions en situation complexe" !
         </p>
-        <p className="text-lg text-gray-600">
+        <h1 className="text-lg text-gray-600">
           Une transformation remarquable vous attend...
-        </p>
+        </h1>
       </div>
 
       {/* Stats Cards */}
