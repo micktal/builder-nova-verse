@@ -248,7 +248,7 @@ const Sequence3 = () => {
       <div className="bg-white rounded-2xl p-8 shadow-lg border border-serenity-200">
         <Lightbulb className="w-16 h-16 text-serenity-500 mx-auto mb-6" />
         <h1 className="text-4xl font-bold text-gray-900 mb-4">
-          S��quence 3: Techniques cognitives
+          Séquence 3: Techniques cognitives
         </h1>
         <p className="text-xl text-gray-600 mb-6 leading-relaxed">
           Apprenez à structurer votre pensée, prioriser efficacement et
@@ -539,14 +539,35 @@ const Sequence3 = () => {
                   {quadrant.subtitle}
                 </p>
                 <div className="space-y-2">
-                  {matrixTasks[quadrant.id].map((task, index) => (
-                    <div
-                      key={index}
-                      className={`p-2 bg-white rounded text-sm shadow-sm border border-${quadrant.color}-200`}
-                    >
-                      {task}
-                    </div>
-                  ))}
+                  {matrixTasks[quadrant.id].map((task, index) => {
+                    const feedback = getTaskFeedback(quadrant.id, task);
+                    return (
+                      <div
+                        key={index}
+                        className={`p-2 rounded text-sm shadow-sm border-2 transition-all duration-300 ${
+                          feedback.isCorrect
+                            ? `bg-green-50 border-green-300 text-green-800`
+                            : `bg-red-50 border-red-300 text-red-800`
+                        }`}
+                      >
+                        <div className="flex items-center justify-between">
+                          <span className="flex-1">{task}</span>
+                          {feedback.isCorrect ? (
+                            <CheckCircle className="w-4 h-4 text-green-600 ml-2" />
+                          ) : (
+                            <div className="ml-2">
+                              <span className="text-red-600 text-xs">✗</span>
+                            </div>
+                          )}
+                        </div>
+                        {!feedback.isCorrect && feedback.shouldBeIn && (
+                          <div className="text-xs text-red-600 mt-1">
+                            Devrait être dans: <strong>{feedback.shouldBeIn}</strong>
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             ))}
