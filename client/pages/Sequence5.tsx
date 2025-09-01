@@ -522,7 +522,7 @@ Module "Réguler le stress" - Builder.io Learning
               <label className="block font-semibold mb-2 text-gray-900">
                 Mes principaux déclencheurs de stress :
               </label>
-              <Textarea
+              <StableTextarea
                 value={actionPlan.triggers}
                 onChange={handleTriggersChange}
                 placeholder="Ex: Réunions imprévues, surcharge d'emails, conflits interpersonnels..."
@@ -534,7 +534,7 @@ Module "Réguler le stress" - Builder.io Learning
               <label className="block font-semibold mb-2 text-gray-900">
                 Mes techniques préférées :
               </label>
-              <Textarea
+              <StableTextarea
                 value={actionPlan.favoriteTechniques}
                 onChange={handleTechniquesChange}
                 placeholder="Ex: Respiration 4-6, matrice d'Eisenhower, modèle DESC..."
@@ -546,7 +546,7 @@ Module "Réguler le stress" - Builder.io Learning
               <label className="block font-semibold mb-2 text-gray-900">
                 Moments d'application idéaux :
               </label>
-              <Input
+              <StableInput
                 value={actionPlan.applicationMoments}
                 onChange={handleMomentsChange}
                 placeholder="Ex: Début de journée, avant réunions importantes, en fin de journée..."
@@ -557,7 +557,7 @@ Module "Réguler le stress" - Builder.io Learning
               <label className="block font-semibold mb-2 text-gray-900">
                 Résultats attendus :
               </label>
-              <Input
+              <StableInput
                 value={actionPlan.expectedResults}
                 onChange={handleResultsChange}
                 placeholder="Ex: Plus de sérénité, meilleure concentration, relations apaisées..."
