@@ -782,7 +782,7 @@ const StressRegulationModule = () => {
     return (
       <div className="max-w-6xl mx-auto px-6 py-12 bg-gradient-to-br from-gray-50 to-blue-50 rounded-3xl my-12">
         <h2 className="text-3xl font-bold text-center text-gray-900 mb-8">
-          🛠️ Aperçu des Techniques d'Optimisation du Potentiel
+          Aperçu des Techniques d'Optimisation du Potentiel
         </h2>
 
         <div className="flex justify-center gap-4 mb-8">
@@ -849,9 +849,6 @@ const StressRegulationModule = () => {
                 physiques, mentales et émotionnelles en situation de stress.
               </p>
             </div>
-            <Button className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white">
-              Découvrir toutes les techniques dans les séquences
-            </Button>
           </div>
         </div>
       </div>
