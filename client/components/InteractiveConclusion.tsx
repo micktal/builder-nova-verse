@@ -731,10 +731,26 @@ const InteractiveConclusion = () => {
 
       {/* Content Views */}
       <div className="min-h-[600px]">
-        {currentView === "celebration" && <CelebrationView />}
-        {currentView === "skills" && <SkillsView />}
-        {currentView === "roadmap" && <RoadmapView />}
-        {currentView === "conclusion" && <ConclusionView />}
+        {currentView === "celebration" && (
+          <div ref={celebrationRef} id="celebration">
+            <CelebrationView />
+          </div>
+        )}
+        {currentView === "skills" && (
+          <div ref={skillsRef} id="competence">
+            <SkillsView />
+          </div>
+        )}
+        {currentView === "roadmap" && (
+          <div ref={roadmapRef} id="roadmap">
+            <RoadmapView />
+          </div>
+        )}
+        {currentView === "conclusion" && (
+          <div ref={conclusionRef} id="synthese">
+            <ConclusionView />
+          </div>
+        )}
       </div>
 
       <style jsx>{`
