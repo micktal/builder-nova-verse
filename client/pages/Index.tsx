@@ -971,23 +971,6 @@ const StressRegulationModule = () => {
 
       <NeuroscienceBrain />
 
-      <TOPTechniquesPreview />
-
-      <div
-        className="max-w-6xl mx-auto px-6 py-12"
-        data-scroll-target="techniques"
-      >
-        <div className="grid lg:grid-cols-3 gap-8 mb-12">
-          {sequences.map((sequence, index) => (
-            <SequenceCard key={sequence.id} sequence={sequence} index={index} />
-          ))}
-        </div>
-
-        <div className="mb-12">
-          <BreathingDemo />
-        </div>
-      </div>
-
       {/* Section Mini-Cours TOP */}
       <div className="max-w-6xl mx-auto px-6 py-16 bg-gradient-to-br from-blue-50 via-white to-purple-50">
         <div className="text-center mb-12">
@@ -1300,6 +1283,23 @@ const StressRegulationModule = () => {
             </div>
           </CardContent>
         </Card>
+      </div>
+
+      <TOPTechniquesPreview />
+
+      <div
+        className="max-w-6xl mx-auto px-6 py-12"
+        data-scroll-target="techniques"
+      >
+        <div className="grid lg:grid-cols-3 gap-8 mb-12">
+          {sequences.map((sequence, index) => (
+            <SequenceCard key={sequence.id} sequence={sequence} index={index} />
+          ))}
+        </div>
+
+        <div className="mb-12">
+          <BreathingDemo />
+        </div>
       </div>
 
       <TransformationTimeline />
