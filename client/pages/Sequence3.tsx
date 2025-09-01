@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo, useCallback, useRef } from "react";
+import React, { useState, useEffect, useMemo, useCallback, useRef, memo } from "react";
 import { Link } from "react-router-dom";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -17,6 +17,38 @@ import {
   Grid3X3,
   MessageSquare,
 } from "lucide-react";
+
+// Isolated input component to prevent scroll jumps
+const StableTaskInput = memo(({
+  index,
+  value,
+  onChange,
+  placeholder
+}: {
+  index: number;
+  value: string;
+  onChange: (index: number, value: string) => void;
+  placeholder: string;
+}) => {
+  const [localValue, setLocalValue] = useState(value);
+
+  useEffect(() => {
+    setLocalValue(value);
+  }, [value]);
+
+  return (
+    <Input
+      placeholder={placeholder}
+      value={localValue}
+      onChange={(e) => {
+        const newValue = e.target.value;
+        setLocalValue(newValue);
+        onChange(index, newValue);
+      }}
+      className="w-full"
+    />
+  );
+});
 
 const Sequence3 = () => {
   const [currentStep, setCurrentStep] = useState<
@@ -50,7 +82,7 @@ const Sequence3 = () => {
     {
       id: "urgent-important",
       title: "Urgent & Important",
-      subtitle: "À faire immédiatement",
+      subtitle: "À faire imm��diatement",
       color: "red",
       bgColor: "red-50",
       borderColor: "red-200",
