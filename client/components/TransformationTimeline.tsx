@@ -438,7 +438,6 @@ const TransformationTimeline = () => {
     >
       <div className="text-center mb-12">
         <div className="flex items-center justify-center gap-2 mb-4">
-          <Calendar className="w-8 h-8 text-blue-600" />
           <h2 className="text-4xl font-bold text-gray-900">
             Avant / Après : l'impact des techniques
           </h2>
