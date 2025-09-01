@@ -408,98 +408,329 @@ const StressRegulationModule = () => {
   const EmotionWheelInteractive = () => {
     const [selectedEmotion, setSelectedEmotion] = useState<string | null>(null);
     const [hoveredEmotion, setHoveredEmotion] = useState<string | null>(null);
+    const [isAnimating, setIsAnimating] = useState(false);
 
     const emotions = [
-      { name: "Colère", color: "#ef4444", techniques: ["Respiration profonde", "Pause reflexive", "Exercice physique"] },
-      { name: "Peur", color: "#8b5cf6", techniques: ["Ancrage 5-4-3-2-1", "Visualisation positive", "Planification"] },
-      { name: "Tristesse", color: "#06b6d4", techniques: ["Expression créative", "Soutien social", "Auto-compassion"] },
-      { name: "Joie", color: "#eab308", techniques: ["Gratitude", "Partage", "Ancrage positif"] },
-      { name: "Stress", color: "#f97316", techniques: ["Cohérence cardiaque", "Priorisation", "Délégation"] },
-      { name: "Anxiété", color: "#84cc16", techniques: ["Mindfulness", "Reframing", "Action graduée"] }
+      {
+        name: "Colère",
+        color: "#ef4444",
+        icon: "🔥",
+        description: "Émotion intense face à une frustration ou injustice",
+        techniques: ["Respiration profonde", "Pause reflexive", "Exercice physique"],
+        intensity: "Haute"
+      },
+      {
+        name: "Peur",
+        color: "#8b5cf6",
+        icon: "😰",
+        description: "Réaction d'alerte face au danger ou à l'inconnu",
+        techniques: ["Ancrage 5-4-3-2-1", "Visualisation positive", "Planification"],
+        intensity: "Variable"
+      },
+      {
+        name: "Tristesse",
+        color: "#06b6d4",
+        icon: "😢",
+        description: "Émotion liée à la perte ou à la déception",
+        techniques: ["Expression créative", "Soutien social", "Auto-compassion"],
+        intensity: "Modérée"
+      },
+      {
+        name: "Joie",
+        color: "#eab308",
+        icon: "😊",
+        description: "État de bien-être et de satisfaction",
+        techniques: ["Gratitude", "Partage", "Ancrage positif"],
+        intensity: "Positive"
+      },
+      {
+        name: "Stress",
+        color: "#f97316",
+        icon: "😤",
+        description: "Tension face aux exigences de l'environnement",
+        techniques: ["Cohérence cardiaque", "Priorisation", "Délégation"],
+        intensity: "Élevée"
+      },
+      {
+        name: "Anxiété",
+        color: "#84cc16",
+        icon: "😟",
+        description: "Inquiétude anticipatoire face à l'avenir",
+        techniques: ["Mindfulness", "Reframing", "Action graduée"],
+        intensity: "Variable"
+      }
     ];
 
+    const handleEmotionClick = (emotionName: string) => {
+      setIsAnimating(true);
+      setSelectedEmotion(selectedEmotion === emotionName ? null : emotionName);
+      setTimeout(() => setIsAnimating(false), 300);
+    };
+
+    const getSegmentPath = (index: number, radius: number) => {
+      const segmentAngle = 360 / emotions.length;
+      const startAngle = index * segmentAngle - 90; // Start from top
+      const endAngle = startAngle + segmentAngle;
+
+      const startRad = (startAngle * Math.PI) / 180;
+      const endRad = (endAngle * Math.PI) / 180;
+
+      const innerRadius = 40;
+      const outerRadius = radius;
+
+      const x1 = 100 + innerRadius * Math.cos(startRad);
+      const y1 = 100 + innerRadius * Math.sin(startRad);
+      const x2 = 100 + outerRadius * Math.cos(startRad);
+      const y2 = 100 + outerRadius * Math.sin(startRad);
+      const x3 = 100 + outerRadius * Math.cos(endRad);
+      const y3 = 100 + outerRadius * Math.sin(endRad);
+      const x4 = 100 + innerRadius * Math.cos(endRad);
+      const y4 = 100 + innerRadius * Math.sin(endRad);
+
+      const largeArc = segmentAngle > 180 ? 1 : 0;
+
+      return `M ${x1} ${y1} L ${x2} ${y2} A ${outerRadius} ${outerRadius} 0 ${largeArc} 1 ${x3} ${y3} L ${x4} ${y4} A ${innerRadius} ${innerRadius} 0 ${largeArc} 0 ${x1} ${y1} Z`;
+    };
+
+    const getLabelPosition = (index: number) => {
+      const segmentAngle = 360 / emotions.length;
+      const angle = index * segmentAngle + segmentAngle / 2 - 90;
+      const radian = (angle * Math.PI) / 180;
+      const radius = 65;
+
+      return {
+        x: 100 + radius * Math.cos(radian),
+        y: 100 + radius * Math.sin(radian)
+      };
+    };
+
     return (
-      <div className="max-w-4xl mx-auto px-6 py-12">
+      <div className="max-w-6xl mx-auto px-6 py-12">
         <h2 className="text-3xl font-bold text-center text-gray-900 mb-8">
           🎭 Roue des émotions interactive
         </h2>
 
-        <div className="flex flex-col lg:flex-row items-center gap-8">
-          <div className="flex-1">
-            <div className="relative w-80 h-80 mx-auto">
-              <svg viewBox="0 0 200 200" className="w-full h-full">
+        <div className="flex flex-col xl:flex-row items-start gap-8">
+          {/* Roue des émotions */}
+          <div className="flex-1 flex flex-col items-center">
+            <div className="relative w-96 h-96 mx-auto mb-6">
+              <svg viewBox="0 0 200 200" className="w-full h-full drop-shadow-lg">
+                {/* Segments des émotions */}
                 {emotions.map((emotion, index) => {
-                  const angle = (index * 360) / emotions.length;
-                  const radian = (angle * Math.PI) / 180;
-                  const x1 = 100 + 40 * Math.cos(radian);
-                  const y1 = 100 + 40 * Math.sin(radian);
-                  const x2 = 100 + 80 * Math.cos(radian);
-                  const y2 = 100 + 80 * Math.sin(radian);
+                  const isSelected = selectedEmotion === emotion.name;
+                  const isHovered = hoveredEmotion === emotion.name;
+                  const labelPos = getLabelPosition(index);
 
                   return (
                     <g key={emotion.name}>
+                      {/* Segment principal */}
                       <path
-                        d={`M 100 100 L ${x1} ${y1} A 40 40 0 0 1 ${100 + 40 * Math.cos((angle + 60) * Math.PI / 180)} ${100 + 40 * Math.sin((angle + 60) * Math.PI / 180)} Z`}
-                        fill={hoveredEmotion === emotion.name || selectedEmotion === emotion.name ? emotion.color : `${emotion.color}80`}
+                        d={getSegmentPath(index, isSelected || isHovered ? 82 : 78)}
+                        fill={isSelected || isHovered ? emotion.color : `${emotion.color}CC`}
                         stroke="white"
-                        strokeWidth="2"
-                        className="cursor-pointer transition-all duration-300 hover:scale-105"
+                        strokeWidth="3"
+                        className={`cursor-pointer transition-all duration-300 ${
+                          isAnimating ? 'animate-pulse' : ''
+                        } hover:drop-shadow-xl`}
+                        style={{
+                          filter: isSelected || isHovered
+                            ? `drop-shadow(0 0 10px ${emotion.color}50)`
+                            : 'none',
+                          transform: isSelected || isHovered ? 'scale(1.02)' : 'scale(1)',
+                          transformOrigin: '100px 100px'
+                        }}
                         onMouseEnter={() => setHoveredEmotion(emotion.name)}
                         onMouseLeave={() => setHoveredEmotion(null)}
-                        onClick={() => setSelectedEmotion(selectedEmotion === emotion.name ? null : emotion.name)}
+                        onClick={() => handleEmotionClick(emotion.name)}
                       />
-                      <text
-                        x={x2}
-                        y={y2}
-                        textAnchor="middle"
-                        dominantBaseline="middle"
-                        className="text-xs font-medium fill-gray-800 pointer-events-none"
-                      >
-                        {emotion.name}
-                      </text>
+
+                      {/* Icône et texte */}
+                      <g className="pointer-events-none">
+                        <text
+                          x={labelPos.x}
+                          y={labelPos.y - 8}
+                          textAnchor="middle"
+                          dominantBaseline="middle"
+                          className="text-lg"
+                        >
+                          {emotion.icon}
+                        </text>
+                        <text
+                          x={labelPos.x}
+                          y={labelPos.y + 6}
+                          textAnchor="middle"
+                          dominantBaseline="middle"
+                          className={`text-xs font-bold transition-all duration-300 ${
+                            isSelected || isHovered ? 'fill-white' : 'fill-gray-800'
+                          }`}
+                        >
+                          {emotion.name}
+                        </text>
+                      </g>
+
+                      {/* Effet de pulse pour l'émotion sélectionnée */}
+                      {isSelected && (
+                        <circle
+                          cx="100"
+                          cy="100"
+                          r="85"
+                          fill="none"
+                          stroke={emotion.color}
+                          strokeWidth="2"
+                          strokeDasharray="5,5"
+                          className="animate-spin"
+                          style={{ animationDuration: '3s' }}
+                        />
+                      )}
                     </g>
                   );
                 })}
-                <circle cx="100" cy="100" r="35" fill="white" stroke="#e5e7eb" strokeWidth="2" />
-                <text x="100" y="100" textAnchor="middle" dominantBaseline="middle" className="text-sm font-semibold fill-gray-700">
+
+                {/* Centre de la roue */}
+                <circle cx="100" cy="100" r="35" fill="white" stroke="#e5e7eb" strokeWidth="3" />
+                <text x="100" y="95" textAnchor="middle" dominantBaseline="middle" className="text-sm font-bold fill-gray-700">
                   Émotions
+                </text>
+                <text x="100" y="105" textAnchor="middle" dominantBaseline="middle" className="text-xs fill-gray-500">
+                  Interactives
                 </text>
               </svg>
             </div>
+
+            {/* Instructions */}
+            <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl p-4 max-w-md text-center">
+              <p className="text-sm text-gray-700">
+                <span className="font-semibold">💡 Instructions :</span> Cliquez sur une émotion pour découvrir
+                les techniques TOP adaptées et des informations détaillées.
+              </p>
+            </div>
           </div>
 
-          <div className="flex-1 space-y-4">
-            <h3 className="text-xl font-semibold text-gray-900">
-              {selectedEmotion ? `Gérer la ${selectedEmotion.toLowerCase()}` : "Cliquez sur une émotion"}
-            </h3>
-
-            {selectedEmotion && (
-              <div className="space-y-3">
-                <p className="text-gray-600">
-                  Techniques TOP recommandées pour gérer {selectedEmotion.toLowerCase()} :
-                </p>
-                <div className="space-y-2">
-                  {emotions.find(e => e.name === selectedEmotion)?.techniques.map((technique, idx) => (
-                    <div key={idx} className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
-                      <div className="w-2 h-2 rounded-full" style={{ backgroundColor: emotions.find(e => e.name === selectedEmotion)?.color }} />
-                      <span className="text-sm font-medium text-gray-900">{technique}</span>
+          {/* Panneau d'informations */}
+          <div className="flex-1 space-y-6">
+            <div className="min-h-[400px]">
+              {selectedEmotion ? (
+                <div className="space-y-4 animate-fadeInUp">
+                  {/* En-tête de l'émotion */}
+                  <div className="flex items-center gap-4 p-6 rounded-xl border-2 transition-all duration-300"
+                       style={{
+                         borderColor: emotions.find(e => e.name === selectedEmotion)?.color,
+                         backgroundColor: `${emotions.find(e => e.name === selectedEmotion)?.color}10`
+                       }}>
+                    <div className="text-4xl">
+                      {emotions.find(e => e.name === selectedEmotion)?.icon}
                     </div>
-                  ))}
-                </div>
-                <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
-                  <p className="text-sm text-blue-800">
-                    💡 Vous apprendrez ces techniques en détail dans les séquences du module !
-                  </p>
-                </div>
-              </div>
-            )}
+                    <div>
+                      <h3 className="text-2xl font-bold text-gray-900">
+                        {selectedEmotion}
+                      </h3>
+                      <p className="text-gray-600">
+                        {emotions.find(e => e.name === selectedEmotion)?.description}
+                      </p>
+                      <Badge
+                        className="mt-2"
+                        style={{
+                          backgroundColor: emotions.find(e => e.name === selectedEmotion)?.color,
+                          color: 'white'
+                        }}
+                      >
+                        Intensité: {emotions.find(e => e.name === selectedEmotion)?.intensity}
+                      </Badge>
+                    </div>
+                  </div>
 
-            {!selectedEmotion && (
-              <div className="text-gray-500 text-center py-8">
-                <Heart className="w-12 h-12 mx-auto mb-3 text-gray-300" />
-                <p>Explorez les différentes émotions et découvrez les techniques adaptées</p>
-              </div>
-            )}
+                  {/* Techniques TOP */}
+                  <Card className="border-2" style={{ borderColor: `${emotions.find(e => e.name === selectedEmotion)?.color}40` }}>
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-2">
+                        <Zap className="w-5 h-5" style={{ color: emotions.find(e => e.name === selectedEmotion)?.color }} />
+                        Techniques TOP recommandées
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="space-y-3">
+                        {emotions.find(e => e.name === selectedEmotion)?.techniques.map((technique, idx) => (
+                          <div
+                            key={idx}
+                            className="flex items-center gap-3 p-4 bg-gray-50 hover:bg-gray-100 rounded-lg transition-colors cursor-pointer group"
+                          >
+                            <div
+                              className="w-3 h-3 rounded-full group-hover:scale-110 transition-transform"
+                              style={{ backgroundColor: emotions.find(e => e.name === selectedEmotion)?.color }}
+                            />
+                            <span className="font-medium text-gray-900 group-hover:text-gray-700">
+                              {technique}
+                            </span>
+                            <Button size="sm" variant="ghost" className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity">
+                              Essayer
+                            </Button>
+                          </div>
+                        ))}
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  {/* Conseils pratiques */}
+                  <div className="bg-gradient-to-r from-yellow-50 to-orange-50 border border-yellow-200 rounded-lg p-4">
+                    <h4 className="font-semibold text-gray-900 mb-2 flex items-center gap-2">
+                      💡 Conseil pratique
+                    </h4>
+                    <p className="text-sm text-gray-700">
+                      {selectedEmotion === "Colère" && "Prenez 3 respirations profondes avant de réagir. La colère diminue naturellement après 6 secondes."}
+                      {selectedEmotion === "Peur" && "Utilisez la technique 5-4-3-2-1 : nommez 5 choses que vous voyez, 4 que vous touchez, etc."}
+                      {selectedEmotion === "Tristesse" && "Accordez-vous le droit d'être triste. L'expression créative peut aider à traiter cette émotion."}
+                      {selectedEmotion === "Joie" && "Savourez ce moment ! Pratiquez la gratitude pour ancrer cette émotion positive."}
+                      {selectedEmotion === "Stress" && "Identifiez ce qui est sous votre contrôle. Priorisez vos actions et déléguez quand possible."}
+                      {selectedEmotion === "Anxiété" && "Concentrez-vous sur le moment présent. L'anxiété vient souvent d'anticipations négatives."}
+                    </p>
+                  </div>
+
+                  {/* Navigation vers les séquences */}
+                  <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                    <p className="text-sm text-blue-800 mb-3">
+                      🎯 <strong>Approfondissez vos connaissances :</strong>
+                    </p>
+                    <div className="flex gap-2 flex-wrap">
+                      <Button size="sm" variant="outline" className="text-xs">
+                        Séquence 1: Déclencheurs
+                      </Button>
+                      <Button size="sm" variant="outline" className="text-xs">
+                        Séquence 2: Techniques physio
+                      </Button>
+                      <Button size="sm" variant="outline" className="text-xs">
+                        Séquence 3: Techniques cognitives
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <div className="text-gray-500 text-center py-12 space-y-4">
+                  <div className="w-24 h-24 mx-auto bg-gradient-to-br from-gray-100 to-gray-200 rounded-full flex items-center justify-center">
+                    <Heart className="w-12 h-12 text-gray-400" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-gray-700">
+                    Cliquez sur une émotion
+                  </h3>
+                  <p className="text-gray-500 max-w-md mx-auto">
+                    Explorez les différentes émotions et découvrez les techniques TOP adaptées
+                    pour chaque situation émotionnelle.
+                  </p>
+                  <div className="flex justify-center gap-2 pt-4">
+                    {emotions.map((emotion, idx) => (
+                      <button
+                        key={idx}
+                        onClick={() => handleEmotionClick(emotion.name)}
+                        className="w-10 h-10 rounded-full border-2 border-gray-200 hover:border-gray-300
+                                 flex items-center justify-center transition-all duration-200 hover:scale-110"
+                        style={{ backgroundColor: `${emotion.color}20` }}
+                      >
+                        <span className="text-lg">{emotion.icon}</span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>
