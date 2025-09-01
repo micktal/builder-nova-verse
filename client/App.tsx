@@ -10,6 +10,7 @@ import Sequence2 from "./pages/Sequence2";
 import Sequence3 from "./pages/Sequence3";
 import Sequence4 from "./pages/Sequence4";
 import Sequence5 from "./pages/Sequence5";
+import Sequence6 from "./pages/Sequence6";
 
 const queryClient = new QueryClient();
 
@@ -27,6 +28,7 @@ const App = () => (
             <Route path="/sequence/3" element={<Sequence3 />} />
             <Route path="/sequence/4" element={<Sequence4 />} />
             <Route path="/sequence/5" element={<Sequence5 />} />
+            <Route path="/sequence/6" element={<Sequence6 />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
