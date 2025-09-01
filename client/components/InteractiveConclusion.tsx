@@ -334,21 +334,21 @@ const InteractiveConclusion = () => {
         className={`flex flex-wrap justify-center gap-4 transition-all duration-1000 delay-1500 ${animationPhase >= 4 ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`}
       >
         <Button
-          onClick={() => setCurrentView("skills")}
+          onClick={() => scrollToSection("skills")}
           className="bg-green-600 hover:bg-green-700 text-white"
         >
           <Star className="w-4 h-4 mr-2" />
           Mes compétences
         </Button>
         <Button
-          onClick={() => setCurrentView("roadmap")}
+          onClick={() => scrollToSection("roadmap")}
           className="bg-purple-600 hover:bg-purple-700 text-white"
         >
           <Rocket className="w-4 h-4 mr-2" />
           Ma roadmap
         </Button>
         <Button
-          onClick={() => setCurrentView("conclusion")}
+          onClick={() => scrollToSection("conclusion")}
           className="bg-blue-600 hover:bg-blue-700 text-white"
         >
           <FileText className="w-4 h-4 mr-2" />
