@@ -805,9 +805,18 @@ const StressRegulationModule = () => {
 
     return (
       <div className="max-w-6xl mx-auto px-6 py-12 bg-gradient-to-br from-gray-50 to-blue-50 rounded-3xl my-12">
-        <h2 className="text-3xl font-bold text-center text-gray-900 mb-8">
-          Aperçu des Techniques d'Optimisation du Potentiel
-        </h2>
+        <div className="text-center mb-8">
+          <div className="mb-6">
+            <img
+              src="https://images.pexels.com/photos/6774962/pexels-photo-6774962.jpeg?auto=compress&cs=tinysrgb&w=800"
+              alt="Avion en papier symbolisant le développement et l'optimisation du potentiel"
+              className="mx-auto rounded-2xl shadow-lg w-64 h-40 object-cover"
+            />
+          </div>
+          <h2 className="text-3xl font-bold text-center text-gray-900">
+            Aperçu des Techniques d'Optimisation du Potentiel
+          </h2>
+        </div>
 
         <div className="flex justify-center gap-4 mb-8">
           {Object.entries(categories).map(([key, category]) => {
