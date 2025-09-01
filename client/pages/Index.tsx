@@ -293,28 +293,28 @@ const StressRegulationModule = () => {
       <div className="grid md:grid-cols-2 gap-6">
         {[
           {
-            icon: Target,
+            icon: Brain,
             color: "nature",
-            title: "Identifier",
-            desc: "Reconnaître vos déclencheurs personnels de stress dans différents contextes",
+            title: "Appréhender",
+            desc: "Acquérir les connaissances de base sur le stress et cibler le contexte d'utilisation des TOP",
           },
           {
             icon: Heart,
             color: "calm",
-            title: "Appliquer",
-            desc: "Utiliser des techniques physiologiques et cognitives de régulation",
+            title: "Comprendre",
+            desc: "Analyser le fonctionnement de ses émotions et développer ses propres outils",
           },
           {
-            icon: Lightbulb,
+            icon: TrendingUp,
             color: "serenity",
-            title: "Analyser",
-            desc: "Évaluer l'efficacité des différentes stratégies selon les situations",
+            title: "Se préparer",
+            desc: "Affronter des situations difficiles en appréhendant le processus motivationnel",
           },
           {
-            icon: FileText,
+            icon: Zap,
             color: "nature",
-            title: "Créer",
-            desc: "Élaborer votre plan d'action personnel adapté à votre contexte",
+            title: "Réguler",
+            desc: "Maîtriser la mécanique du stress et développer ses outils de régulation en situation difficile",
           },
         ].map((obj, index) => {
           const Icon = obj.icon;
