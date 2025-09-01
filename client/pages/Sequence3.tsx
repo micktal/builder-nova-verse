@@ -411,11 +411,11 @@ const Sequence3 = () => {
             <p className="text-xs text-gray-600 mt-1">Changer de perspective</p>
           </div>
           <div className="text-center p-4 bg-serenity-50 rounded-lg">
-            <Target className="w-8 h-8 mx-auto mb-2 text-serenity-600" />
+            <Shield className="w-8 h-8 mx-auto mb-2 text-serenity-600" />
             <h4 className="font-semibold text-sm text-gray-900">
-              3 tâches essentielles
+              Gestion des interruptions
             </h4>
-            <p className="text-xs text-gray-600 mt-1">Focus quotidien</p>
+            <p className="text-xs text-gray-600 mt-1">Stratégies anti-distractions</p>
           </div>
         </div>
         <div className="bg-blue-50 p-6 rounded-lg mb-6">
@@ -425,7 +425,7 @@ const Sequence3 = () => {
           <ul className="text-blue-800 text-sm space-y-1">
             <li>• Maîtriser la matrice de priorisation d'Eisenhower</li>
             <li>• Pratiquer le reframing pour changer de perspective</li>
-            <li>• Apprendre la méthode des 3 tâches essentielles</li>
+            <li>• Développer des stratégies de gestion des interruptions</li>
             <li>• Évaluer vos connaissances par un quiz interactif</li>
           </ul>
         </div>
