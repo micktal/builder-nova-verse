@@ -18,7 +18,6 @@ import {
   Shield,
 } from "lucide-react";
 
-
 const Sequence3 = () => {
   const [currentStep, setCurrentStep] = useState<
     "intro" | "learning" | "practice" | "completion"
@@ -33,7 +32,9 @@ const Sequence3 = () => {
   const [reframingChoices, setReframingChoices] = useState<{
     [key: string]: boolean;
   }>({});
-  const [interruptionChoices, setInterruptionChoices] = useState<{ [key: string]: number }>({});
+  const [interruptionChoices, setInterruptionChoices] = useState<{
+    [key: string]: number;
+  }>({});
   const [quizAnswers, setQuizAnswers] = useState<{ [key: number]: number }>({});
 
   const tasks = [
@@ -121,64 +122,74 @@ const Sequence3 = () => {
   const interruptionScenarios = [
     {
       id: "phone-call",
-      situation: "Vous êtes en pleine concentration sur un projet important quand votre téléphone sonne (appel non-urgent).",
+      situation:
+        "Vous êtes en pleine concentration sur un projet important quand votre téléphone sonne (appel non-urgent).",
       strategies: [
         "Répondre immédiatement pour ne pas paraître impoli",
         "Ignorer l'appel et rappeler plus tard",
         "Décrocher, expliquer brièvement que vous êtes occupé et proposer de rappeler",
-        "Mettre le téléphone en mode silencieux"
+        "Mettre le téléphone en mode silencieux",
       ],
       correct: 2,
-      explanation: "Décrocher brièvement permet de gérer l'interruption tout en préservant votre focus."
+      explanation:
+        "Décrocher brièvement permet de gérer l'interruption tout en préservant votre focus.",
     },
     {
       id: "email-notification",
-      situation: "Une notification d'email apparaît sur votre écran pendant que vous travaillez sur une tâche complexe.",
+      situation:
+        "Une notification d'email apparaît sur votre écran pendant que vous travaillez sur une tâche complexe.",
       strategies: [
         "Lire l'email immédiatement pour voir si c'est urgent",
         "Désactiver les notifications pendant les périodes de focus",
         "Répondre rapidement pour vider votre boîte mail",
-        "Laisser la notification ouverte pour ne pas oublier"
+        "Laisser la notification ouverte pour ne pas oublier",
       ],
       correct: 1,
-      explanation: "Désactiver les notifications évite la tentation de vérifier constamment et préserve la concentration."
+      explanation:
+        "Désactiver les notifications évite la tentation de vérifier constamment et préserve la concentration.",
     },
     {
       id: "colleague-help",
-      situation: "Un collègue vient vous demander de l'aide sur un problème qui pourrait attendre.",
+      situation:
+        "Un collègue vient vous demander de l'aide sur un problème qui pourrait attendre.",
       strategies: [
         "L'aider immédiatement pour maintenir de bonnes relations",
         "Lui proposer un moment précis plus tard dans la journée",
         "Dire que vous êtes trop occupé sans proposer d'alternative",
-        "L'aider tout en continuant votre travail actuel"
+        "L'aider tout en continuant votre travail actuel",
       ],
       correct: 1,
-      explanation: "Proposer un moment spécifique plus tard respecte vos priorités tout en aidant votre collègue."
+      explanation:
+        "Proposer un moment spécifique plus tard respecte vos priorités tout en aidant votre collègue.",
     },
     {
       id: "social-media",
-      situation: "Vous ressentez l'envie de vérifier vos réseaux sociaux pendant une tâche ennuyeuse.",
+      situation:
+        "Vous ressentez l'envie de vérifier vos réseaux sociaux pendant une tâche ennuyeuse.",
       strategies: [
         "Prendre une pause de 5 minutes sur les réseaux sociaux",
         "Utiliser la technique Pomodoro : travailler 25 min puis pause",
         "Changer de tâche pour quelque chose de plus intéressant",
-        "Fermer tous les onglets non-professionnels"
+        "Fermer tous les onglets non-professionnels",
       ],
       correct: 1,
-      explanation: "La technique Pomodoro structure le travail et les pauses, réduisant l'envie de distraction."
+      explanation:
+        "La technique Pomodoro structure le travail et les pauses, réduisant l'envie de distraction.",
     },
     {
       id: "meeting-invitation",
-      situation: "Vous recevez une invitation à une réunion qui coïncide avec votre créneau de travail approfondi.",
+      situation:
+        "Vous recevez une invitation à une réunion qui coïncide avec votre créneau de travail approfondi.",
       strategies: [
         "Accepter la réunion pour ne pas créer de conflit",
         "Décliner sans explication",
         "Proposer un autre créneau en expliquant vos contraintes",
-        "Accepter mais partir plus tôt si c'est ennuyeux"
+        "Accepter mais partir plus tôt si c'est ennuyeux",
       ],
       correct: 2,
-      explanation: "Proposer une alternative montre votre engagement tout en protégeant votre temps de focus."
-    }
+      explanation:
+        "Proposer une alternative montre votre engagement tout en protégeant votre temps de focus.",
+    },
   ];
 
   const quizQuestions = [
@@ -214,7 +225,7 @@ const Sequence3 = () => {
         "Traiter immédiatement toutes les interruptions",
         "Évaluer l'urgence et proposer un moment adapté",
         "Ignorer complètement les interruptions",
-        "Traiter les interruptions par ordre d'arrivée"
+        "Traiter les interruptions par ordre d'arrivée",
       ],
       correct: 1,
       explanation:
@@ -222,86 +233,109 @@ const Sequence3 = () => {
     },
   ];
 
-  const handleTaskDrop = useCallback((quadrantId: string) => {
-    if (draggedTask) {
-      setMatrixTasks((prev) => ({
+  const handleTaskDrop = useCallback(
+    (quadrantId: string) => {
+      if (draggedTask) {
+        setMatrixTasks((prev) => ({
+          ...prev,
+          [quadrantId]: [...prev[quadrantId], draggedTask],
+        }));
+        setDraggedTask(null);
+      }
+    },
+    [draggedTask],
+  );
+
+  const handleReframingChoice = useCallback(
+    (scenarioId: string, isPositive: boolean) => {
+      setReframingChoices((prev) => ({
         ...prev,
-        [quadrantId]: [...prev[quadrantId], draggedTask],
+        [scenarioId]: isPositive,
       }));
-      setDraggedTask(null);
-    }
-  }, [draggedTask]);
+    },
+    [],
+  );
 
-  const handleReframingChoice = useCallback((scenarioId: string, isPositive: boolean) => {
-    setReframingChoices((prev) => ({
-      ...prev,
-      [scenarioId]: isPositive,
-    }));
-  }, []);
+  const handleInterruptionChoice = useCallback(
+    (scenarioId: string, choiceIndex: number) => {
+      setInterruptionChoices((prev) => ({
+        ...prev,
+        [scenarioId]: choiceIndex,
+      }));
+    },
+    [],
+  );
 
-  const handleInterruptionChoice = useCallback((scenarioId: string, choiceIndex: number) => {
-    setInterruptionChoices((prev) => ({
-      ...prev,
-      [scenarioId]: choiceIndex,
-    }));
-  }, []);
+  const correctPlacements = useMemo(
+    () => ({
+      "urgent-important": [
+        "Répondre aux emails urgents",
+        "Appel client mécontent",
+      ],
+      "urgent-not-important": [],
+      "not-urgent-important": [
+        "Planifier la stratégie trimestrielle",
+        "Formation sur nouveau logiciel",
+      ],
+      "not-urgent-not-important": [
+        "Réorganiser le bureau",
+        "Lecture d'articles métier",
+      ],
+    }),
+    [],
+  );
 
-  const correctPlacements = useMemo(() => ({
-    "urgent-important": [
-      "Répondre aux emails urgents",
-      "Appel client mécontent",
-    ],
-    "urgent-not-important": [],
-    "not-urgent-important": [
-      "Planifier la stratégie trimestrielle",
-      "Formation sur nouveau logiciel",
-    ],
-    "not-urgent-not-important": [
-      "Réorganiser le bureau",
-      "Lecture d'articles métier",
-    ],
-  }), []);
+  const getTaskFeedback = useCallback(
+    (quadrantId: string, task: string) => {
+      const correctQuadrant =
+        correctPlacements[quadrantId as keyof typeof correctPlacements];
+      const isCorrect = correctQuadrant.includes(task);
 
-  const getTaskFeedback = useCallback((quadrantId: string, task: string) => {
-    const correctQuadrant = correctPlacements[quadrantId as keyof typeof correctPlacements];
-    const isCorrect = correctQuadrant.includes(task);
+      // Check if the task is placed in wrong quadrant
+      const correctQuadrantId = Object.entries(correctPlacements).find(
+        ([_, tasks]) => tasks.includes(task),
+      )?.[0];
 
-    // Check if the task is placed in wrong quadrant
-    const correctQuadrantId = Object.entries(correctPlacements).find(([_, tasks]) =>
-      tasks.includes(task)
-    )?.[0];
-
-    return {
-      isCorrect,
-      correctQuadrantId,
-      shouldBeIn: correctQuadrantId !== quadrantId ?
-        matrixQuadrants.find(q => q.id === correctQuadrantId)?.title : null
-    };
-  }, [correctPlacements]);
+      return {
+        isCorrect,
+        correctQuadrantId,
+        shouldBeIn:
+          correctQuadrantId !== quadrantId
+            ? matrixQuadrants.find((q) => q.id === correctQuadrantId)?.title
+            : null,
+      };
+    },
+    [correctPlacements],
+  );
 
   const isMatrixComplete = useMemo(
     () => Object.values(matrixTasks).flat().length === tasks.length,
-    [matrixTasks]
+    [matrixTasks],
   );
 
   const reframingComplete = useMemo(
     () => Object.keys(reframingChoices).length === reframingScenarios.length,
-    [reframingChoices]
+    [reframingChoices],
   );
 
   const interruptionComplete = useMemo(
-    () => Object.keys(interruptionChoices).length === interruptionScenarios.length,
-    [interruptionChoices]
+    () =>
+      Object.keys(interruptionChoices).length === interruptionScenarios.length,
+    [interruptionChoices],
   );
 
   const quizComplete = useMemo(
     () => Object.keys(quizAnswers).length === quizQuestions.length,
-    [quizAnswers]
+    [quizAnswers],
   );
 
   const isSequenceComplete = useMemo(
-    () => isMatrixComplete && reframingComplete && interruptionComplete && quizComplete,
-    [isMatrixComplete, reframingComplete, interruptionComplete, quizComplete]
+    () =>
+      isMatrixComplete &&
+      reframingComplete &&
+      interruptionComplete &&
+      quizComplete,
+    [isMatrixComplete, reframingComplete, interruptionComplete, quizComplete],
   );
 
   useEffect(() => {
@@ -344,7 +378,9 @@ const Sequence3 = () => {
             <h4 className="font-semibold text-sm text-gray-900">
               Gestion des interruptions
             </h4>
-            <p className="text-xs text-gray-600 mt-1">Stratégies anti-distractions</p>
+            <p className="text-xs text-gray-600 mt-1">
+              Stratégies anti-distractions
+            </p>
           </div>
         </div>
         <div className="bg-blue-50 p-6 rounded-lg mb-6">
@@ -475,8 +511,9 @@ const Sequence3 = () => {
         </CardHeader>
         <CardContent>
           <p className="text-gray-600 mb-4">
-            Les interruptions sont l'ennemi numéro un de la productivité. Apprendre à les gérer efficacement
-            permet de maintenir sa concentration et réduire le stress lié aux distractions constantes.
+            Les interruptions sont l'ennemi numéro un de la productivité.
+            Apprendre à les gérer efficacement permet de maintenir sa
+            concentration et réduire le stress lié aux distractions constantes.
           </p>
           <div className="bg-serenity-50 p-6 rounded-lg mb-6">
             <h5 className="font-semibold text-serenity-800 mb-3">
@@ -485,28 +522,38 @@ const Sequence3 = () => {
             <div className="grid md:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <h6 className="font-medium text-serenity-700">🔍 Évaluation</h6>
-                <p className="text-sm text-serenity-600">Distinguer l'urgent du vraiment important</p>
+                <p className="text-sm text-serenity-600">
+                  Distinguer l'urgent du vraiment important
+                </p>
               </div>
               <div className="space-y-2">
-                <h6 className="font-medium text-serenity-700">⏰ Temporisation</h6>
-                <p className="text-sm text-serenity-600">Proposer un moment adapté plus tard</p>
+                <h6 className="font-medium text-serenity-700">
+                  ⏰ Temporisation
+                </h6>
+                <p className="text-sm text-serenity-600">
+                  Proposer un moment adapté plus tard
+                </p>
               </div>
               <div className="space-y-2">
                 <h6 className="font-medium text-serenity-700">🛡️ Protection</h6>
-                <p className="text-sm text-serenity-600">Créer des créneaux de travail protégé</p>
+                <p className="text-sm text-serenity-600">
+                  Créer des créneaux de travail protégé
+                </p>
               </div>
               <div className="space-y-2">
-                <h6 className="font-medium text-serenity-700">💬 Communication</h6>
-                <p className="text-sm text-serenity-600">Expliquer clairement ses contraintes</p>
+                <h6 className="font-medium text-serenity-700">
+                  💬 Communication
+                </h6>
+                <p className="text-sm text-serenity-600">
+                  Expliquer clairement ses contraintes
+                </p>
               </div>
             </div>
           </div>
           <div className="grid md:grid-cols-3 gap-4">
             <div className="bg-orange-50 p-4 rounded-lg text-center">
               <Shield className="w-8 h-8 text-orange-600 mx-auto mb-2" />
-              <h5 className="font-semibold text-orange-800 mb-1">
-                Prévention
-              </h5>
+              <h5 className="font-semibold text-orange-800 mb-1">Prévention</h5>
               <p className="text-orange-700 text-sm">
                 Anticiper et éviter les distractions
               </p>
@@ -652,7 +699,8 @@ const Sequence3 = () => {
                         </div>
                         {!feedback.isCorrect && feedback.shouldBeIn && (
                           <div className="text-xs text-red-600 mt-1">
-                            Devrait être dans: <strong>{feedback.shouldBeIn}</strong>
+                            Devrait être dans:{" "}
+                            <strong>{feedback.shouldBeIn}</strong>
                           </div>
                         )}
                       </div>
@@ -663,63 +711,71 @@ const Sequence3 = () => {
             ))}
           </div>
 
-          {isMatrixComplete && (
+          {isMatrixComplete &&
             (() => {
               const allTasks = Object.values(matrixTasks).flat();
-              const correctTasks = allTasks.filter(task => {
-                const correctQuadrant = Object.entries(correctPlacements).find(([_, tasks]) =>
-                  tasks.includes(task)
+              const correctTasks = allTasks.filter((task) => {
+                const correctQuadrant = Object.entries(correctPlacements).find(
+                  ([_, tasks]) => tasks.includes(task),
                 )?.[0];
-                const currentQuadrant = Object.entries(matrixTasks).find(([_, tasks]) =>
-                  tasks.includes(task)
+                const currentQuadrant = Object.entries(matrixTasks).find(
+                  ([_, tasks]) => tasks.includes(task),
                 )?.[0];
                 return correctQuadrant === currentQuadrant;
               });
-              const scorePercentage = Math.round((correctTasks.length / allTasks.length) * 100);
+              const scorePercentage = Math.round(
+                (correctTasks.length / allTasks.length) * 100,
+              );
 
               return (
-                <div className={`mt-4 p-4 rounded-lg border ${
-                  scorePercentage >= 80
-                    ? 'bg-green-50 border-green-200'
-                    : scorePercentage >= 60
-                      ? 'bg-yellow-50 border-yellow-200'
-                      : 'bg-red-50 border-red-200'
-                }`}>
-                  <div className={`flex items-center gap-2 ${
+                <div
+                  className={`mt-4 p-4 rounded-lg border ${
                     scorePercentage >= 80
-                      ? 'text-green-700'
+                      ? "bg-green-50 border-green-200"
                       : scorePercentage >= 60
-                        ? 'text-yellow-700'
-                        : 'text-red-700'
-                  }`}>
+                        ? "bg-yellow-50 border-yellow-200"
+                        : "bg-red-50 border-red-200"
+                  }`}
+                >
+                  <div
+                    className={`flex items-center gap-2 ${
+                      scorePercentage >= 80
+                        ? "text-green-700"
+                        : scorePercentage >= 60
+                          ? "text-yellow-700"
+                          : "text-red-700"
+                    }`}
+                  >
                     <CheckCircle className="w-5 h-5" />
                     <span className="font-semibold">
-                      Score: {correctTasks.length}/{allTasks.length} ({scorePercentage}%)
+                      Score: {correctTasks.length}/{allTasks.length} (
+                      {scorePercentage}%)
                     </span>
                   </div>
-                  <p className={`text-sm mt-1 ${
-                    scorePercentage >= 80
-                      ? 'text-green-600'
-                      : scorePercentage >= 60
-                        ? 'text-yellow-600'
-                        : 'text-red-600'
-                  }`}>
+                  <p
+                    className={`text-sm mt-1 ${
+                      scorePercentage >= 80
+                        ? "text-green-600"
+                        : scorePercentage >= 60
+                          ? "text-yellow-600"
+                          : "text-red-600"
+                    }`}
+                  >
                     {scorePercentage >= 80
                       ? "Excellent ! Vous maîtrisez bien la matrice d'Eisenhower."
                       : scorePercentage >= 60
                         ? "Bien ! Quelques ajustements nécessaires. Regardez les indications en rouge."
-                        : "À revoir. Consultez les corrections en rouge pour améliorer votre classement."
-                    }
+                        : "À revoir. Consultez les corrections en rouge pour améliorer votre classement."}
                   </p>
                   {scorePercentage < 100 && (
                     <div className="mt-2 text-xs text-gray-600">
-                      💡 <strong>Astuce :</strong> Les tâches en rouge montrent où elles devraient être placées.
+                      💡 <strong>Astuce :</strong> Les tâches en rouge montrent
+                      où elles devraient être placées.
                     </div>
                   )}
                 </div>
               );
-            })()
-          )}
+            })()}
         </CardContent>
       </Card>
 
@@ -809,25 +865,37 @@ const Sequence3 = () => {
         </CardHeader>
         <CardContent>
           <p className="text-gray-600 mb-4">
-            Pour chaque situation d'interruption, choisissez la stratégie la plus efficace pour préserver votre concentration :
+            Pour chaque situation d'interruption, choisissez la stratégie la
+            plus efficace pour préserver votre concentration :
           </p>
           <div className="space-y-6">
             {interruptionScenarios.map((scenario, index) => (
-              <div key={scenario.id} className="border rounded-lg p-4 bg-gray-50">
+              <div
+                key={scenario.id}
+                className="border rounded-lg p-4 bg-gray-50"
+              >
                 <div className="flex items-start gap-3 mb-4">
                   <div className="w-8 h-8 bg-purple-500 text-white rounded-full flex items-center justify-center font-semibold shrink-0">
                     {index + 1}
                   </div>
                   <div className="flex-1">
-                    <h5 className="font-semibold text-gray-900 mb-2">Situation :</h5>
-                    <p className="text-gray-700 text-sm mb-4 bg-white p-3 rounded border">{scenario.situation}</p>
+                    <h5 className="font-semibold text-gray-900 mb-2">
+                      Situation :
+                    </h5>
+                    <p className="text-gray-700 text-sm mb-4 bg-white p-3 rounded border">
+                      {scenario.situation}
+                    </p>
 
-                    <h6 className="font-medium text-gray-800 mb-3">Quelle stratégie choisissez-vous ?</h6>
+                    <h6 className="font-medium text-gray-800 mb-3">
+                      Quelle stratégie choisissez-vous ?
+                    </h6>
                     <div className="space-y-2">
                       {scenario.strategies.map((strategy, strategyIndex) => (
                         <button
                           key={strategyIndex}
-                          onClick={() => handleInterruptionChoice(scenario.id, strategyIndex)}
+                          onClick={() =>
+                            handleInterruptionChoice(scenario.id, strategyIndex)
+                          }
                           className={`w-full p-3 text-left rounded-lg border transition-colors text-sm ${
                             interruptionChoices[scenario.id] === strategyIndex
                               ? strategyIndex === scenario.correct
@@ -836,17 +904,22 @@ const Sequence3 = () => {
                               : "border-gray-200 hover:border-gray-300 bg-white"
                           }`}
                         >
-                          <span className="font-medium">{String.fromCharCode(65 + strategyIndex)}.</span> {strategy}
+                          <span className="font-medium">
+                            {String.fromCharCode(65 + strategyIndex)}.
+                          </span>{" "}
+                          {strategy}
                         </button>
                       ))}
                     </div>
 
                     {interruptionChoices[scenario.id] !== undefined && (
-                      <div className={`mt-3 p-3 rounded border ${
-                        interruptionChoices[scenario.id] === scenario.correct
-                          ? "bg-green-50 border-green-200 text-green-700"
-                          : "bg-red-50 border-red-200 text-red-700"
-                      }`}>
+                      <div
+                        className={`mt-3 p-3 rounded border ${
+                          interruptionChoices[scenario.id] === scenario.correct
+                            ? "bg-green-50 border-green-200 text-green-700"
+                            : "bg-red-50 border-red-200 text-red-700"
+                        }`}
+                      >
                         <p className="text-sm">
                           {interruptionChoices[scenario.id] === scenario.correct
                             ? "✓ Excellente stratégie !"
@@ -861,58 +934,71 @@ const Sequence3 = () => {
             ))}
           </div>
 
-          {interruptionComplete && (
+          {interruptionComplete &&
             (() => {
-              const correctAnswers = Object.entries(interruptionChoices).filter(([scenarioId, choice]) => {
-                const scenario = interruptionScenarios.find(s => s.id === scenarioId);
-                return scenario && choice === scenario.correct;
-              }).length;
+              const correctAnswers = Object.entries(interruptionChoices).filter(
+                ([scenarioId, choice]) => {
+                  const scenario = interruptionScenarios.find(
+                    (s) => s.id === scenarioId,
+                  );
+                  return scenario && choice === scenario.correct;
+                },
+              ).length;
               const totalScenarios = interruptionScenarios.length;
-              const scorePercentage = Math.round((correctAnswers / totalScenarios) * 100);
+              const scorePercentage = Math.round(
+                (correctAnswers / totalScenarios) * 100,
+              );
 
               return (
-                <div className={`mt-6 p-4 rounded-lg border ${
-                  scorePercentage >= 80
-                    ? 'bg-green-50 border-green-200'
-                    : scorePercentage >= 60
-                      ? 'bg-yellow-50 border-yellow-200'
-                      : 'bg-red-50 border-red-200'
-                }`}>
-                  <div className={`flex items-center gap-2 ${
+                <div
+                  className={`mt-6 p-4 rounded-lg border ${
                     scorePercentage >= 80
-                      ? 'text-green-700'
+                      ? "bg-green-50 border-green-200"
                       : scorePercentage >= 60
-                        ? 'text-yellow-700'
-                        : 'text-red-700'
-                  }`}>
+                        ? "bg-yellow-50 border-yellow-200"
+                        : "bg-red-50 border-red-200"
+                  }`}
+                >
+                  <div
+                    className={`flex items-center gap-2 ${
+                      scorePercentage >= 80
+                        ? "text-green-700"
+                        : scorePercentage >= 60
+                          ? "text-yellow-700"
+                          : "text-red-700"
+                    }`}
+                  >
                     <Shield className="w-5 h-5" />
                     <span className="font-semibold">
-                      Score : {correctAnswers}/{totalScenarios} ({scorePercentage}%)
+                      Score : {correctAnswers}/{totalScenarios} (
+                      {scorePercentage}%)
                     </span>
                   </div>
-                  <p className={`text-sm mt-1 ${
-                    scorePercentage >= 80
-                      ? 'text-green-600'
-                      : scorePercentage >= 60
-                        ? 'text-yellow-600'
-                        : 'text-red-600'
-                  }`}>
+                  <p
+                    className={`text-sm mt-1 ${
+                      scorePercentage >= 80
+                        ? "text-green-600"
+                        : scorePercentage >= 60
+                          ? "text-yellow-600"
+                          : "text-red-600"
+                    }`}
+                  >
                     {scorePercentage >= 80
                       ? "Parfait ! Vous maîtrisez bien les stratégies de gestion des interruptions."
                       : scorePercentage >= 60
                         ? "Bien ! Quelques stratégies à affiner pour optimiser votre gestion des interruptions."
-                        : "À améliorer. Revoir les explications pour mieux gérer les interruptions au quotidien."
-                    }
+                        : "À améliorer. Revoir les explications pour mieux gérer les interruptions au quotidien."}
                   </p>
                   {scorePercentage < 100 && (
                     <div className="mt-2 text-xs text-gray-600">
-                      💡 <strong>Conseil :</strong> La clé est d'évaluer l'urgence réelle et de proposer des alternatives qui préservent votre concentration.
+                      💡 <strong>Conseil :</strong> La clé est d'évaluer
+                      l'urgence réelle et de proposer des alternatives qui
+                      préservent votre concentration.
                     </div>
                   )}
                 </div>
               );
-            })()
-          )}
+            })()}
         </CardContent>
       </Card>
 

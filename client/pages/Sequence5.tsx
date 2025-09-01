@@ -159,33 +159,45 @@ const Sequence5 = () => {
   };
 
   // Memoized handlers for action plan inputs to prevent typing issues
-  const handleTriggersChange = useCallback((e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setActionPlan((prev) => ({
-      ...prev,
-      triggers: e.target.value,
-    }));
-  }, []);
+  const handleTriggersChange = useCallback(
+    (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+      setActionPlan((prev) => ({
+        ...prev,
+        triggers: e.target.value,
+      }));
+    },
+    [],
+  );
 
-  const handleTechniquesChange = useCallback((e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setActionPlan((prev) => ({
-      ...prev,
-      favoriteTechniques: e.target.value,
-    }));
-  }, []);
+  const handleTechniquesChange = useCallback(
+    (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+      setActionPlan((prev) => ({
+        ...prev,
+        favoriteTechniques: e.target.value,
+      }));
+    },
+    [],
+  );
 
-  const handleMomentsChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    setActionPlan((prev) => ({
-      ...prev,
-      applicationMoments: e.target.value,
-    }));
-  }, []);
+  const handleMomentsChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setActionPlan((prev) => ({
+        ...prev,
+        applicationMoments: e.target.value,
+      }));
+    },
+    [],
+  );
 
-  const handleResultsChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    setActionPlan((prev) => ({
-      ...prev,
-      expectedResults: e.target.value,
-    }));
-  }, []);
+  const handleResultsChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setActionPlan((prev) => ({
+        ...prev,
+        expectedResults: e.target.value,
+      }));
+    },
+    [],
+  );
 
   const generatePDF = () => {
     const routineText = selectedRoutine
