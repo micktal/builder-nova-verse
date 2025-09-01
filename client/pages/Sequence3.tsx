@@ -722,23 +722,40 @@ const Sequence3 = () => {
             Identifiez 3 tâches qui, une fois accomplies, vous donneront le
             sentiment d'avoir eu une journée productive :
           </p>
-          <div className="space-y-4" style={{ scrollMarginTop: '0px', scrollBehavior: 'auto' }}>
-            {[1, 2, 3].map((num, index) => (
-              <div key={num} className="flex items-center gap-3">
-                <div className="w-8 h-8 bg-serenity-500 text-white rounded-full flex items-center justify-center font-semibold">
-                  {num}
+          <div className="space-y-4" style={{ scrollMarginTop: '0px' }}>
+            {[1, 2, 3].map((num, index) => {
+              const taskValue = essentialTasks[index];
+              return (
+                <div key={`task-${num}`} className="flex items-center gap-3">
+                  <div className="w-8 h-8 bg-serenity-500 text-white rounded-full flex items-center justify-center font-semibold">
+                    {num}
+                  </div>
+                  <Input
+                    key={`input-${num}-${taskValue?.length || 0}`}
+                    placeholder={`Tâche essentielle ${num}...`}
+                    defaultValue={taskValue}
+                    onChange={(e) => {
+                      const newValue = e.target.value;
+                      // Use requestAnimationFrame to defer state update
+                      requestAnimationFrame(() => {
+                        handleTaskInput(index, newValue);
+                      });
+                    }}
+                    onFocus={(e) => {
+                      e.stopPropagation();
+                      // Prevent any automatic scrolling
+                      window.scrollTo({ top: window.scrollY, behavior: 'auto' });
+                    }}
+                    onBlur={(e) => {
+                      // Ensure final value is saved
+                      handleTaskInput(index, e.target.value);
+                    }}
+                    className="flex-1"
+                    style={{ scrollMarginTop: '0px' }}
+                  />
                 </div>
-                <Input
-                  placeholder={`Tâche essentielle ${num}...`}
-                  value={essentialTasks[index]}
-                  onChange={(e) => handleTaskInput(index, e.target.value)}
-                  onFocus={(e) => {
-                    e.stopPropagation();
-                  }}
-                  className="flex-1"
-                />
-              </div>
-            ))}
+              );
+            })}
           </div>
           {tasksComplete && (
             <div className="mt-4 p-4 bg-green-50 rounded-lg border border-green-200">
