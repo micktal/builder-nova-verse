@@ -437,6 +437,13 @@ const TransformationTimeline = () => {
       className="max-w-6xl mx-auto px-6 py-16 bg-gradient-to-br from-slate-50 to-blue-50 rounded-3xl"
     >
       <div className="text-center mb-12">
+        <div className="mb-6">
+          <img
+            src="https://images.pexels.com/photos/1051838/pexels-photo-1051838.jpeg?auto=compress&cs=tinysrgb&w=800"
+            alt="Transformation personnelle par la méditation et les techniques de gestion du stress"
+            className="mx-auto rounded-2xl shadow-lg w-64 h-40 object-cover"
+          />
+        </div>
         <div className="flex items-center justify-center gap-2 mb-4">
           <h2 className="text-4xl font-bold text-gray-900">
             Avant / Après : l'impact des techniques
