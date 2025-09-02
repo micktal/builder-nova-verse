@@ -848,7 +848,7 @@ const InteractiveConclusion = () => {
               <BookOpen className="w-10 h-10 text-white" />
             </div>
             <h3 className="text-2xl font-bold text-emerald-800 mb-4">
-              📚 Emportez vos connaissances avec vous
+              Emportez vos connaissances avec vous
             </h3>
             <p className="text-lg text-gray-700 mb-6 max-w-3xl mx-auto">
               Téléchargez votre{" "}
@@ -860,7 +860,7 @@ const InteractiveConclusion = () => {
           </div>
 
           <div className="bg-white p-6 rounded-xl shadow-sm border border-emerald-200 max-w-2xl mx-auto mb-6">
-            <h4 className="font-bold text-gray-800 mb-4">📄 Ce que contient votre PDF :</h4>
+            <h4 className="font-bold text-gray-800 mb-4">Ce que contient votre PDF :</h4>
             <div className="grid md:grid-cols-2 gap-4 text-left">
               <div className="space-y-2">
                 <div className="flex items-center gap-2">
