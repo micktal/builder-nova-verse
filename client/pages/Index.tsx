@@ -870,23 +870,6 @@ Oui, comprendre les émotions est vraiment la première étape pour en faire une
                 </div>
               </div>
 
-              {/* Call to Action */}
-              <div className="mt-6 text-center bg-gradient-to-r from-purple-100 to-blue-100 rounded-lg p-4">
-                <p className="text-sm text-gray-700 mb-3">
-                  <strong>💡 Prêt(e) à approfondir ?</strong> Explorez nos outils interactifs pour développer vos compétences émotionnelles
-                </p>
-                <div className="flex gap-2 justify-center flex-wrap">
-                  <Button size="sm" variant="outline" className="text-xs">
-                    Roue des émotions
-                  </Button>
-                  <Button size="sm" variant="outline" className="text-xs">
-                    Quiz de stress
-                  </Button>
-                  <Button size="sm" variant="outline" className="text-xs">
-                    Techniques TOP
-                  </Button>
-                </div>
-              </div>
             </div>
           </div>
         </div>
