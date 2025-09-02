@@ -1006,23 +1006,6 @@ En comprenant le stress et en utilisant nos outils, nous transformons les défis
                 </div>
               </div>
 
-              {/* Call to Action */}
-              <div className="mt-6 text-center bg-gradient-to-r from-orange-100 to-red-100 rounded-lg p-4">
-                <p className="text-sm text-gray-700 mb-3">
-                  <strong>Prêt(e) à appliquer ces outils ?</strong> Explorez nos techniques pratiques pour maîtriser votre stress
-                </p>
-                <div className="flex gap-2 justify-center flex-wrap">
-                  <Button size="sm" variant="outline" className="text-xs">
-                    Techniques TOP
-                  </Button>
-                  <Button size="sm" variant="outline" className="text-xs">
-                    Quiz de stress
-                  </Button>
-                  <Button size="sm" variant="outline" className="text-xs">
-                    Exercices pratiques
-                  </Button>
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -1170,23 +1153,6 @@ Il est fascinant de constater à quel point des méthodes aussi simples peuvent 
                 </div>
               </div>
 
-              {/* Call to Action */}
-              <div className="mt-6 text-center bg-gradient-to-r from-green-100 to-teal-100 rounded-lg p-4">
-                <p className="text-sm text-gray-700 mb-3">
-                  <strong>🚀 Prêt(e) à découvrir les TOP en détail ?</strong> Explorez les techniques spécifiques et leurs applications
-                </p>
-                <div className="flex gap-2 justify-center flex-wrap">
-                  <Button size="sm" variant="outline" className="text-xs">
-                    Techniques physiologiques
-                  </Button>
-                  <Button size="sm" variant="outline" className="text-xs">
-                    Techniques cognitives
-                  </Button>
-                  <Button size="sm" variant="outline" className="text-xs">
-                    Applications pratiques
-                  </Button>
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -1455,7 +1421,7 @@ Il est fascinant de constater à quel point des méthodes aussi simples peuvent 
 
                 <div className="space-y-4">
                   <div className="bg-white p-4 rounded-lg border border-red-100">
-                    <h5 className="font-semibold text-red-800 mb-2">🫁 Techniques respiratoires</h5>
+                    <h5 className="font-semibold text-red-800 mb-2">Techniques respiratoires</h5>
                     <ul className="text-sm text-gray-700 space-y-1">
                       <li>• <strong>Cohérence cardiaque :</strong> 5 sec inspiration, 5 sec expiration</li>
                       <li>• <strong>Respiration 4-7-8 :</strong> Inspire 4, retient 7, expire 8</li>
@@ -1493,7 +1459,7 @@ Il est fascinant de constater à quel point des méthodes aussi simples peuvent 
 
                 <div className="space-y-4">
                   <div className="bg-white p-4 rounded-lg border border-blue-100">
-                    <h5 className="font-semibold text-blue-800 mb-2">🎯 Concentration et attention</h5>
+                    <h5 className="font-semibold text-blue-800 mb-2">Concentration et attention</h5>
                     <ul className="text-sm text-gray-700 space-y-1">
                       <li>• <strong>Focalisation sélective :</strong> Filtrage des informations pertinentes</li>
                       <li>• <strong>Attention divisée :</strong> Multi-tâches contrôlées</li>
@@ -1502,7 +1468,7 @@ Il est fascinant de constater à quel point des méthodes aussi simples peuvent 
                   </div>
 
                   <div className="bg-white p-4 rounded-lg border border-blue-100">
-                    <h5 className="font-semibold text-blue-800 mb-2">🧠 Restructuration cognitive</h5>
+                    <h5 className="font-semibold text-blue-800 mb-2">Restructuration cognitive</h5>
                     <ul className="text-sm text-gray-700 space-y-1">
                       <li>• <strong>Reframing :</strong> Recadrage positif des situations</li>
                       <li>• <strong>Dialogue interne :</strong> Optimisation du discours mental</li>
@@ -1531,7 +1497,7 @@ Il est fascinant de constater à quel point des méthodes aussi simples peuvent 
 
                 <div className="space-y-4">
                   <div className="bg-white p-4 rounded-lg border border-green-100">
-                    <h5 className="font-semibold text-green-800 mb-2">⚡ Gestion de l'action</h5>
+                    <h5 className="font-semibold text-green-800 mb-2">Gestion de l'action</h5>
                     <ul className="text-sm text-gray-700 space-y-1">
                       <li>• <strong>Prise de décision rapide :</strong> Processus OODA (Observer-Orienter-Décider-Agir)</li>
                       <li>• <strong>Priorisation :</strong> Matrice d'urgence/importance</li>
@@ -1540,7 +1506,7 @@ Il est fascinant de constater à quel point des méthodes aussi simples peuvent 
                   </div>
 
                   <div className="bg-white p-4 rounded-lg border border-green-100">
-                    <h5 className="font-semibold text-green-800 mb-2">🤝 Communication efficace</h5>
+                    <h5 className="font-semibold text-green-800 mb-2">Communication efficace</h5>
                     <ul className="text-sm text-gray-700 space-y-1">
                       <li>• <strong>Assertivité :</strong> Expression claire et respectueuse</li>
                       <li>• <strong>Écoute active :</strong> Compréhension empathique</li>
