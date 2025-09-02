@@ -338,7 +338,7 @@ const InteractiveConclusion = () => {
     },
     {
       id: "timeline",
-      title: "Transformation visualis��e",
+      title: "Transformation visualisée",
       description: "Impact des techniques compris",
       icon: TrendingUp,
     },
