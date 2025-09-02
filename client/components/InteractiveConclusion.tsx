@@ -22,7 +22,7 @@ import {
   Download,
   BookOpen,
 } from "lucide-react";
-import jsPDF from 'jspdf';
+import jsPDF from "jspdf";
 
 const InteractiveConclusion = () => {
   const [currentView, setCurrentView] = useState<
@@ -47,19 +47,25 @@ const InteractiveConclusion = () => {
 
       // Page de couverture
       pdf.setFillColor(59, 130, 246); // blue-500
-      pdf.rect(0, 0, pageWidth, pageHeight, 'F');
+      pdf.rect(0, 0, pageWidth, pageHeight, "F");
 
       pdf.setTextColor(255, 255, 255);
       pdf.setFontSize(24);
-      pdf.setFont('helvetica', 'bold');
-      pdf.text('Module 2 - Réguler le Stress', pageWidth / 2, 80, { align: 'center' });
+      pdf.setFont("helvetica", "bold");
+      pdf.text("Module 2 - Réguler le Stress", pageWidth / 2, 80, {
+        align: "center",
+      });
 
       pdf.setFontSize(16);
-      pdf.setFont('helvetica', 'normal');
-      pdf.text('Résumé et Guide Pratique', pageWidth / 2, 100, { align: 'center' });
+      pdf.setFont("helvetica", "normal");
+      pdf.text("Résumé et Guide Pratique", pageWidth / 2, 100, {
+        align: "center",
+      });
 
       pdf.setFontSize(12);
-      pdf.text(new Date().toLocaleDateString('fr-FR'), pageWidth / 2, 120, { align: 'center' });
+      pdf.text(new Date().toLocaleDateString("fr-FR"), pageWidth / 2, 120, {
+        align: "center",
+      });
 
       // Nouvelle page - Contenu
       pdf.addPage();
@@ -68,21 +74,21 @@ const InteractiveConclusion = () => {
 
       // Titre principal
       pdf.setFontSize(20);
-      pdf.setFont('helvetica', 'bold');
-      pdf.text('🎯 Objectifs d\'apprentissage maîtrisés', 20, yPosition);
+      pdf.setFont("helvetica", "bold");
+      pdf.text("🎯 Objectifs d'apprentissage maîtrisés", 20, yPosition);
       yPosition += 20;
 
       // Objectifs
       pdf.setFontSize(12);
-      pdf.setFont('helvetica', 'normal');
+      pdf.setFont("helvetica", "normal");
       const objectives = [
-        '✓ Identifier vos déclencheurs personnels de stress',
-        '✓ Appliquer des techniques physiologiques et cognitives',
-        '✓ Analyser l\'efficacité des stratégies selon les situations',
-        '✓ Créer votre plan d\'action personnel adapté'
+        "✓ Identifier vos déclencheurs personnels de stress",
+        "✓ Appliquer des techniques physiologiques et cognitives",
+        "✓ Analyser l'efficacité des stratégies selon les situations",
+        "✓ Créer votre plan d'action personnel adapté",
       ];
 
-      objectives.forEach(obj => {
+      objectives.forEach((obj) => {
         pdf.text(obj, 20, yPosition);
         yPosition += 10;
       });
@@ -91,31 +97,31 @@ const InteractiveConclusion = () => {
 
       // Techniques apprises
       pdf.setFontSize(16);
-      pdf.setFont('helvetica', 'bold');
-      pdf.text('🧠 Techniques que vous maîtrisez maintenant', 20, yPosition);
+      pdf.setFont("helvetica", "bold");
+      pdf.text("🧠 Techniques que vous maîtrisez maintenant", 20, yPosition);
       yPosition += 15;
 
       pdf.setFontSize(12);
-      pdf.setFont('helvetica', 'normal');
+      pdf.setFont("helvetica", "normal");
 
       const techniques = [
-        'Techniques Physiologiques TOP:',
-        '  • Respiration 4-6 et 4-7-8',
-        '  • Relaxation progressive musculaire',
-        '  • Micro-pauses de récupération',
-        '',
-        'Outils Cognitifs:',
-        '  • Matrice d\'Eisenhower (urgent/important)',
-        '  • Techniques de reframing',
-        '  • Méthode des 3 tâches prioritaires',
-        '',
-        'Communication Assertive:',
-        '  • Modèle DESC (Décrire, Exprimer, Spécifier, Conséquences)',
-        '  • Gestion constructive des conflits',
-        '  • Affirmation respectueuse de ses besoins'
+        "Techniques Physiologiques TOP:",
+        "  • Respiration 4-6 et 4-7-8",
+        "  • Relaxation progressive musculaire",
+        "  • Micro-pauses de récupération",
+        "",
+        "Outils Cognitifs:",
+        "  • Matrice d'Eisenhower (urgent/important)",
+        "  • Techniques de reframing",
+        "  • Méthode des 3 tâches prioritaires",
+        "",
+        "Communication Assertive:",
+        "  • Modèle DESC (Décrire, Exprimer, Spécifier, Conséquences)",
+        "  • Gestion constructive des conflits",
+        "  • Affirmation respectueuse de ses besoins",
       ];
 
-      techniques.forEach(technique => {
+      techniques.forEach((technique) => {
         if (yPosition > 250) {
           pdf.addPage();
           yPosition = 30;
@@ -129,42 +135,42 @@ const InteractiveConclusion = () => {
       yPosition = 30;
 
       pdf.setFontSize(16);
-      pdf.setFont('helvetica', 'bold');
-      pdf.text('💡 Trucs et Astuces Pratiques', 20, yPosition);
+      pdf.setFont("helvetica", "bold");
+      pdf.text("💡 Trucs et Astuces Pratiques", 20, yPosition);
       yPosition += 20;
 
       pdf.setFontSize(12);
-      pdf.setFont('helvetica', 'normal');
+      pdf.setFont("helvetica", "normal");
 
       const tips = [
-        '🌅 ROUTINE MATINALE (5 min)',
-        '  • 2 min de respiration 4-6',
-        '  • Définir 3 priorités de la journée',
-        '  • Visualiser une journée sereine',
-        '',
-        '⚡ GESTION DES PICS DE STRESS',
-        '  • STOP : arrêter ce que vous faites',
-        '  • 3 respirations profondes 4-7-8',
+        "🌅 ROUTINE MATINALE (5 min)",
+        "  • 2 min de respiration 4-6",
+        "  • Définir 3 priorités de la journée",
+        "  • Visualiser une journée sereine",
+        "",
+        "⚡ GESTION DES PICS DE STRESS",
+        "  • STOP : arrêter ce que vous faites",
+        "  • 3 respirations profondes 4-7-8",
         '  • Question : "Quelle est ma vraie priorité ?"',
-        '  • Action : choisir la technique appropriée',
-        '',
-        '🎯 PLANIFICATION EFFICACE',
-        '  • Matrice d\'Eisenhower chaque lundi',
-        '  • Micro-pauses toutes les 90 minutes',
+        "  • Action : choisir la technique appropriée",
+        "",
+        "🎯 PLANIFICATION EFFICACE",
+        "  • Matrice d'Eisenhower chaque lundi",
+        "  • Micro-pauses toutes les 90 minutes",
         '  • "Non" respectueux aux demandes non prioritaires',
-        '',
-        '💬 COMMUNICATION ASSERTIVE',
+        "",
+        "💬 COMMUNICATION ASSERTIVE",
         '  • "Je comprends... ET j\'ai besoin de..."',
-        '  • Reformuler avant de répondre',
-        '  • Proposer des alternatives constructives',
-        '',
-        '🔄 RÉCUPÉRATION',
-        '  • 10 min de marche après le déjeuner',
-        '  • Technique de relaxation progressive le soir',
-        '  • Bilan quotidien : 3 réussites + 1 amélioration'
+        "  • Reformuler avant de répondre",
+        "  • Proposer des alternatives constructives",
+        "",
+        "🔄 RÉCUPÉRATION",
+        "  • 10 min de marche après le déjeuner",
+        "  • Technique de relaxation progressive le soir",
+        "  • Bilan quotidien : 3 réussites + 1 amélioration",
       ];
 
-      tips.forEach(tip => {
+      tips.forEach((tip) => {
         if (yPosition > 250) {
           pdf.addPage();
           yPosition = 30;
@@ -178,40 +184,40 @@ const InteractiveConclusion = () => {
       yPosition = 30;
 
       pdf.setFontSize(16);
-      pdf.setFont('helvetica', 'bold');
-      pdf.text('📋 Votre Plan d\'Action Personnel', 20, yPosition);
+      pdf.setFont("helvetica", "bold");
+      pdf.text("📋 Votre Plan d'Action Personnel", 20, yPosition);
       yPosition += 20;
 
       pdf.setFontSize(12);
-      pdf.setFont('helvetica', 'normal');
+      pdf.setFont("helvetica", "normal");
 
       const actionPlan = [
-        'SEMAINE 1-2 : FONDATIONS',
-        '☐ Pratiquer la respiration 4-6 matin et soir',
-        '☐ Identifier mes 3 principaux déclencheurs',
-        '☐ Tester la matrice d\'Eisenhower',
-        '',
-        'SEMAINE 3-4 : APPROFONDISSEMENT',
-        '☐ Intégrer les micro-pauses dans ma routine',
-        '☐ Pratiquer le modèle DESC dans 1 situation',
-        '��� Expérimenter la relaxation progressive',
-        '',
-        'MOIS 2 : MAÎTRISE',
-        '☐ Adapter les techniques à mes situations spécifiques',
-        '☐ Développer mes propres variantes',
-        '☐ Accompagner d\'autres dans leur démarche',
-        '',
-        'RAPPEL IMPORTANT :',
+        "SEMAINE 1-2 : FONDATIONS",
+        "☐ Pratiquer la respiration 4-6 matin et soir",
+        "☐ Identifier mes 3 principaux déclencheurs",
+        "☐ Tester la matrice d'Eisenhower",
+        "",
+        "SEMAINE 3-4 : APPROFONDISSEMENT",
+        "☐ Intégrer les micro-pauses dans ma routine",
+        "☐ Pratiquer le modèle DESC dans 1 situation",
+        "��� Expérimenter la relaxation progressive",
+        "",
+        "MOIS 2 : MAÎTRISE",
+        "☐ Adapter les techniques à mes situations spécifiques",
+        "☐ Développer mes propres variantes",
+        "☐ Accompagner d'autres dans leur démarche",
+        "",
+        "RAPPEL IMPORTANT :",
         '"La régularité prime sur l\'intensité"',
-        '5 minutes par jour > 1 heure par semaine',
-        '',
-        'CONTACT EN CAS DE BESOIN :',
-        '• Revisiter ce module',
-        '��� Pratiquer avec un collègue',
-        '• Adapter selon vos contraintes'
+        "5 minutes par jour > 1 heure par semaine",
+        "",
+        "CONTACT EN CAS DE BESOIN :",
+        "• Revisiter ce module",
+        "��� Pratiquer avec un collègue",
+        "• Adapter selon vos contraintes",
       ];
 
-      actionPlan.forEach(item => {
+      actionPlan.forEach((item) => {
         if (yPosition > 250) {
           pdf.addPage();
           yPosition = 30;
@@ -221,15 +227,17 @@ const InteractiveConclusion = () => {
       });
 
       // Sauvegarde
-      pdf.save('Module-Stress-Regulation-Resume.pdf');
+      pdf.save("Module-Stress-Regulation-Resume.pdf");
     } catch (error) {
-      console.error('Erreur lors de la génération du PDF:', error);
+      console.error("Erreur lors de la génération du PDF:", error);
     } finally {
       setIsGeneratingPdf(false);
     }
   };
 
-  const scrollToSection = (view: "celebration" | "skills" | "roadmap" | "conclusion") => {
+  const scrollToSection = (
+    view: "celebration" | "skills" | "roadmap" | "conclusion",
+  ) => {
     setCurrentView(view);
 
     // Wait for state update and DOM change
@@ -478,7 +486,8 @@ const InteractiveConclusion = () => {
           🎉 FÉLICITATIONS ! 🎉
         </h1>
         <p className="text-2xl text-gray-700 mb-2">
-          Vous avez terminé le module "Appréhender le stress et ses émotions en situation complexe" !
+          Vous avez terminé le module "Appréhender le stress et ses émotions en
+          situation complexe" !
         </p>
         <h1 className="text-lg text-gray-600">
           Une transformation remarquable vous attend...
@@ -817,7 +826,6 @@ const InteractiveConclusion = () => {
         </CardContent>
       </Card>
 
-
       {/* PDF Download Section */}
       <Card className="bg-gradient-to-r from-emerald-50 to-teal-50 border-emerald-200">
         <CardContent className="p-8 text-center">
@@ -833,17 +841,22 @@ const InteractiveConclusion = () => {
               <span className="font-bold text-emerald-700">
                 guide personnel de régulation du stress
               </span>
-              . Un résumé complet avec tous les points clés, techniques et astuces pratiques pour une consultation hors ligne.
+              . Un résumé complet avec tous les points clés, techniques et
+              astuces pratiques pour une consultation hors ligne.
             </p>
           </div>
 
           <div className="bg-white p-6 rounded-xl shadow-sm border border-emerald-200 max-w-2xl mx-auto mb-6">
-            <h4 className="font-bold text-gray-800 mb-4">Ce que contient votre PDF :</h4>
+            <h4 className="font-bold text-gray-800 mb-4">
+              Ce que contient votre PDF :
+            </h4>
             <div className="grid md:grid-cols-2 gap-4 text-left">
               <div className="space-y-2">
                 <div className="flex items-center gap-2">
                   <CheckCircle className="w-4 h-4 text-emerald-500" />
-                  <span className="text-sm">Résumé des objectifs maîtrisés</span>
+                  <span className="text-sm">
+                    Résumé des objectifs maîtrisés
+                  </span>
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircle className="w-4 h-4 text-emerald-500" />
@@ -882,7 +895,8 @@ const InteractiveConclusion = () => {
           </a>
 
           <p className="text-sm text-gray-600 mt-4">
-            💡 <span className="font-medium">Astuce :</span> Imprimez les pages techniques pour les avoir toujours à portée de main !
+            💡 <span className="font-medium">Astuce :</span> Imprimez les pages
+            techniques pour les avoir toujours à portée de main !
           </p>
         </CardContent>
       </Card>
