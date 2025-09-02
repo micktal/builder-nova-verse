@@ -194,7 +194,7 @@ const InteractiveConclusion = () => {
         'SEMAINE 3-4 : APPROFONDISSEMENT',
         '☐ Intégrer les micro-pauses dans ma routine',
         '☐ Pratiquer le modèle DESC dans 1 situation',
-        '☐ Expérimenter la relaxation progressive',
+        '��� Expérimenter la relaxation progressive',
         '',
         'MOIS 2 : MAÎTRISE',
         '☐ Adapter les techniques à mes situations spécifiques',
@@ -871,23 +871,15 @@ const InteractiveConclusion = () => {
             </div>
           </div>
 
-          <Button
-            onClick={generatePDF}
-            disabled={isGeneratingPdf}
-            className="bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-3 text-lg font-medium rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+          <a
+            href="https://cdn.builder.io/o/assets%2Fd93d9a0ec7824aa1ac4d890a1f90a2ec%2F3e7de8862c9b4db8af9dc12be213c14f?alt=media&token=0be0586e-6668-4cf6-a6c4-dd4e413c73d3&apiKey=d93d9a0ec7824aa1ac4d890a1f90a2ec"
+            target="_blank"
+            download="Module-2-Reguler-le-Stress.pdf"
+            className="inline-flex items-center justify-center bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-3 text-lg font-medium rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 no-underline"
           >
-            {isGeneratingPdf ? (
-              <>
-                <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
-                Génération en cours...
-              </>
-            ) : (
-              <>
-                <Download className="w-5 h-5 mr-2" />
-                Télécharger mon guide PDF
-              </>
-            )}
-          </Button>
+            <Download className="w-5 h-5 mr-2" />
+            Télécharger mon guide PDF
+          </a>
 
           <p className="text-sm text-gray-600 mt-4">
             💡 <span className="font-medium">Astuce :</span> Imprimez les pages techniques pour les avoir toujours à portée de main !
