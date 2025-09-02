@@ -817,28 +817,6 @@ const InteractiveConclusion = () => {
         </CardContent>
       </Card>
 
-      {/* Next Steps */}
-      <Card className="bg-gradient-to-r from-indigo-50 to-purple-50 border-indigo-200">
-        <CardContent className="p-8 text-center">
-          <h3 className="text-2xl font-bold text-indigo-800 mb-4">
-            L'aventure ne fait que commencer
-          </h3>
-          <p className="text-lg text-gray-700 mb-6 max-w-3xl mx-auto">
-            Ce module vous a donné les{" "}
-            <span className="font-bold text-indigo-700">
-              fondations solides
-            </span>
-            . Maintenant, c'est à vous de construire votre nouvelle relation au
-            stress, jour après jour, technique après technique.
-          </p>
-          <div className="inline-flex items-center gap-2 bg-white px-6 py-3 rounded-full shadow-sm border border-indigo-200">
-            <Sparkles className="w-5 h-5 text-indigo-600" />
-            <span className="font-medium text-indigo-800">
-              Votre transformation commence maintenant
-            </span>
-          </div>
-        </CardContent>
-      </Card>
 
       {/* PDF Download Section */}
       <Card className="bg-gradient-to-r from-emerald-50 to-teal-50 border-emerald-200">
